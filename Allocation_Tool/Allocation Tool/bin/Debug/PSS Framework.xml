@@ -1,0 +1,261 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+PSSFramework
+</name>
+</assembly>
+<members>
+<member name="M:PSS_Framework.SAPCOM.EKKO_Report.Execute">
+	<summary>
+ Returns:
+    [Client] [Doc Number] [Company Code] [Doc Type] [Created On] [Created By] [Vendor] [Language] [POrg] [PGrp] [Currency] [Doc Date]
+    [Validity Start] [Validity End] [Y Refer] [Salesperson] [Telephone] [OA] [O Reference]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EKPO_Report.Execute">
+	<summary>
+ Returns:
+    [Client] [Doc Number] [Item Number] [Short Text] [Material] [Plant] [Inforecord] [Quantity] [UOM] [Price] [Tax code] [PDT]
+    [Mat Group] [Tracking Fld] [Price Unit]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EBAN_Report.Execute">
+	<summary>
+ Returns:
+    [Client] [Req Number] [Req Item] [Req Date] [Purch Org] [Purch Doc] [PO Item]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EKET_Report.Execute">
+	<summary>
+ Returns:
+    [Purch Doc] [Purch Doc Item] [Schedule Line] [Delivery Date] [Stat Del Date] [Scheduled Qty] [Delivered Qty] [Purch Req] [Purch Req Item] [Purch Doc Date] 
+    [Quota Arrangement] [Qta Arr Item] [Creation Indicator]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EKBE_Report.Execute">
+	<summary>
+ Returns: [Purch Doc] [Item] [Transaction] [Movement] [Posting Date] [Quantity] [Amount] [Currency] [Reference] [Material] [Plant] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EORD_Report.Execute">
+	<summary>
+ Returns: [Client] [Material] [Plant] [Number] [Created On] [Created By] [Valid From] [Valid To] [Vendor] [Fixed Vendor] [Agreement] [Agreement Item] [Fixed Agreement Item]
+ [MPN Material] [Blocked] [Purch Org] [Doc Category] [Control Ind] [Materials Planning] [UOM] [Logical System] [Special Stock] [Central Contract] [Central Contract Item] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EBKN_Report.Execute">
+	<summary>
+ Returns: [Client] [Req Number] [Req Item] [GL Account]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EKES_Report.Execute">
+	<summary>
+ Returns:
+    [Client] [Doc Number] [Item] [Conf Category] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EIPO_Report.Execute">
+	<summary>
+ Returns:
+    [Client] [FTD Number] [Disp Country]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EINA_Report.Execute">
+	<summary>
+ Returns:
+    [Client] [Inforecord] [Material] [Material Group] [Vendor] [Created On] [Created By] [Short Text] [Sort Term] [Order Unit]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EIPA_Report.Execute">
+	<summary>
+ Returns:
+    [Client] [Inforecord] [Document] [Item]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EINE_Report.Execute">
+	<summary>
+ Returns:
+    [Client] [Inforecord] [Purch Org] [Plant] [Created On] [Created By] [Purch Group] [Currency] [Purch Doc] [Item] [Doc Date] [Net Price]
+  [Price Unit] [OPU] [Conf Control] [GR Based IV] [Standard Qty] [Unlimited Ovrdl] [Pricing Date Ctrl] [Qty Conversion 1] [Qty Conversion 2]
+ 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.EKBZ_Report.Execute">
+	<summary>
+ Returns: [Client] [Purchasing Document] [Item] [Step number] ...
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.BKPF_Report.Execute">
+	<summary>
+ Returns:
+    [Doc_Number] [Reference_Key] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.BSEG_Report.Execute">
+	<summary>
+ Returns:
+    [Doc Number] [Line Item] [BaseLine Date] [Payment Terms] [Days1]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.MARC_Report.Execute">
+	<summary>
+ Returns: [Material] [Plant] [Purch Group] [PDT] [AutoPO] [Source List] [MRP Group] [Deletion Flag PL] [MRP Controller]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.LFA1_Report.Execute">
+	<summary>
+ Returns: [Client] [Vendor] [Name] [Country]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.LFM1_Report.Execute">
+	<summary>
+ Returns: [Vendor] [POrg] [Created On] [Created By] [Incoterms] [Incoterms Desc] [Block] [Delete]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.LFB1_Report.Execute">
+	<summary>
+ Returns: [Vendor] [CCode] [Created On] [Created By] [Pmnt Terms] [Block] [Delete]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.LFBK_Report.Execute">
+	<summary>
+ Returns: [Vendor] [Bank Account]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.T001K_Report.Execute">
+	<summary>
+ Returns: [Plant] [CCode] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.Manufacturers_Report.Execute">
+	<summary>
+ Returns: [Client] [Plant] [Material] [Manufacturer] [Part No]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.MARA_Report.Execute">
+	<summary>
+ Returns: [Material] [Mat Type]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.MAKT_Report.Execute">
+	<summary>
+ Returns: [Material] [Description 1] [Description 2]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.MARM_Report.Execute">
+	<summary>
+ Returns: [Material] [Alt UOM] [Numerator] [Denominator]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.A016_Report.Execute">
+	<summary>
+ Returns: [Cond Type] [Document] [Item] [VFrom] [VTo] [CRNum]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.A025_Report.Execute">
+	<summary>
+ Returns: [Client] [Cond Type] [Vendor] [Purch Org] [Mat Group] [Inforecord] [Plant] [VTo] [VFrom] [CRNum]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.CONDI_Report.Execute">
+	<summary>
+ Returns: [CRNum] [Condition] [Price] [Per] [UOM] [Currency]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.NAST_Report.Execute">
+	<summary>
+ Returns: [Client] [Doc Number] [Tr Medium] [Message Type] [Language] [Created On] [Created By] [Proc Status] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.ZMXXTLOG_Report.Execute">
+	<summary>
+ Returns: [Client] [Material] [Plant] [Created By]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.ZFIX_T03_Report.Execute">
+	<summary>
+ Returns:
+    [Record] [InvoiceNumber] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.ZFIX_T02_Report.Execute">
+	<summary>
+ Returns:
+    [Record] [Status] [Current Date]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.CDHDR_Report.Execute">
+	<summary>
+ Returns: [Change doc object] [Name] [Date] [Client] [Object Value] [Document Number] [Time] [Transaction] [Change Type] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.CDPOS_Report.Execute">
+	<summary>
+ Returns: [Change doc object] [Document Number] [Client] [Object Value] [Table Name] [Table key] 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.ZMEP_PVL_Report.Execute">
+	<summary>
+ Returns: [Vendor] [Plant] [MatGrp]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.ZTXXSTLGEX_Report.Execute">
+	<summary>
+ Returns: [Vendor] [CCode] [ExcepCode]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.ADR6_Report.Execute">
+	<summary>
+ Returns: [AddrNum] [eMail1] [eMail2]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.ZBBP_SC_Data_Report.Execute">
+	<summary>
+ Returns: [TransNo] [Posting Date] [Box] [User Name] [Vendor Name]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.Agreement_Report.Execute">
+	<summary>
+ Returns:
+    [PGrp] [Buyer_Name] [Agreement] [Vendor] [Vendor_Name] [Vendor_Country] [Plant] [Plant_Name] [Plant_Country] [Item] [Material] [Short_Text] [Net_Price] 
+    [Price_Unit] [Order_Unit] [Currency] [Incoterms] [Incoterms_Desc] [POrg] [Pmnt_Terms] [Comp_Code] [Doc_Type] [Validity_Start] [Validity_End] [Tax_Code]
+ </summary>
+	<remarks></remarks>
+</member><member name="P:PSS_Framework.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:PSS_Framework.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:PSS_Framework.My.Resources.Resources.lock">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PSS_Framework.My.Resources.Resources.Servers">
+	<summary>
+  Looks up a localized string similar to &lt;?xml version="1.0" standalone="yes"?&gt;
+&lt;NewDataSet&gt;
+  &lt;xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"&gt;
+    &lt;xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="Servers" msdata:UseCurrentLocale="true"&gt;
+      &lt;xs:complexType&gt;
+        &lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;
+          &lt;xs:element name="Servers"&gt;
+            &lt;xs:complexType&gt;
+              &lt;xs:sequence&gt;
+                &lt;xs:e [rest of string was truncated]";.
+</summary>
+</member><member name="P:PSS_Framework.My.Resources.Resources.unlock">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:PSS_Framework.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,11 @@
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\bin\Debug\PSS ANT Service.exe.config
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\bin\Debug\PSS ANT Service.exe
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\bin\Debug\PSS ANT Service.pdb
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\bin\Debug\PSS ANT Service.xml
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\obj\Debug\PSS_ANT_Service.Resources.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\obj\Debug\PSS_ANT_Service.Service.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\obj\Debug\PSS ANT Service.vbproj.GenerateResource.Cache
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\obj\Debug\PSS ANT Service.exe
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\obj\Debug\PSS ANT Service.xml
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\obj\Debug\PSS ANT Service.pdb
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\PSS ANT Service\obj\Debug\PSS_ANT_Service.ProjectInstaller.resources
