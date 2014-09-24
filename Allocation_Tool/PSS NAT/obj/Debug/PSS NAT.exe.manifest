@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS Framework.dll" size="374272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS Framework.dll" size="375808">
       <assemblyIdentity name="PSS Framework" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q5WRVOJCrsN5+dvVEM2C1rLjUkb31+e8XHfKSja2sVE=</dsig:DigestValue>
+        <dsig:DigestValue>Zb9uECMtJCaVgeq5M4zw7ciIGnkFbb3oobYzKEknKdg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>m6XudgieM3N3X55mMVgj+yX7ceGTUTzZUB+JWfXiFEM=</dsig:DigestValue>
+        <dsig:DigestValue>xe3z7q9/s79KRD7+wVNBJu9rdRrKisCCZ10ha7fNJt0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

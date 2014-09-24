@@ -264,25 +264,22 @@ Public Class Frm_CI_PF
 
         Dim dataTable = SQL.Return_DataTable("select resources.ID, " & _
                                                 "resources.[Check], " & _
-                                                "resource_type.Resource_Type, " & _
-                                                "service_line.Service_Line, " & _
-                                                "phase.Project_Phase, " & _
+                                                "task_type.Task_Type," & _
                                                 "Resources.[Owner], " & _
                                                 "resources.Owner_Name, " & _
+                                                "resources.Start_Date, " & _
+                                                "resources.End_Date," & _
                                                 "entry_type.Entry_Type, " & _
                                                 "resources.Value, " & _
-                                                "resources.Monthly_FTE, " & _
-                                                "resources.[Month], " & _
+                                                "service_line.Service_Line, " & _
                                                 "resources.Status " & _
                                             "from " & dbTables & "_Resources as resources, " & _
-                                                "Project_Resource_Type as resource_type, " & _
                                                 "Project_Service_Line as service_line, " & _
-                                                "" & dbTables & "_Project_Phase as phase, " & _
+                                                "" & dbTables & "_Task_Type as task_type, " & _
                                                 "Project_Entry_Type as entry_type " & _
                                             "where Project_ID = " & Id_Project & " And " & _
-                                                "resources.Resource_Type = resource_type.ID And " & _
                                                 "resources.Service_Line = service_line.ID And " & _
-                                                "resources.Project_Phase = phase.ID And " & _
+                                                "resources.Task_Type = task_type.ID And " & _
                                                 "resources.Entry_Type = entry_type.ID and " & _
                                                 "resources.Status <> 0")
 
@@ -292,17 +289,15 @@ Public Class Frm_CI_PF
         DataGridViewResources.Columns(0).Visible = False
         DataGridViewResources.Columns(1).HeaderText = "Check"
         DataGridViewResources.Columns(1).Visible = False
-        DataGridViewResources.Columns(2).HeaderText = "Resource Type"
-        DataGridViewResources.Columns(3).HeaderText = "Service Line"
-        DataGridViewResources.Columns(4).HeaderText = "Project Phase"
-        DataGridViewResources.Columns(5).HeaderText = "TNumber"
-        DataGridViewResources.Columns(6).HeaderText = "Name"
+        DataGridViewResources.Columns(2).HeaderText = "Task Type"
+        DataGridViewResources.Columns(3).HeaderText = "TNumber"
+        DataGridViewResources.Columns(4).HeaderText = "Name"
+        DataGridViewResources.Columns(5).HeaderText = "Start Date"
+        DataGridViewResources.Columns(6).HeaderText = "End Date"
         DataGridViewResources.Columns(7).HeaderText = "Entry Type"
         DataGridViewResources.Columns(8).HeaderText = "Monthly Value"
-        DataGridViewResources.Columns(9).HeaderText = "Monthly FTE"
-        DataGridViewResources.Columns(10).HeaderText = "Month"
-        DataGridViewResources.Columns(10).DefaultCellStyle.Format = "MMMM yyyy"
-        DataGridViewResources.Columns(11).Visible = False
+        DataGridViewResources.Columns(9).HeaderText = "Service Line"
+        DataGridViewResources.Columns(10).Visible = False
 
         Dim selectProject As New DataGridViewButtonColumn()
 
@@ -349,11 +344,11 @@ Public Class Frm_CI_PF
                     MFTE = MFTE + getMonthlyFTE("Materials", row.Cells(8).Value)
                 End If
 
-                If SDate > row.Cells(10).Value Then
-                    SDate = row.Cells(10).Value
+                If SDate > row.Cells(5).Value Then
+                    SDate = row.Cells(5).Value
                 End If
-                If EDate < row.Cells(10).Value Then
-                    EDate = row.Cells(10).Value
+                If EDate < row.Cells(6).Value Then
+                    EDate = row.Cells(6).Value
                 End If
             Next
         End If
@@ -415,8 +410,10 @@ Public Class Frm_CI_PF
     End Sub
 
     Private Sub ToolStripButtonSearch_Click(sender As Object, e As EventArgs) Handles ToolStripButtonSearch.Click
-        Frm_CI_SearchProject.dbTables = dbTables
-        Frm_CI_SearchProject.ShowDialog(Me)
+        Dim f As New Frm_CI_SearchProject
+        f.dbTables = dbTables
+        f.ShowDialog(Me)
+        f.Dispose()
     End Sub
 
     Private Sub ComboBoxCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxCategory.SelectedIndexChanged
@@ -505,6 +502,7 @@ Public Class Frm_CI_PF
 
     Private Sub ToolStripButtonAdd_Click(sender As Object, e As EventArgs) Handles ToolStripButtonAdd.Click
         Frm_CI_Resources.Id_Project = Id_Project
+        Frm_CI_Resources.Id_Primary_Process = ComboBoxPrimaryProcessProject.SelectedValue
         Frm_CI_Resources.dbTables = dbTables
         Frm_CI_Resources.ShowDialog(Me)
     End Sub

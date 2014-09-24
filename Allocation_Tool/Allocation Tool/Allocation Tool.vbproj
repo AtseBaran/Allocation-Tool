@@ -26,7 +26,7 @@
     <ProductName>PSS Project Allocation Tool</ProductName>
     <SuiteName>PSS Project Allocation Tool</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>40</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -325,6 +325,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\CI\Frm_CI_PF.resx">
       <DependentUpon>Frm_CI_PF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_Resources.resx">
+      <DependentUpon>Frm_CI_Resources.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CI\Frm_CI_SearchProject.resx">
       <DependentUpon>Frm_CI_SearchProject.vb</DependentUpon>

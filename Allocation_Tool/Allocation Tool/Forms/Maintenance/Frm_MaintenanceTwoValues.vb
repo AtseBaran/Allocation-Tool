@@ -47,6 +47,7 @@
         DataGridView.Columns(1).Visible = False
         DataGridView.Columns(1).HeaderText = lblCombo
         DataGridView.Columns(2).HeaderText = lblTexto
+        DataGridView.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
     End Sub
 
     Private Sub ToolStripButtonNew_Click(sender As Object, e As EventArgs) Handles ToolStripButtonNew.Click
@@ -83,10 +84,10 @@
         ToolStripButtonDelete.Enabled = False
 
         If ID = 0 Then
-            SQL.Execute("insert into " & Tabla & " (" & Campo & "," & CampoRequired & ") values('" & TextBoxValue.Text & "', '" & ComboBoxRequired.SelectedValue & "')")
+            SQL.Execute("insert into " & Tabla & " (" & Campo & "," & CampoRequired & ") values('" & sqlString(Trim(TextBoxValue.Text)) & "', '" & ComboBoxRequired.SelectedValue & "')")
             LoadData()
         ElseIf ID <> 0 Then
-            SQL.Execute("update " & Tabla & " set " & Campo & "='" & Trim(TextBoxValue.Text) & "', " & CampoRequired & "='" & ComboBoxRequired.SelectedValue & "' where id='" & ID & "'")
+            SQL.Execute("update " & Tabla & " set " & Campo & "='" & sqlString(Trim(TextBoxValue.Text)) & "', " & CampoRequired & "='" & ComboBoxRequired.SelectedValue & "' where id='" & ID & "'")
             LoadData()
         End If
 

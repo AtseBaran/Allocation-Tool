@@ -55,26 +55,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS Framework.dll" size="374272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS Framework.dll" size="375808">
       <assemblyIdentity name="PSS Framework" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q5WRVOJCrsN5+dvVEM2C1rLjUkb31+e8XHfKSja2sVE=</dsig:DigestValue>
+        <dsig:DigestValue>DVVmiGu5ELOKKuYwNkFQf90TrcLKxF+gSMdaJHW+QP4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS NAT.exe" size="2618880">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS NAT.exe" size="2611200">
       <assemblyIdentity name="PSS NAT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lhdr1L0LzzakpzQses5SaKjTyvauxCrALL5g8Wu25Y8=</dsig:DigestValue>
+        <dsig:DigestValue>UAc8Kqo9v/Q4C71Dh/0KauKsB1MzJ/WrH3P37ixrmPM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

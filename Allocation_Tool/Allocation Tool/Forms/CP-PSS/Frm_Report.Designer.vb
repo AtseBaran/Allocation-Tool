@@ -22,6 +22,7 @@ Partial Class Frm_Report
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
@@ -30,8 +31,15 @@ Partial Class Frm_Report
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Report))
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.TabControl = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Chart = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridView = New System.Windows.Forms.DataGridView()
+        Me.ToolStripFilter = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButtonFilter = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonClearFilter = New System.Windows.Forms.ToolStripButton()
         Me.TableLayoutPanelFilters = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanelFilter = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -78,10 +86,16 @@ Partial Class Frm_Report
         Me.ToolStripButtonExcel = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButtonGraphic = New System.Windows.Forms.ToolStripButton()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
+        Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.TabControl.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
         CType(Me.Chart, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage2.SuspendLayout()
+        Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStripFilter.SuspendLayout()
         Me.TableLayoutPanelFilters.SuspendLayout()
         Me.TableLayoutPanelFilter.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -97,6 +111,7 @@ Partial Class Frm_Report
         Me.Panel12.SuspendLayout()
         Me.Panel13.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
+        CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel
@@ -116,13 +131,34 @@ Partial Class Frm_Report
         '
         'Panel4
         '
-        Me.Panel4.Controls.Add(Me.Chart)
-        Me.Panel4.Controls.Add(Me.DataGridView)
+        Me.Panel4.Controls.Add(Me.TabControl)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(3, 187)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(797, 294)
         Me.Panel4.TabIndex = 1
+        '
+        'TabControl
+        '
+        Me.TabControl.Controls.Add(Me.TabPage1)
+        Me.TabControl.Controls.Add(Me.TabPage2)
+        Me.TabControl.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TabControl.Location = New System.Drawing.Point(0, 0)
+        Me.TabControl.Name = "TabControl"
+        Me.TabControl.SelectedIndex = 0
+        Me.TabControl.Size = New System.Drawing.Size(797, 294)
+        Me.TabControl.TabIndex = 2
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.Chart)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(789, 268)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Chart"
+        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'Chart
         '
@@ -141,7 +177,7 @@ Partial Class Frm_Report
         Legend1.BackColor = System.Drawing.Color.Transparent
         Legend1.Name = "Legend1"
         Me.Chart.Legends.Add(Legend1)
-        Me.Chart.Location = New System.Drawing.Point(0, 0)
+        Me.Chart.Location = New System.Drawing.Point(3, 3)
         Me.Chart.Name = "Chart"
         Series1.BorderWidth = 2
         Series1.ChartArea = "ChartArea1"
@@ -166,7 +202,7 @@ Partial Class Frm_Report
         Series2.Name = "Total Actuals"
         Me.Chart.Series.Add(Series1)
         Me.Chart.Series.Add(Series2)
-        Me.Chart.Size = New System.Drawing.Size(797, 294)
+        Me.Chart.Size = New System.Drawing.Size(783, 262)
         Me.Chart.TabIndex = 0
         Me.Chart.Text = "Chart"
         Title1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -174,17 +210,71 @@ Partial Class Frm_Report
         Title1.Text = "Allocation Report"
         Me.Chart.Titles.Add(Title1)
         '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.TableLayoutPanel1)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(789, 268)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Raw Data"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.ColumnCount = 1
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.DataGridView, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.ToolStripFilter, 0, 0)
+        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 3)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 2
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(783, 262)
+        Me.TableLayoutPanel1.TabIndex = 3
+        '
         'DataGridView
         '
         Me.DataGridView.AllowUserToAddRows = False
         Me.DataGridView.AllowUserToDeleteRows = False
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView.Location = New System.Drawing.Point(0, 0)
+        Me.DataGridView.Location = New System.Drawing.Point(3, 43)
         Me.DataGridView.Name = "DataGridView"
         Me.DataGridView.ReadOnly = True
-        Me.DataGridView.Size = New System.Drawing.Size(797, 294)
+        Me.DataGridView.Size = New System.Drawing.Size(777, 216)
         Me.DataGridView.TabIndex = 1
+        '
+        'ToolStripFilter
+        '
+        Me.ToolStripFilter.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.ToolStripFilter.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonFilter, Me.ToolStripButtonClearFilter})
+        Me.ToolStripFilter.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStripFilter.Name = "ToolStripFilter"
+        Me.ToolStripFilter.Size = New System.Drawing.Size(783, 39)
+        Me.ToolStripFilter.TabIndex = 2
+        Me.ToolStripFilter.Text = "ToolStrip1"
+        '
+        'ToolStripButtonFilter
+        '
+        Me.ToolStripButtonFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonFilter.Image = Global.Allocation_Tool.My.Resources.Resources.filter
+        Me.ToolStripButtonFilter.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonFilter.Name = "ToolStripButtonFilter"
+        Me.ToolStripButtonFilter.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButtonFilter.Text = "Filter"
+        '
+        'ToolStripButtonClearFilter
+        '
+        Me.ToolStripButtonClearFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonClearFilter.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
+        Me.ToolStripButtonClearFilter.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonClearFilter.Name = "ToolStripButtonClearFilter"
+        Me.ToolStripButtonClearFilter.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButtonClearFilter.Text = "Clear Filters"
         '
         'TableLayoutPanelFilters
         '
@@ -630,13 +720,13 @@ Partial Class Frm_Report
         Me.ToolStripButtonGraphic.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonGraphic.Name = "ToolStripButtonGraphic"
         Me.ToolStripButtonGraphic.Size = New System.Drawing.Size(28, 28)
-        Me.ToolStripButtonGraphic.Text = "Save Image"
+        Me.ToolStripButtonGraphic.Text = "Export to Image"
         '
         'SaveFileDialog
         '
         Me.SaveFileDialog.Filter = "Excel Files | *.xlsx"
         '
-        'Frm_CP_Report
+        'Frm_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -644,13 +734,20 @@ Partial Class Frm_Report
         Me.ClientSize = New System.Drawing.Size(803, 484)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Frm_CP_Report"
+        Me.Name = "Frm_Report"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Report"
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
+        Me.TabControl.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
         CType(Me.Chart, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage2.ResumeLayout(False)
+        Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.TableLayoutPanel1.PerformLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStripFilter.ResumeLayout(False)
+        Me.ToolStripFilter.PerformLayout()
         Me.TableLayoutPanelFilters.ResumeLayout(False)
         Me.TableLayoutPanelFilters.PerformLayout()
         Me.TableLayoutPanelFilter.ResumeLayout(False)
@@ -680,6 +777,7 @@ Partial Class Frm_Report
         Me.Panel13.PerformLayout()
         Me.ToolStrip.ResumeLayout(False)
         Me.ToolStrip.PerformLayout()
+        CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -733,4 +831,12 @@ Partial Class Frm_Report
     Friend WithEvents DataGridView As System.Windows.Forms.DataGridView
     Friend WithEvents SaveFileDialog As System.Windows.Forms.SaveFileDialog
     Friend WithEvents ToolStripButtonGraphic As System.Windows.Forms.ToolStripButton
+    Friend WithEvents TabControl As System.Windows.Forms.TabControl
+    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents ToolStripFilter As System.Windows.Forms.ToolStrip
+    Friend WithEvents ToolStripButtonFilter As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButtonClearFilter As System.Windows.Forms.ToolStripButton
+    Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents BindingSource As System.Windows.Forms.BindingSource
 End Class

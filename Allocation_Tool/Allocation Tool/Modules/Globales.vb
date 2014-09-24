@@ -34,4 +34,7 @@
         Return Decimal.Round(total, 3)
     End Function
 
+    Public Function sqlString(str As String)
+        sqlString = Replace(str, "'", "''")
+    End Function
 End Module

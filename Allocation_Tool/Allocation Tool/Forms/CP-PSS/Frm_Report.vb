@@ -5,6 +5,7 @@ Public Class Frm_Report
 
     Private dataTableActuals As DataTable
     Private dataTableProject As DataTable
+    Dim dataTableF As DataTable = New DataTable()
 
     Dim where As String = ""
 
@@ -507,7 +508,7 @@ Public Class Frm_Report
 
     Private Sub DataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView.CellDoubleClick
         If My.Computer.Keyboard.ShiftKeyDown Then
-            Chart.Visible = True
+            'Chart.Visible = True
         End If
     End Sub
 
@@ -517,14 +518,9 @@ Public Class Frm_Report
         End If
     End Sub
 
-    Private Sub ToolStripButtonExcel_Click(sender As Object, e As EventArgs) Handles ToolStripButtonExcel.Click
+    Private Sub RawData()
         Dim dataTableR As DataTable
         Dim dataTableA As DataTable
-        Dim dataTableF As DataTable = New DataTable()
-        Dim fileName As String
-        SaveFileDialog.Filter = "Excel File | *.xlsx"
-        SaveFileDialog.ShowDialog(Me)
-        fileName = SaveFileDialog.FileName
 
         Dim sDate As Date = DTPStartDate.Value
         Dim eDate As Date = DTPEndDate.Value
@@ -559,6 +555,7 @@ Public Class Frm_Report
 
         dataTableA = SQL.Return_DataTable(
             "(select " & _
+                "CP_Actuals.Resource_ID as ResourceID," & _
                 "sum(" & dbTables & "_Actuals.Value) as Actual_FTE, " & _
                 "CONVERT(DATE, " & dbTables & "_Actuals.Actual_Date) as [Date] " & _
             "from " & _
@@ -572,6 +569,9 @@ Public Class Frm_Report
                 dbTables & "_Actuals.Resource_ID, " & _
                 dbTables & "_Actuals.Actual_Date)"
         )
+
+        dataTableF.Clear()
+        dataTableF.Columns.Clear()
 
         For Each column As DataColumn In dataTableR.Columns
             dataTableF.Columns.Add(column.ColumnName)
@@ -594,11 +594,15 @@ Public Class Frm_Report
                     End If
                 Next
                 dataTableF.Rows(rowF).Item(3) = getMonthlyFTE(rowR.Item(10), rowR.Item(3))
-                For column As Integer = 0 To 1
-                    If column = 1 Then
-                        dataTableF.Rows(rowF).Item(column + 11) = FormatDateTime(rowA.Item(column), DateFormat.ShortDate)
-                    Else
-                        dataTableF.Rows(rowF).Item(column + 11) = getMonthlyFTE(rowR.Item(10), rowA.Item(column))
+                For column As Integer = 0 To 2
+                    If (rowR.Item(7) = rowA.Item(0)) Then
+                        If column = 2 Then
+                            dataTableF.Rows(rowF).Item(column + 11) = FormatDateTime(rowA.Item(column), DateFormat.ShortDate)
+                        ElseIf column = 1 Then
+                            dataTableF.Rows(rowF).Item(column + 11) = getMonthlyFTE(rowR.Item(10), rowA.Item(column))
+                        Else
+                            dataTableF.Rows(rowF).Item(column + 11) = rowA.Item(column)
+                        End If
                     End If
                 Next
                 rowF = rowF + 1
@@ -610,14 +614,38 @@ Public Class Frm_Report
         dataTableF.Columns.Add(columnUserType)
 
         For i As Integer = 0 To (dataTableF.Rows.Count - 1)
-            dataTableF.Rows(i).Item("Role") = UsersInfo.GetRole(dataTableF.Rows(i).Item("Owner"), AppName)
+            If Not DotNet.IsEmpty(dataTableF.Rows(i).Item("ResourceID")) Then
+                dataTableF.Rows(i).Item("Role") = UsersInfo.GetRole(dataTableF.Rows(i).Item("Owner"), AppName)
+            End If
         Next
 
         For Each column As System.Data.DataColumn In dataTableF.Columns
             dataTableF.Columns(column.ColumnName).ColumnName = Replace(column.ColumnName, "_", " ")
         Next
 
-        If ExportDataTableToExcel(dataTableF, fileName, "Report", "A1") Then
+        BindingSource.DataSource = dataTableF
+        DataGridView.DataSource = dataTableF
+
+        DataGridView.Columns(0).Visible = False
+        DataGridView.Columns(7).Visible = False
+        DataGridView.Columns(9).Visible = False
+        DataGridView.Columns(11).Visible = False
+    End Sub
+
+    Private Sub ToolStripButtonExcel_Click(sender As Object, e As EventArgs) Handles ToolStripButtonExcel.Click
+        Dim fileName As String
+        SaveFileDialog.Filter = "Excel File | *.xlsx"
+        SaveFileDialog.ShowDialog(Me)
+        fileName = SaveFileDialog.FileName
+
+        Dim dataTemp As DataTable = dataTableF
+
+        datatemp.Columns.RemoveAt(0)
+        datatemp.Columns.RemoveAt(7)
+        datatemp.Columns.RemoveAt(9)
+        datatemp.Columns.RemoveAt(11)
+
+        If ExportDataTableToExcel(datatemp, fileName, "Report", "A1") Then
             MessageBox.Show("The export was successful.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             MessageBox.Show("There has been an error, please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -791,6 +819,7 @@ Public Class Frm_Report
             End If
         End If
         Chart.DataBind()
+        RawData()
     End Sub
 
     Private Sub DTPStartDate_ValueChanged(sender As Object, e As EventArgs) Handles DTPStartDate.ValueChanged
@@ -808,5 +837,33 @@ Public Class Frm_Report
             fileName = SaveFileDialog.FileName
             Chart.SaveImage(fileName, System.Drawing.Imaging.ImageFormat.Png)
         End If
+    End Sub
+
+    Private Sub ToolStripButtonFilter_Click(sender As Object, e As EventArgs) Handles ToolStripButtonFilter.Click
+        Try
+            Dim FV As String
+            If Not DBNull.Value.Equals(DataGridView.CurrentCell.Value) Then
+                If DataGridView.CurrentCell.ValueType.Equals(GetType(Date)) Then
+                    FV = " >= '" & String.Format("{0:yyyy-MM-dd}", DataGridView.CurrentCell.Value) & " 00:00:00.000' AND " & DataGridView.CurrentCell.OwningColumn.Name & " <= '" & String.Format("{0:yyyy-MM-dd}", DataGridView.CurrentCell.Value) & " 23:59:00.000'"
+                Else
+                    FV = " = '" & DataGridView.CurrentCell.Value & "'"
+                End If
+            Else
+                FV = " Is Null"
+            End If
+            Dim FE As String = DataGridView.CurrentCell.OwningColumn.Name & FV
+
+            If BindingSource.Filter <> Nothing Then
+                BindingSource.Filter = BindingSource.Filter & " AND " & FE
+            Else
+                BindingSource.Filter = FE
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub ToolStripButtonClearFilter_Click(sender As Object, e As EventArgs) Handles ToolStripButtonClearFilter.Click
+        BindingSource.Filter = ""
     End Sub
 End Class

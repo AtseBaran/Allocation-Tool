@@ -57,10 +57,10 @@
         ToolStripButtonDelete.Enabled = False
 
         If ID = 0 Then
-            SQL.Execute("insert into " & Tabla & " (" & Campo & ") values('" & TextBoxValue.Text & "')")
+            SQL.Execute("insert into " & Tabla & " (" & Campo & ") values('" & sqlString(Trim(TextBoxValue.Text)) & "')")
             LoadData()
         ElseIf ID <> 0 Then
-            SQL.Execute("update " & Tabla & " set " & Campo & "='" & Trim(TextBoxValue.Text) & "' where id='" & ID & "'")
+            SQL.Execute("update " & Tabla & " set " & Campo & "='" & sqlString(Trim(TextBoxValue.Text)) & "' where id='" & ID & "'")
             LoadData()
         End If
 
@@ -90,6 +90,7 @@
         DataGridView.DataSource = Table
         DataGridView.Columns(0).Visible = False
         DataGridView.Columns(1).HeaderText = lblTexto
+        DataGridView.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
     End Sub
 
     Private Sub DataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView.CellClick

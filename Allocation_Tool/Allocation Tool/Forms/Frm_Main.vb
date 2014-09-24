@@ -483,4 +483,20 @@ Public Class Frm_Main
             Frm_CI_PF.Dispose()
         End If
     End Sub
+
+    Private Sub TaskNameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TaskNameToolStripMenuItem.Click
+        Frm_MaintenanceTwoValues.TitleWindow = "Continuous Improvement - Task Name"
+        Frm_MaintenanceTwoValues.lblCombo = "Primary Process"
+        Frm_MaintenanceTwoValues.lblTexto = "Task Name"
+
+        Frm_MaintenanceTwoValues.Tabla = "CI_Task_Name"
+        Frm_MaintenanceTwoValues.TablaRequired = "CI_Primary_Process"
+        Frm_MaintenanceTwoValues.ValueRequired = "Primary_Process"
+        Frm_MaintenanceTwoValues.IdRequired = "ID"
+
+        Frm_MaintenanceTwoValues.Campo = "Task_Name"
+        Frm_MaintenanceTwoValues.CampoRequired = "ID_Primary_Process"
+
+        Frm_MaintenanceTwoValues.ShowDialog(Me)
+    End Sub
 End Class

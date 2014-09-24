@@ -187,9 +187,9 @@ Public Class Frm_PF
                                 "Created_Date," & _
                                 "Created_By" & _
                                 ") OUTPUT Inserted.ID values (" & _
-                                "'" & Trim(TextBoxProjectName.Text) & "'," & _
-                                "'" & Trim(TextBoxXGBSPM.Text) & "'," & _
-                                "'" & Trim(TextBoxPSSDeliveryPM.Text) & "'," & _
+                                "'" & sqlString(Trim(TextBoxProjectName.Text)) & "'," & _
+                                "'" & sqlString(Trim(TextBoxXGBSPM.Text)) & "'," & _
+                                "'" & sqlString(Trim(TextBoxPSSDeliveryPM.Text)) & "'," & _
                                 "'" & Trim(ComboBoxCategory.SelectedValue) & "'," & _
                                 "'" & Trim(ComboBoxVSChevron.SelectedValue) & "'," & _
                                 "'" & Trim(ComboBoxPrimaryProcessProject.SelectedValue) & "'," & _

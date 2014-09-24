@@ -25,7 +25,12 @@ Partial Class Frm_CI_PF
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_CI_PF))
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButtonNew = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonSave = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonEdit = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonCancel = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButtonSearch = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripLabelUser = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabelRequired = New System.Windows.Forms.ToolStripLabel()
@@ -34,10 +39,22 @@ Partial Class Frm_CI_PF
         Me.TableLayoutPanelResources = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridViewResources = New System.Windows.Forms.DataGridView()
         Me.BindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.ToolStripButtonRefresh = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonFilter = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonClearFilter = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonRemove = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonAdd = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonClearAll = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.MarkAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MarkNoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanelDocuments = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridViewFiles = New System.Windows.Forms.DataGridView()
         Me.BindingNavigatorFiles = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.ToolStripButtonRefreshFiles = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonRemoveFiles = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButtonAddFiles = New System.Windows.Forms.ToolStripButton()
         Me.GroupBoxTotalForecast = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanelTotalForecast = New System.Windows.Forms.TableLayoutPanel()
         Me.TextBoxHoursRequired = New System.Windows.Forms.TextBox()
@@ -102,23 +119,6 @@ Partial Class Frm_CI_PF
         Me.LabelCategory = New System.Windows.Forms.Label()
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
-        Me.ToolStripButtonRefresh = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonFilter = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonClearFilter = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonRemove = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonAdd = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonClearAll = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.MarkAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MarkNoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripButtonRefreshFiles = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonRemoveFiles = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonAddFiles = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonNew = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonSave = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonEdit = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonCancel = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButtonSearch = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip.SuspendLayout()
         Me.TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -175,10 +175,59 @@ Partial Class Frm_CI_PF
         Me.ToolStrip.TabIndex = 1
         Me.ToolStrip.Text = "ToolStrip"
         '
+        'ToolStripButtonNew
+        '
+        Me.ToolStripButtonNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonNew.Image = Global.Allocation_Tool.My.Resources.Resources.New_Document
+        Me.ToolStripButtonNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonNew.Name = "ToolStripButtonNew"
+        Me.ToolStripButtonNew.Size = New System.Drawing.Size(28, 28)
+        Me.ToolStripButtonNew.Text = "New Project"
+        '
+        'ToolStripButtonSave
+        '
+        Me.ToolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonSave.Enabled = False
+        Me.ToolStripButtonSave.Image = Global.Allocation_Tool.My.Resources.Resources.disk_save
+        Me.ToolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonSave.Name = "ToolStripButtonSave"
+        Me.ToolStripButtonSave.Size = New System.Drawing.Size(28, 28)
+        Me.ToolStripButtonSave.Text = "Save Project"
+        '
+        'ToolStripButtonEdit
+        '
+        Me.ToolStripButtonEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonEdit.Enabled = False
+        Me.ToolStripButtonEdit.Image = Global.Allocation_Tool.My.Resources.Resources.Write_File
+        Me.ToolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonEdit.Name = "ToolStripButtonEdit"
+        Me.ToolStripButtonEdit.Size = New System.Drawing.Size(28, 28)
+        Me.ToolStripButtonEdit.Text = "Edit Project"
+        Me.ToolStripButtonEdit.Visible = False
+        '
+        'ToolStripButtonCancel
+        '
+        Me.ToolStripButtonCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonCancel.Enabled = False
+        Me.ToolStripButtonCancel.Image = Global.Allocation_Tool.My.Resources.Resources.Delete
+        Me.ToolStripButtonCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonCancel.Name = "ToolStripButtonCancel"
+        Me.ToolStripButtonCancel.Size = New System.Drawing.Size(28, 28)
+        Me.ToolStripButtonCancel.Text = "Clear Data"
+        '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 31)
+        '
+        'ToolStripButtonSearch
+        '
+        Me.ToolStripButtonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonSearch.Image = Global.Allocation_Tool.My.Resources.Resources.search
+        Me.ToolStripButtonSearch.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonSearch.Name = "ToolStripButtonSearch"
+        Me.ToolStripButtonSearch.Size = New System.Drawing.Size(28, 28)
+        Me.ToolStripButtonSearch.Text = "Search Project"
         '
         'ToolStripLabelUser
         '
@@ -274,6 +323,84 @@ Partial Class Frm_CI_PF
         Me.BindingNavigator.TabIndex = 1
         Me.BindingNavigator.Text = "BindingNavigator"
         '
+        'ToolStripButtonRefresh
+        '
+        Me.ToolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonRefresh.Image = Global.Allocation_Tool.My.Resources.Resources.refresh
+        Me.ToolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonRefresh.Name = "ToolStripButtonRefresh"
+        Me.ToolStripButtonRefresh.Size = New System.Drawing.Size(32, 29)
+        Me.ToolStripButtonRefresh.Text = "Refresh"
+        '
+        'ToolStripButtonFilter
+        '
+        Me.ToolStripButtonFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonFilter.Image = Global.Allocation_Tool.My.Resources.Resources.filter
+        Me.ToolStripButtonFilter.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonFilter.Name = "ToolStripButtonFilter"
+        Me.ToolStripButtonFilter.Size = New System.Drawing.Size(32, 29)
+        Me.ToolStripButtonFilter.Text = "Add Filter"
+        '
+        'ToolStripButtonClearFilter
+        '
+        Me.ToolStripButtonClearFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonClearFilter.Image = Global.Allocation_Tool.My.Resources.Resources.block_blue
+        Me.ToolStripButtonClearFilter.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonClearFilter.Name = "ToolStripButtonClearFilter"
+        Me.ToolStripButtonClearFilter.Size = New System.Drawing.Size(32, 29)
+        Me.ToolStripButtonClearFilter.Text = "Remove Filter"
+        Me.ToolStripButtonClearFilter.Visible = False
+        '
+        'ToolStripButtonRemove
+        '
+        Me.ToolStripButtonRemove.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripButtonRemove.Image = Global.Allocation_Tool.My.Resources.Resources.Delete_Document
+        Me.ToolStripButtonRemove.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonRemove.Name = "ToolStripButtonRemove"
+        Me.ToolStripButtonRemove.Size = New System.Drawing.Size(138, 29)
+        Me.ToolStripButtonRemove.Text = "Remove Resources"
+        '
+        'ToolStripButtonAdd
+        '
+        Me.ToolStripButtonAdd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripButtonAdd.Image = Global.Allocation_Tool.My.Resources.Resources.New_Document
+        Me.ToolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonAdd.Name = "ToolStripButtonAdd"
+        Me.ToolStripButtonAdd.Size = New System.Drawing.Size(117, 29)
+        Me.ToolStripButtonAdd.Text = "Add Resources"
+        '
+        'ToolStripButtonClearAll
+        '
+        Me.ToolStripButtonClearAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonClearAll.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
+        Me.ToolStripButtonClearAll.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonClearAll.Name = "ToolStripButtonClearAll"
+        Me.ToolStripButtonClearAll.Size = New System.Drawing.Size(32, 29)
+        Me.ToolStripButtonClearAll.Text = "Clear All Filters"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MarkAllToolStripMenuItem, Me.MarkNoneToolStripMenuItem})
+        Me.ToolStripButton1.Image = Global.Allocation_Tool.My.Resources.Resources.checkbox_checked
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(41, 29)
+        Me.ToolStripButton1.Text = "Check"
+        Me.ToolStripButton1.Visible = False
+        '
+        'MarkAllToolStripMenuItem
+        '
+        Me.MarkAllToolStripMenuItem.Name = "MarkAllToolStripMenuItem"
+        Me.MarkAllToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+        Me.MarkAllToolStripMenuItem.Text = "Mark All"
+        '
+        'MarkNoneToolStripMenuItem
+        '
+        Me.MarkNoneToolStripMenuItem.Name = "MarkNoneToolStripMenuItem"
+        Me.MarkNoneToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+        Me.MarkNoneToolStripMenuItem.Text = "Mark None"
+        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.TableLayoutPanelDocuments)
@@ -331,6 +458,33 @@ Partial Class Frm_CI_PF
         Me.BindingNavigatorFiles.Size = New System.Drawing.Size(1099, 32)
         Me.BindingNavigatorFiles.TabIndex = 1
         Me.BindingNavigatorFiles.Text = "BindingNavigator1"
+        '
+        'ToolStripButtonRefreshFiles
+        '
+        Me.ToolStripButtonRefreshFiles.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButtonRefreshFiles.Image = Global.Allocation_Tool.My.Resources.Resources.refresh
+        Me.ToolStripButtonRefreshFiles.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonRefreshFiles.Name = "ToolStripButtonRefreshFiles"
+        Me.ToolStripButtonRefreshFiles.Size = New System.Drawing.Size(32, 29)
+        Me.ToolStripButtonRefreshFiles.Text = "Refresh"
+        '
+        'ToolStripButtonRemoveFiles
+        '
+        Me.ToolStripButtonRemoveFiles.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripButtonRemoveFiles.Image = Global.Allocation_Tool.My.Resources.Resources.Delete_Document
+        Me.ToolStripButtonRemoveFiles.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonRemoveFiles.Name = "ToolStripButtonRemoveFiles"
+        Me.ToolStripButtonRemoveFiles.Size = New System.Drawing.Size(108, 29)
+        Me.ToolStripButtonRemoveFiles.Text = "Remove Files"
+        '
+        'ToolStripButtonAddFiles
+        '
+        Me.ToolStripButtonAddFiles.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripButtonAddFiles.Image = Global.Allocation_Tool.My.Resources.Resources.New_Document
+        Me.ToolStripButtonAddFiles.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButtonAddFiles.Name = "ToolStripButtonAddFiles"
+        Me.ToolStripButtonAddFiles.Size = New System.Drawing.Size(87, 29)
+        Me.ToolStripButtonAddFiles.Text = "Add Files"
         '
         'GroupBoxTotalForecast
         '
@@ -999,160 +1153,6 @@ Partial Class Frm_CI_PF
         'SaveFileDialog
         '
         Me.SaveFileDialog.DefaultExt = "All Files | *.*"
-        '
-        'ToolStripButtonRefresh
-        '
-        Me.ToolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonRefresh.Image = Global.Allocation_Tool.My.Resources.Resources.refresh
-        Me.ToolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonRefresh.Name = "ToolStripButtonRefresh"
-        Me.ToolStripButtonRefresh.Size = New System.Drawing.Size(32, 29)
-        Me.ToolStripButtonRefresh.Text = "Refresh"
-        '
-        'ToolStripButtonFilter
-        '
-        Me.ToolStripButtonFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonFilter.Image = Global.Allocation_Tool.My.Resources.Resources.filter
-        Me.ToolStripButtonFilter.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonFilter.Name = "ToolStripButtonFilter"
-        Me.ToolStripButtonFilter.Size = New System.Drawing.Size(32, 29)
-        Me.ToolStripButtonFilter.Text = "Add Filter"
-        '
-        'ToolStripButtonClearFilter
-        '
-        Me.ToolStripButtonClearFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonClearFilter.Image = Global.Allocation_Tool.My.Resources.Resources.block_blue
-        Me.ToolStripButtonClearFilter.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonClearFilter.Name = "ToolStripButtonClearFilter"
-        Me.ToolStripButtonClearFilter.Size = New System.Drawing.Size(32, 29)
-        Me.ToolStripButtonClearFilter.Text = "Remove Filter"
-        Me.ToolStripButtonClearFilter.Visible = False
-        '
-        'ToolStripButtonRemove
-        '
-        Me.ToolStripButtonRemove.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripButtonRemove.Image = Global.Allocation_Tool.My.Resources.Resources.Delete_Document
-        Me.ToolStripButtonRemove.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonRemove.Name = "ToolStripButtonRemove"
-        Me.ToolStripButtonRemove.Size = New System.Drawing.Size(138, 29)
-        Me.ToolStripButtonRemove.Text = "Remove Resources"
-        '
-        'ToolStripButtonAdd
-        '
-        Me.ToolStripButtonAdd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripButtonAdd.Image = Global.Allocation_Tool.My.Resources.Resources.New_Document
-        Me.ToolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonAdd.Name = "ToolStripButtonAdd"
-        Me.ToolStripButtonAdd.Size = New System.Drawing.Size(117, 29)
-        Me.ToolStripButtonAdd.Text = "Add Resources"
-        '
-        'ToolStripButtonClearAll
-        '
-        Me.ToolStripButtonClearAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonClearAll.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
-        Me.ToolStripButtonClearAll.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonClearAll.Name = "ToolStripButtonClearAll"
-        Me.ToolStripButtonClearAll.Size = New System.Drawing.Size(32, 29)
-        Me.ToolStripButtonClearAll.Text = "Clear All Filters"
-        '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MarkAllToolStripMenuItem, Me.MarkNoneToolStripMenuItem})
-        Me.ToolStripButton1.Image = Global.Allocation_Tool.My.Resources.Resources.checkbox_checked
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(41, 29)
-        Me.ToolStripButton1.Text = "Check"
-        Me.ToolStripButton1.Visible = False
-        '
-        'MarkAllToolStripMenuItem
-        '
-        Me.MarkAllToolStripMenuItem.Name = "MarkAllToolStripMenuItem"
-        Me.MarkAllToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
-        Me.MarkAllToolStripMenuItem.Text = "Mark All"
-        '
-        'MarkNoneToolStripMenuItem
-        '
-        Me.MarkNoneToolStripMenuItem.Name = "MarkNoneToolStripMenuItem"
-        Me.MarkNoneToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
-        Me.MarkNoneToolStripMenuItem.Text = "Mark None"
-        '
-        'ToolStripButtonRefreshFiles
-        '
-        Me.ToolStripButtonRefreshFiles.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonRefreshFiles.Image = Global.Allocation_Tool.My.Resources.Resources.refresh
-        Me.ToolStripButtonRefreshFiles.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonRefreshFiles.Name = "ToolStripButtonRefreshFiles"
-        Me.ToolStripButtonRefreshFiles.Size = New System.Drawing.Size(32, 29)
-        Me.ToolStripButtonRefreshFiles.Text = "Refresh"
-        '
-        'ToolStripButtonRemoveFiles
-        '
-        Me.ToolStripButtonRemoveFiles.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripButtonRemoveFiles.Image = Global.Allocation_Tool.My.Resources.Resources.Delete_Document
-        Me.ToolStripButtonRemoveFiles.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonRemoveFiles.Name = "ToolStripButtonRemoveFiles"
-        Me.ToolStripButtonRemoveFiles.Size = New System.Drawing.Size(108, 29)
-        Me.ToolStripButtonRemoveFiles.Text = "Remove Files"
-        '
-        'ToolStripButtonAddFiles
-        '
-        Me.ToolStripButtonAddFiles.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripButtonAddFiles.Image = Global.Allocation_Tool.My.Resources.Resources.New_Document
-        Me.ToolStripButtonAddFiles.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonAddFiles.Name = "ToolStripButtonAddFiles"
-        Me.ToolStripButtonAddFiles.Size = New System.Drawing.Size(87, 29)
-        Me.ToolStripButtonAddFiles.Text = "Add Files"
-        '
-        'ToolStripButtonNew
-        '
-        Me.ToolStripButtonNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonNew.Image = Global.Allocation_Tool.My.Resources.Resources.New_Document
-        Me.ToolStripButtonNew.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonNew.Name = "ToolStripButtonNew"
-        Me.ToolStripButtonNew.Size = New System.Drawing.Size(28, 28)
-        Me.ToolStripButtonNew.Text = "New Project"
-        '
-        'ToolStripButtonSave
-        '
-        Me.ToolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonSave.Enabled = False
-        Me.ToolStripButtonSave.Image = Global.Allocation_Tool.My.Resources.Resources.disk_save
-        Me.ToolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonSave.Name = "ToolStripButtonSave"
-        Me.ToolStripButtonSave.Size = New System.Drawing.Size(28, 28)
-        Me.ToolStripButtonSave.Text = "Save Project"
-        '
-        'ToolStripButtonEdit
-        '
-        Me.ToolStripButtonEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonEdit.Enabled = False
-        Me.ToolStripButtonEdit.Image = Global.Allocation_Tool.My.Resources.Resources.Write_File
-        Me.ToolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonEdit.Name = "ToolStripButtonEdit"
-        Me.ToolStripButtonEdit.Size = New System.Drawing.Size(28, 28)
-        Me.ToolStripButtonEdit.Text = "Edit Project"
-        Me.ToolStripButtonEdit.Visible = False
-        '
-        'ToolStripButtonCancel
-        '
-        Me.ToolStripButtonCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonCancel.Enabled = False
-        Me.ToolStripButtonCancel.Image = Global.Allocation_Tool.My.Resources.Resources.Delete
-        Me.ToolStripButtonCancel.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonCancel.Name = "ToolStripButtonCancel"
-        Me.ToolStripButtonCancel.Size = New System.Drawing.Size(28, 28)
-        Me.ToolStripButtonCancel.Text = "Clear Data"
-        '
-        'ToolStripButtonSearch
-        '
-        Me.ToolStripButtonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonSearch.Image = Global.Allocation_Tool.My.Resources.Resources.search
-        Me.ToolStripButtonSearch.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButtonSearch.Name = "ToolStripButtonSearch"
-        Me.ToolStripButtonSearch.Size = New System.Drawing.Size(28, 28)
-        Me.ToolStripButtonSearch.Text = "Search Project"
         '
         'Frm_CI_PF
         '

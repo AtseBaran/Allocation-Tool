@@ -74,7 +74,6 @@
         CheckedListBoxServiceLine.DisplayMember = dataServiceLine.Columns(1).ColumnName.ToString
         CheckedListBoxServiceLine.ValueMember = dataServiceLine.Columns(0).ColumnName.ToString
 
-        'Change method, tnumber visible in list
         rowUser.Item(0) = UsersInfo.TNumber
         rowUser.Item(1) = UsersInfo.Name
         dataOwner.Rows.InsertAt(rowUser, 0)
@@ -155,7 +154,16 @@
         Else
             GroupBoxOwnerList.ForeColor = Color.Black
         End If
-        If CheckedListBoxServiceLine.CheckedItems.Count <= 0 Then
+
+        Dim temp As Boolean = False
+        For x As Integer = 0 To CheckedListBoxOwner.Items.Count
+            For y As Integer = 0 To CheckedListBoxServiceLine.Items.Count
+                If userServiceLine(x, y) Then
+                    temp = True
+                End If
+            Next
+        Next
+        If Not temp Then
             bandera = False
             GroupBoxServiceLine.ForeColor = Color.Red
         Else
@@ -204,7 +212,8 @@
                                 row("ID") = service.Item(0).ToString()
                                 row("Service Line") = service.Item(1).ToString()
                                 row("TNumber") = owner.Item(0).ToString()
-                                row("Name") = owner.Item(1).ToString()
+                                Dim str() As String = Split(owner.Item(1).ToString(), " / ")
+                                row("Name") = str(1)
 
                                 row("Project Phase") = ComboBoxProjectPhase.SelectedValue
                                 row("Entry Type") = ComboBoxEntryType.SelectedValue

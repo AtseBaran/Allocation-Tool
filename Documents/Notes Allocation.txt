@@ -6,3 +6,9 @@ Programar reminder - Owners - All Modules - Friday 10 am
 
 ****************************************
 Actuals no en futuro
+
+****************************************
+Mostrar raw data o grafico
+Pensar la manera de hacer un "excel" con la raw
+project x task
+visibles todos los campos y por orden

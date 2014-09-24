@@ -102,15 +102,6 @@ C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocatio
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_PF.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation Tool\Allocation Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_SearchProject.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\publish\PSS Project Allocation Tool.exe.config
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Interop.ACTIVEXLib.dll
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Interop.MSChart20Lib.dll
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Interop.MSComctlLib.dll
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\AxInterop.MSChart20Lib.dll
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\AxInterop.OWC11.dll
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation Tool.vbproj.ResolveComReference.cache
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.exe
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.xml
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.pdb
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\publish\PSS Project Allocation Tool.exe.manifest
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\publish\PSS Project Allocation Tool.application
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\publish\PSS Project Allocation Tool.exe
@@ -132,6 +123,12 @@ C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocatio
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\publish\AxInterop.MSChart20Lib.dll
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\publish\AxInterop.OWC11.dll
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation Tool.vbprojResolveAssemblyReference.cache
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Interop.ACTIVEXLib.dll
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Interop.MSChart20Lib.dll
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Interop.MSComctlLib.dll
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\AxInterop.MSChart20Lib.dll
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\AxInterop.OWC11.dll
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation Tool.vbproj.ResolveComReference.cache
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_PF.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_SearchProject.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_AI_History.resources
@@ -154,3 +151,7 @@ C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocatio
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation Tool.vbproj.GenerateResource.Cache
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.exe.manifest
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.application
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.exe
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.xml
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.pdb
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Resources.resources

@@ -62,6 +62,7 @@ Partial Class Frm_Main
         Me.CICatgoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CIVSChevromToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CIPrimaryProcessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TaskNameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CITaskTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Lbl_Txt_UserName = New System.Windows.Forms.Label()
         Me.Lbl_Txt_TNumber = New System.Windows.Forms.Label()
@@ -375,7 +376,7 @@ Partial Class Frm_Main
         '
         'CIMaintenanceToolStripMenuItem
         '
-        Me.CIMaintenanceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CICatgoryToolStripMenuItem, Me.CIVSChevromToolStripMenuItem, Me.CIPrimaryProcessToolStripMenuItem, Me.CITaskTypeToolStripMenuItem})
+        Me.CIMaintenanceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CICatgoryToolStripMenuItem, Me.CIVSChevromToolStripMenuItem, Me.CIPrimaryProcessToolStripMenuItem, Me.TaskNameToolStripMenuItem, Me.CITaskTypeToolStripMenuItem})
         Me.CIMaintenanceToolStripMenuItem.Name = "CIMaintenanceToolStripMenuItem"
         Me.CIMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.CIMaintenanceToolStripMenuItem.Tag = "MCI"
@@ -385,7 +386,7 @@ Partial Class Frm_Main
         '
         Me.CICatgoryToolStripMenuItem.Name = "CICatgoryToolStripMenuItem"
         Me.CICatgoryToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.CICatgoryToolStripMenuItem.Text = "Catgory"
+        Me.CICatgoryToolStripMenuItem.Text = "Category"
         '
         'CIVSChevromToolStripMenuItem
         '
@@ -398,6 +399,12 @@ Partial Class Frm_Main
         Me.CIPrimaryProcessToolStripMenuItem.Name = "CIPrimaryProcessToolStripMenuItem"
         Me.CIPrimaryProcessToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
         Me.CIPrimaryProcessToolStripMenuItem.Text = "Primary Process"
+        '
+        'TaskNameToolStripMenuItem
+        '
+        Me.TaskNameToolStripMenuItem.Name = "TaskNameToolStripMenuItem"
+        Me.TaskNameToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.TaskNameToolStripMenuItem.Text = "Task Name"
         '
         'CITaskTypeToolStripMenuItem
         '
@@ -1112,5 +1119,6 @@ Partial Class Frm_Main
     Friend WithEvents TableLayoutPanelLogos As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents TaskNameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
