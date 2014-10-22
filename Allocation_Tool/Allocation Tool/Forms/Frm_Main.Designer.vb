@@ -75,9 +75,6 @@ Partial Class Frm_Main
         Me.PanelLabels = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.FlowLayoutPanelLabels = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TableLayoutPanelLogos = New System.Windows.Forms.TableLayoutPanel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.FlowLayoutPanelControls = New System.Windows.Forms.FlowLayoutPanel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -105,6 +102,8 @@ Partial Class Frm_Main
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.LinkLabelMaintenanceUsers = New System.Windows.Forms.LinkLabel()
         Me.PictureBoxMan = New System.Windows.Forms.PictureBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.NotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStripNotifyIcon = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ShowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -115,9 +114,6 @@ Partial Class Frm_Main
         Me.PanelLabels.SuspendLayout()
         Me.TableLayoutPanel.SuspendLayout()
         Me.FlowLayoutPanelLabels.SuspendLayout()
-        Me.TableLayoutPanelLogos.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.FlowLayoutPanelControls.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -132,16 +128,19 @@ Partial Class Frm_Main
         CType(Me.PictureBoxRep, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
         CType(Me.PictureBoxMan, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStripNotifyIcon.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
         '
         Me.MenuStrip.BackColor = System.Drawing.Color.Lavender
+        Me.MenuStrip.GripMargin = New System.Windows.Forms.Padding(2)
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CorporateProjectsToolStripMenuItem, Me.PSSProjectsToolStripMenuItem, Me.ContinuousImprovementToolStripMenuItem, Me.DocumentsToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.MaintananceToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(691, 24)
+        Me.MenuStrip.Size = New System.Drawing.Size(686, 24)
         Me.MenuStrip.TabIndex = 0
         Me.MenuStrip.Text = "MenuStrip"
         '
@@ -417,7 +416,7 @@ Partial Class Frm_Main
         Me.Lbl_Txt_UserName.AutoSize = True
         Me.Lbl_Txt_UserName.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_Txt_UserName.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Txt_UserName.Location = New System.Drawing.Point(62, 15)
+        Me.Lbl_Txt_UserName.Location = New System.Drawing.Point(62, 7)
         Me.Lbl_Txt_UserName.Name = "Lbl_Txt_UserName"
         Me.Lbl_Txt_UserName.Size = New System.Drawing.Size(98, 13)
         Me.Lbl_Txt_UserName.TabIndex = 2
@@ -428,7 +427,7 @@ Partial Class Frm_Main
         Me.Lbl_Txt_TNumber.AutoSize = True
         Me.Lbl_Txt_TNumber.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_Txt_TNumber.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Txt_TNumber.Location = New System.Drawing.Point(62, 42)
+        Me.Lbl_Txt_TNumber.Location = New System.Drawing.Point(62, 34)
         Me.Lbl_Txt_TNumber.Name = "Lbl_Txt_TNumber"
         Me.Lbl_Txt_TNumber.Size = New System.Drawing.Size(92, 13)
         Me.Lbl_Txt_TNumber.TabIndex = 3
@@ -439,7 +438,7 @@ Partial Class Frm_Main
         Me.Lbl_Welcome.AutoSize = True
         Me.Lbl_Welcome.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_Welcome.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Welcome.Location = New System.Drawing.Point(5, 15)
+        Me.Lbl_Welcome.Location = New System.Drawing.Point(5, 7)
         Me.Lbl_Welcome.Name = "Lbl_Welcome"
         Me.Lbl_Welcome.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Lbl_Welcome.Size = New System.Drawing.Size(55, 13)
@@ -451,7 +450,7 @@ Partial Class Frm_Main
         Me.Lbl_TNumber.AutoSize = True
         Me.Lbl_TNumber.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_TNumber.ForeColor = System.Drawing.Color.White
-        Me.Lbl_TNumber.Location = New System.Drawing.Point(5, 42)
+        Me.Lbl_TNumber.Location = New System.Drawing.Point(5, 34)
         Me.Lbl_TNumber.Name = "Lbl_TNumber"
         Me.Lbl_TNumber.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Lbl_TNumber.Size = New System.Drawing.Size(54, 13)
@@ -460,12 +459,12 @@ Partial Class Frm_Main
         '
         'StatusStrip
         '
-        Me.StatusStrip.BackColor = System.Drawing.Color.Lavender
+        Me.StatusStrip.BackColor = System.Drawing.Color.Transparent
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Lbl_Version, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 447)
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 504)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.StatusStrip.Size = New System.Drawing.Size(691, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(686, 22)
         Me.StatusStrip.TabIndex = 10
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -494,10 +493,10 @@ Partial Class Frm_Main
         Me.PanelLabels.Controls.Add(Me.Lbl_Txt_TNumber)
         Me.PanelLabels.Controls.Add(Me.Lbl_Txt_UserName)
         Me.PanelLabels.ForeColor = System.Drawing.Color.White
-        Me.PanelLabels.Location = New System.Drawing.Point(512, 3)
+        Me.PanelLabels.Location = New System.Drawing.Point(507, 3)
         Me.PanelLabels.Name = "PanelLabels"
         Me.PanelLabels.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.PanelLabels.Size = New System.Drawing.Size(170, 71)
+        Me.PanelLabels.Size = New System.Drawing.Size(170, 58)
         Me.PanelLabels.TabIndex = 12
         '
         'TableLayoutPanel
@@ -507,63 +506,27 @@ Partial Class Frm_Main
         Me.TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel.Controls.Add(Me.FlowLayoutPanelLabels, 0, 0)
         Me.TableLayoutPanel.Controls.Add(Me.TableLayoutPanel1, 0, 1)
+        Me.TableLayoutPanel.Controls.Add(Me.Panel1, 0, 2)
         Me.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel.Location = New System.Drawing.Point(0, 24)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
-        Me.TableLayoutPanel.RowCount = 2
-        Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
+        Me.TableLayoutPanel.RowCount = 3
+        Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel.Size = New System.Drawing.Size(691, 423)
+        Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
+        Me.TableLayoutPanel.Size = New System.Drawing.Size(686, 480)
         Me.TableLayoutPanel.TabIndex = 16
         '
         'FlowLayoutPanelLabels
         '
+        Me.FlowLayoutPanelLabels.BackColor = System.Drawing.Color.Transparent
         Me.FlowLayoutPanelLabels.Controls.Add(Me.PanelLabels)
-        Me.FlowLayoutPanelLabels.Controls.Add(Me.TableLayoutPanelLogos)
         Me.FlowLayoutPanelLabels.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanelLabels.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
         Me.FlowLayoutPanelLabels.Location = New System.Drawing.Point(3, 3)
         Me.FlowLayoutPanelLabels.Name = "FlowLayoutPanelLabels"
-        Me.FlowLayoutPanelLabels.Size = New System.Drawing.Size(685, 74)
+        Me.FlowLayoutPanelLabels.Size = New System.Drawing.Size(680, 62)
         Me.FlowLayoutPanelLabels.TabIndex = 16
-        '
-        'TableLayoutPanelLogos
-        '
-        Me.TableLayoutPanelLogos.ColumnCount = 2
-        Me.TableLayoutPanelLogos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanelLogos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanelLogos.Controls.Add(Me.PictureBox1, 0, 0)
-        Me.TableLayoutPanelLogos.Controls.Add(Me.PictureBox2, 1, 0)
-        Me.TableLayoutPanelLogos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanelLogos.Location = New System.Drawing.Point(9, 3)
-        Me.TableLayoutPanelLogos.Name = "TableLayoutPanelLogos"
-        Me.TableLayoutPanelLogos.RowCount = 1
-        Me.TableLayoutPanelLogos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanelLogos.Size = New System.Drawing.Size(497, 71)
-        Me.TableLayoutPanelLogos.TabIndex = 13
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = Global.Allocation_Tool.My.Resources.Resources.PSS1
-        Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(242, 65)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox2.Image = Global.Allocation_Tool.My.Resources.Resources.PSS2
-        Me.PictureBox2.Location = New System.Drawing.Point(251, 3)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(243, 65)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 1
-        Me.PictureBox2.TabStop = False
         '
         'TableLayoutPanel1
         '
@@ -573,11 +536,11 @@ Partial Class Frm_Main
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.5!))
         Me.TableLayoutPanel1.Controls.Add(Me.FlowLayoutPanelControls, 1, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 83)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 71)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(685, 337)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(680, 326)
         Me.TableLayoutPanel1.TabIndex = 17
         '
         'FlowLayoutPanelControls
@@ -593,7 +556,7 @@ Partial Class Frm_Main
         Me.FlowLayoutPanelControls.Location = New System.Drawing.Point(20, 3)
         Me.FlowLayoutPanelControls.Name = "FlowLayoutPanelControls"
         Me.FlowLayoutPanelControls.Padding = New System.Windows.Forms.Padding(10)
-        Me.FlowLayoutPanelControls.Size = New System.Drawing.Size(644, 331)
+        Me.FlowLayoutPanelControls.Size = New System.Drawing.Size(640, 320)
         Me.FlowLayoutPanelControls.TabIndex = 16
         '
         'GroupBox1
@@ -951,6 +914,27 @@ Partial Class Frm_Main
         Me.PictureBoxMan.TabStop = False
         Me.PictureBoxMan.Tag = "Maintenance"
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.PictureBox2)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(3, 403)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(680, 74)
+        Me.Panel1.TabIndex = 18
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox2.Image = Global.Allocation_Tool.My.Resources.Resources.PSS2
+        Me.PictureBox2.Location = New System.Drawing.Point(398, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(271, 74)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 1
+        Me.PictureBox2.TabStop = False
+        '
         'NotifyIcon
         '
         Me.NotifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
@@ -988,8 +972,8 @@ Partial Class Frm_Main
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Lavender
         Me.BackgroundImage = Global.Allocation_Tool.My.Resources.Resources.Shades_of_blue
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(691, 469)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(686, 526)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.MenuStrip)
@@ -1008,9 +992,6 @@ Partial Class Frm_Main
         Me.PanelLabels.PerformLayout()
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.FlowLayoutPanelLabels.ResumeLayout(False)
-        Me.TableLayoutPanelLogos.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.FlowLayoutPanelControls.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
@@ -1029,6 +1010,8 @@ Partial Class Frm_Main
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         CType(Me.PictureBoxMan, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStripNotifyIcon.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -1116,9 +1099,8 @@ Partial Class Frm_Main
     Friend WithEvents ContextMenuStripNotifyIcon As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ShowToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TableLayoutPanelLogos As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents TaskNameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
 
 End Class

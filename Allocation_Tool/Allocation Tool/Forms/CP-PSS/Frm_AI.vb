@@ -140,14 +140,16 @@
     End Sub
 
     Private Sub DataGridViewActuals_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewActuals.CellClick
-        If DataGridViewActuals.Columns(e.ColumnIndex).HeaderText = "Actions" Then
-            If DataGridViewActuals.Rows.Count > 0 Then
-                'Edit data
-                Frm_AI_Popup.dbTables = dbTables
-                Frm_AI_Popup.windowTitle = "Actuals Input"
-                Frm_AI_Popup.id_project = DataGridViewActuals.Item(1, e.RowIndex).Value
-                Frm_AI_Popup.id_resource = DataGridViewActuals.Item(0, e.RowIndex).Value
-                Frm_AI_Popup.ShowDialog(Me)
+        If (e.RowIndex <> -1) Then
+            If DataGridViewActuals.Columns(e.ColumnIndex).HeaderText = "Actions" Then
+                If DataGridViewActuals.Rows.Count > 0 Then
+                    'Edit data
+                    Frm_AI_Popup.dbTables = dbTables
+                    Frm_AI_Popup.windowTitle = "Actuals Input"
+                    Frm_AI_Popup.id_project = DataGridViewActuals.Item(1, e.RowIndex).Value
+                    Frm_AI_Popup.id_resource = DataGridViewActuals.Item(0, e.RowIndex).Value
+                    Frm_AI_Popup.ShowDialog(Me)
+                End If
             End If
         End If
         calculate()

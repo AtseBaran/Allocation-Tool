@@ -510,19 +510,21 @@ Public Class Frm_PF
 
     Private Sub DataGridViewResources_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewResources.CellClick
         Try
-            If DataGridViewResources.Columns(e.ColumnIndex).HeaderText = "Actions" Then
-                Dim dateValue As Date = DataGridViewResources.Item(10, e.RowIndex).Value
-                If DateSerial(dateValue.Year, dateValue.Month, "5") >= DateSerial(Today.Year, Today.Month, Today.Day) Then
-                    If DataGridViewResources.Rows.Count > 0 Then
-                        'Edit data
-                        Frm_Resources_Edit.dbTables = dbTables
-                        Frm_Resources_Edit.entry_type = DataGridViewResources.Item(7, e.RowIndex).Value
-                        Frm_Resources_Edit.old_value = DataGridViewResources.Item(8, e.RowIndex).Value
-                        Frm_Resources_Edit.id_resource = DataGridViewResources.Item(0, e.RowIndex).Value
-                        Frm_Resources_Edit.ShowDialog(Me)
+            If (e.RowIndex <> -1) Then
+                If DataGridViewResources.Columns(e.ColumnIndex).HeaderText = "Actions" Then
+                    Dim dateValue As Date = DataGridViewResources.Item(10, e.RowIndex).Value
+                    If DateSerial(dateValue.Year, dateValue.Month, "5") >= DateSerial(Today.Year, Today.Month, Today.Day) Then
+                        If DataGridViewResources.Rows.Count > 0 Then
+                            'Edit data
+                            Frm_Resources_Edit.dbTables = dbTables
+                            Frm_Resources_Edit.entry_type = DataGridViewResources.Item(7, e.RowIndex).Value
+                            Frm_Resources_Edit.old_value = DataGridViewResources.Item(8, e.RowIndex).Value
+                            Frm_Resources_Edit.id_resource = DataGridViewResources.Item(0, e.RowIndex).Value
+                            Frm_Resources_Edit.ShowDialog(Me)
+                        End If
+                    Else
+                        MessageBox.Show("Please check, this resource can not be modified.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
-                Else
-                    MessageBox.Show("Please check, this resource can not be modified.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             End If
         Catch ex As Exception
@@ -647,18 +649,20 @@ Public Class Frm_PF
 
     Private Sub DataGridViewFiles_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewFiles.CellClick
         Try
-            If DataGridViewFiles.Columns(e.ColumnIndex).HeaderText = "Actions" Then
-                If DataGridViewFiles.Rows.Count > 0 Then
-                    Dim fileName As String = DataGridViewFiles.Item(3, e.RowIndex).Value
-                    Dim fileData As Byte() = DataGridViewFiles.Item(4, e.RowIndex).Value
+            If (e.RowIndex <> -1) Then
+                If DataGridViewFiles.Columns(e.ColumnIndex).HeaderText = "Actions" Then
+                    If DataGridViewFiles.Rows.Count > 0 Then
+                        Dim fileName As String = DataGridViewFiles.Item(3, e.RowIndex).Value
+                        Dim fileData As Byte() = DataGridViewFiles.Item(4, e.RowIndex).Value
 
-                    SaveFileDialog.FileName = fileName
+                        SaveFileDialog.FileName = fileName
 
-                    SaveFileDialog.ShowDialog(Me)
+                        SaveFileDialog.ShowDialog(Me)
 
-                    Dim path As String = SaveFileDialog.FileName
+                        Dim path As String = SaveFileDialog.FileName
 
-                    File.WriteAllBytes(path, fileData)
+                        File.WriteAllBytes(path, fileData)
+                    End If
                 End If
             End If
         Catch ex As Exception
@@ -674,19 +678,4 @@ Public Class Frm_PF
         End If
     End Sub
 
-    Private Sub ComboBoxPrimaryProcessProject_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxPrimaryProcessProject.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub DataGridViewResources_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewResources.CellContentClick
-
-    End Sub
-
-    Private Sub ToolStripButtonEdit_Click(sender As Object, e As EventArgs) Handles ToolStripButtonEdit.Click
-
-    End Sub
-
-    Private Sub DataGridViewFiles_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewFiles.CellContentClick
-
-    End Sub
 End Class

@@ -492,7 +492,7 @@ Partial Class Frm_CI_Resources
         Me.ComboBoxMonthlyOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxMonthlyOption.DropDownWidth = 150
         Me.ComboBoxMonthlyOption.FormattingEnabled = True
-        Me.ComboBoxMonthlyOption.Items.AddRange(New Object() {"day", "weekday", "weekend day", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
+        Me.ComboBoxMonthlyOption.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
         Me.ComboBoxMonthlyOption.Location = New System.Drawing.Point(112, 44)
         Me.ComboBoxMonthlyOption.Name = "ComboBoxMonthlyOption"
         Me.ComboBoxMonthlyOption.Size = New System.Drawing.Size(54, 21)
@@ -503,7 +503,7 @@ Partial Class Frm_CI_Resources
         Me.ComboBoxMonthlyOrd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxMonthlyOrd.DropDownWidth = 150
         Me.ComboBoxMonthlyOrd.FormattingEnabled = True
-        Me.ComboBoxMonthlyOrd.Items.AddRange(New Object() {"first", "second", "third", "fourth", "last"})
+        Me.ComboBoxMonthlyOrd.Items.AddRange(New Object() {"first", "second", "third", "fourth"})
         Me.ComboBoxMonthlyOrd.Location = New System.Drawing.Point(53, 44)
         Me.ComboBoxMonthlyOrd.Name = "ComboBoxMonthlyOrd"
         Me.ComboBoxMonthlyOrd.Size = New System.Drawing.Size(53, 21)
@@ -603,7 +603,7 @@ Partial Class Frm_CI_Resources
         Me.ComboBoxYearlyDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxYearlyDay.DropDownWidth = 150
         Me.ComboBoxYearlyDay.FormattingEnabled = True
-        Me.ComboBoxYearlyDay.Items.AddRange(New Object() {"day", "weekday", "weekend day", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
+        Me.ComboBoxYearlyDay.Items.AddRange(New Object() {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"})
         Me.ComboBoxYearlyDay.Location = New System.Drawing.Point(143, 68)
         Me.ComboBoxYearlyDay.Name = "ComboBoxYearlyDay"
         Me.ComboBoxYearlyDay.Size = New System.Drawing.Size(62, 21)
@@ -614,7 +614,7 @@ Partial Class Frm_CI_Resources
         Me.ComboBoxYearlyOrd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxYearlyOrd.DropDownWidth = 150
         Me.ComboBoxYearlyOrd.FormattingEnabled = True
-        Me.ComboBoxYearlyOrd.Items.AddRange(New Object() {"first", "second", "third", "fourth", "last"})
+        Me.ComboBoxYearlyOrd.Items.AddRange(New Object() {"first", "second", "third", "fourth"})
         Me.ComboBoxYearlyOrd.Location = New System.Drawing.Point(65, 68)
         Me.ComboBoxYearlyOrd.Name = "ComboBoxYearlyOrd"
         Me.ComboBoxYearlyOrd.Size = New System.Drawing.Size(72, 21)

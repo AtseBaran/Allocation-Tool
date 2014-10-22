@@ -111,7 +111,4 @@
         Me.Close()
     End Sub
 
-    Private Sub CheckedListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CheckedListBox.SelectedIndexChanged
-
-    End Sub
 End Class

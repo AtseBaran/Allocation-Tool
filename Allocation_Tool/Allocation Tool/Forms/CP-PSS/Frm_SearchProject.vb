@@ -30,11 +30,13 @@
 
     Private Sub DataGridViewProjects_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewProjects.CellClick
         Try
-            If DataGridViewProjects.Columns(e.ColumnIndex).HeaderText = "Actions" Then
-                Frm_PF.Id_Project = DataGridViewProjects.Rows(e.RowIndex).Cells("ID").Value
-                Frm_PF.loadProject()
-                Me.Close()
-                DataGridViewProjects.Columns.Remove("selectProject")
+            If (e.RowIndex <> -1) Then
+                If DataGridViewProjects.Columns(e.ColumnIndex).HeaderText = "Actions" Then
+                    Frm_PF.Id_Project = DataGridViewProjects.Rows(e.RowIndex).Cells("ID").Value
+                    Frm_PF.loadProject()
+                    Me.Close()
+                    DataGridViewProjects.Columns.Remove("selectProject")
+                End If
             End If
         Catch ex As Exception
         End Try

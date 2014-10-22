@@ -499,4 +499,30 @@ Public Class Frm_Main
 
         Frm_MaintenanceTwoValues.ShowDialog(Me)
     End Sub
+
+    Private Sub CIActualsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CIActualsToolStripMenuItem.Click
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Frm_CI_AI.dbTables = "CI"
+            Frm_CI_AI.windowTitle = "CI Projects - Actuals Input"
+            Frm_CI_AI.ShowDialog(Me)
+            Frm_CI_AI.Dispose()
+        End If
+    End Sub
+
+    Private Sub CIReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CIReportToolStripMenuItem.Click
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Dim f As New Frm_CI_Report
+            f.dbTables = "CI"
+            f.ShowDialog(Me)
+            f.Dispose()
+        End If
+    End Sub
+
+    Private Sub LinkLabelCIAI_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCIAI.LinkClicked
+        CIActualsToolStripMenuItem_Click(sender, e)
+    End Sub
+
+    Private Sub LinkLabelCIReports_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCIReports.LinkClicked
+        CIReportToolStripMenuItem_Click(sender, e)
+    End Sub
 End Class

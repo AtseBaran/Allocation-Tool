@@ -21,6 +21,28 @@
     End Sub
 
     Private Sub Frm_CI_Resources_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        clearControls()
+        loadData()
+    End Sub
+
+    Private Sub clearControls()
+        setteo = False
+
+        DataGridViewSelected.DataSource = Nothing
+        ComboBoxTaskType.SelectedIndex = -1
+        ComboBoxTaskName.SelectedIndex = -1
+        ComboBoxEntryType.SelectedIndex = -1
+        TextBoxMonthlyValue.Text = ""
+
+        DTP_Start.Value = Now
+        DTP_End.Value = Now
+        For i As Integer = 0 To (CheckedListBoxOwner.Items.Count - 1)
+            CheckedListBoxOwner.SetItemCheckState(i, CheckState.Unchecked)
+        Next
+        For i As Integer = 0 To (CheckedListBoxServiceLine.Items.Count - 1)
+            CheckedListBoxServiceLine.SetItemCheckState(i, CheckState.Unchecked)
+        Next
+
         loadData()
     End Sub
 
@@ -294,8 +316,8 @@
                             row("Owner Name") = str(1)
 
                             row("Owner") = owner.Item(0).ToString
-                            row("Start Date") = DateSerial(DTP_Start.Value.Year, DTP_Start.Value.Month, DTP_Start.Value.Day)
-                            row("End Date") = DateSerial(DTP_End.Value.Year, DTP_End.Value.Month, DTP_End.Value.Day)
+                            row("Start Date") = DTP_Start.Value.Date.ToString("MM/dd/yyyy")
+                            row("End Date") = DTP_End.Value.Date.ToString("MM/dd/yyyy")
                             row("Entry Type") = ComboBoxEntryType.Text
                             row("Id Entry Type") = ComboBoxEntryType.SelectedValue
                             row("Value") = TextBoxMonthlyValue.Text
@@ -307,22 +329,22 @@
                             'Daily
                             If TabControlRecipe.SelectedIndex = 0 Then
                                 recipe = recipe & "DAILY"
-                                recipe = recipe & ",FROM"
+                                recipe = recipe & "," & DTP_Start.Value.Date.ToString("MM/dd/yyyy")
 
                                 If RadioButtonDailyEvery.Checked Then
-                                    recipe = recipe & "," & Trim(TextBoxDaily.Text)
+                                    recipe = recipe & ",1," & Trim(TextBoxDaily.Text)
                                 ElseIf RadioButtonDailyWeekday.Checked Then
-                                    recipe = recipe & ",WEEKDAY"
+                                    recipe = recipe & ",2,WEEKDAY"
                                 End If
 
                                 If CheckBoxEndDate.Checked Then
-                                    recipe = recipe & ",UNTIL"
+                                    recipe = recipe & "," & DTP_End.Value.Date.ToString("MM/dd/yyyy")
                                 End If
                             End If
                             'Weekly
                             If TabControlRecipe.SelectedIndex = 1 Then
                                 recipe = recipe & "WEEKLY"
-                                recipe = recipe & ",FROM"
+                                recipe = recipe & "," & DTP_Start.Value.Date.ToString("MM/dd/yyyy")
 
                                 recipe = recipe & "," & TextBoxWeeklyRecur.Text
 
@@ -349,45 +371,45 @@
                                 End If
 
                                 If CheckBoxEndDate.Checked Then
-                                    recipe = recipe & ",UNTIL"
+                                    recipe = recipe & "," & DTP_End.Value.Date.ToString("MM/dd/yyyy")
                                 End If
                             End If
                             'Monthly
                             If TabControlRecipe.SelectedIndex = 2 Then
                                 recipe = recipe & "MONTHLY"
-                                recipe = recipe & ",FROM"
+                                recipe = recipe & "," & DTP_Start.Value.Date.ToString("MM/dd/yyyy")
 
                                 If RadioButtonMonthlyDay.Checked Then
-                                    recipe = recipe & "," & TextBoxMonthlyNumDay.Text
+                                    recipe = recipe & ",1," & TextBoxMonthlyNumDay.Text
                                     recipe = recipe & "," & TextBoxMonthlyNumMonths.Text
                                 ElseIf RadioButtonMonthly.Checked Then
-                                    recipe = recipe & "," & ComboBoxMonthlyOrd.Text.ToUpper
+                                    recipe = recipe & ",2," & ComboBoxMonthlyOrd.Text.ToUpper
                                     recipe = recipe & "," & ComboBoxMonthlyOption.Text.ToUpper
                                     recipe = recipe & "," & TextBoxMonthlyNum.Text
                                 End If
 
                                 If CheckBoxEndDate.Checked Then
-                                    recipe = recipe & ",UNTIL"
+                                    recipe = recipe & "," & DTP_End.Value.Date.ToString("MM/dd/yyyy")
                                 End If
                             End If
                             'Yearly
                             If TabControlRecipe.SelectedIndex = 3 Then
                                 recipe = recipe & "YEARLY"
-                                recipe = recipe & ",FROM"
+                                recipe = recipe & "," & DTP_Start.Value.Date.ToString("MM/dd/yyyy")
 
                                 recipe = recipe & "," & TextBoxYearlyYears.Text
 
                                 If RadioButtonYearlyOn.Checked Then
-                                    recipe = recipe & "," & ComboBoxYearlyMonth.Text.ToUpper
+                                    recipe = recipe & ",1," & ComboBoxYearlyMonth.Text.ToUpper
                                     recipe = recipe & "," & TextBoxYearlyDate.Text
                                 ElseIf RadioButtonYearlyOnThe.Checked Then
-                                    recipe = recipe & "," & ComboBoxYearlyOrd.Text.ToUpper
+                                    recipe = recipe & ",2," & ComboBoxYearlyOrd.Text.ToUpper
                                     recipe = recipe & "," & ComboBoxYearlyDay.Text.ToUpper
                                     recipe = recipe & "," & ComboBoxYearlyMonths.Text.ToUpper
                                 End If
 
                                 If CheckBoxEndDate.Checked Then
-                                    recipe = recipe & ",UNTIL"
+                                    recipe = recipe & "," & DTP_End.Value.Date.ToString("MM/dd/yyyy")
                                 End If
                             End If
 
@@ -396,9 +418,57 @@
                             Dim words() As String = Split(recipe, ",")
                             Dim recipeText As String = ""
 
-                            For Each word As String In words
-                                recipeText = recipeText & word & " "
-                            Next
+                            If words(0) = "DAILY" Then
+                                If words(2) = "1" Then
+                                    recipeText = "Occurs daily, every " & words(3) & " day(s) from " & words(1)
+                                    If CheckBoxEndDate.Checked Then
+                                        recipeText = recipeText & " until " & words(words.Count - 1)
+                                    End If
+                                ElseIf words(2) = "2" Then
+                                    recipeText = "Occurs daily, every weekday from " & words(1)
+                                    If CheckBoxEndDate.Checked Then
+                                        recipeText = recipeText & " until " & words(words.Count - 1)
+                                    End If
+                                End If
+                            ElseIf words(0) = "WEEKLY" Then
+                                recipeText = "Occurs weekly, every " & words(2) & " week(s) on "
+                                Dim days As String = ""
+                                For c As Integer = 3 To (words.Count - 2)
+                                    If days.Length > 0 Then
+                                        days = days & ", "
+                                    End If
+                                    days = days & words(c).ToLower
+                                Next
+                                recipeText = recipeText & " " & days & " from " & words(1)
+                                If CheckBoxEndDate.Checked Then
+                                    recipeText = recipeText & " until " & words(words.Count - 1)
+                                End If
+                            ElseIf words(0) = "MONTHLY" Then
+                                If words(2) = "1" Then
+                                    recipeText = "Occurs monthly, on " & words(3) & " of every " & words(4) & " month(s) from " & words(1)
+                                    If CheckBoxEndDate.Checked Then
+                                        recipeText = recipeText & " until " & words(words.Count - 1)
+                                    End If
+                                ElseIf words(2) = "2" Then
+                                    recipeText = "Occurs monthly, the " & words(3).ToLower & " " & words(4).ToLower & " of every " & words(5) & " month(s) from " & words(1)
+                                    If CheckBoxEndDate.Checked Then
+                                        recipeText = recipeText & " until " & words(words.Count - 1)
+                                    End If
+                                End If
+                            ElseIf words(0) = "YEARLY" Then
+                                recipeText = "Occurs every " & words(2) & " year(s) "
+                                If words(2) = "1" Then
+                                    recipeText = recipeText & "on " & words(4).ToLower & " " & words(5) & " from " & words(1)
+                                    If CheckBoxEndDate.Checked Then
+                                        recipeText = recipeText & " until " & words(words.Count - 1)
+                                    End If
+                                ElseIf words(2) = "2" Then
+                                    recipeText = recipeText & "on the " & words(4).ToLower & " " & words(5).ToLower & " of " & words(6).ToLower & " from " & words(1)
+                                    If CheckBoxEndDate.Checked Then
+                                        recipeText = recipeText & " until " & words(words.Count - 1)
+                                    End If
+                                End If
+                            End If
 
                             row("Recurrence Text") = recipeText
 
@@ -424,11 +494,17 @@
     End Sub
 
     Private Sub ToolStripButtonCancel_Click(sender As Object, e As EventArgs) Handles ToolStripButtonCancel.Click
-
+        clearControls()
     End Sub
 
     Private Sub ButtonRemove_Click(sender As Object, e As EventArgs) Handles ButtonRemove.Click
-
+        If DataGridViewSelected.SelectedRows.Count > 0 Then
+            For Each dr As DataGridViewRow In DataGridViewSelected.SelectedRows
+                If (DataGridViewSelected.Rows.Count > 0) Then
+                    DataGridViewSelected.Rows.Remove(dr)
+                End If
+            Next
+        End If
     End Sub
 
     Private Sub TextBoxDaily_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxDaily.KeyPress
@@ -509,12 +585,14 @@
                     SQL.Execute("insert into " & dbTables & "_Resources_Historical (" & _
                                     "ID_Resource, " & _
                                     "New_Value, " & _
-                                    "Date) values (" & _
+                                    "Date, " & _
+                                    "Recurrence) values (" & _
                                     "'" & retorno & "', " & _
                                     "'" & dr.Cells("Value").Value.ToString & "', " & _
-                                    "GETDATE())")
+                                    "GETDATE(), " & _
+                                    "'" & dr.Cells("Recurrence").Value.ToString & "')")
                 Next
-                Frm_PF.loadResources(Id_Project)
+                Frm_CI_PF.loadResources(Id_Project)
             End If
         End If
     End Sub

@@ -7,6 +7,8 @@
 
     Dim dataSearch As DataTable
 
+    Dim showColumns As Boolean = True
+
     Private Sub Frm_CI_SearchProject_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadData()
     End Sub
@@ -44,6 +46,9 @@
         Dim where As String = ""
 
         If Not DotNet.IsEmpty(ComboBoxPrimaryProcess.SelectedValue) Then
+            If where.Length > 0 Then
+                where = where & "and "
+            End If
             where = where & "project.Primary_Process = '" & ComboBoxPrimaryProcess.SelectedValue & "' "
         End If
 
@@ -56,9 +61,13 @@
 
         If CheckedListBoxOwner.CheckedItems.Count > 0 Then
             Dim temp As String = "("
-
+            Dim countOwners As Integer = 0
             For Each owner As DataRowView In CheckedListBoxOwner.CheckedItems
+                If countOwners > 0 Then
+                    temp = temp & ","
+                End If
                 temp = temp & "'" & owner.Item(0) & "'"
+                countOwners = countOwners + 1
             Next
             temp = temp & ") "
 
@@ -72,6 +81,7 @@
                 "(select Primary_Process from " & dbTables & "_Primary_Process where " & dbTables & "_Primary_Process.ID = project.Primary_Process) as Primary_Process, " & _
                 "project.ID as ID, " & _
                 "Resources.Task_Name, " & _
+                "Resources.Owner, " & _
                 "Resources.Owner_Name, " & _
                 "Resources.Start_Date, " & _
                 "Resources.End_Date, " & _
@@ -97,8 +107,11 @@
 
             DataGridView.DataSource = dataSearch
 
-            DataGridView.Columns(1).Visible = False
-            DataGridView.Columns(7).Visible = False
+            If showColumns Then
+                DataGridView.Columns(1).Visible = False
+                DataGridView.Columns(8).Visible = False
+                showColumns = False
+            End If
 
             Dim selectProject As New DataGridViewButtonColumn()
             Dim selectUser As New DataGridViewButtonColumn()
@@ -126,22 +139,22 @@
 
     Private Sub DataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView.CellClick
         Try
-            If DataGridView.Columns(e.ColumnIndex).HeaderText = "Project" Then
-                Frm_CI_PF.Id_Project = DataGridView.Rows(e.RowIndex).Cells("ID").Value
-                Frm_CI_PF.loadProject()
-                Me.Close()
-                DataGridView.Columns.Remove("selectProject")
-                DataGridView.Columns.Remove("selectUser")
-            ElseIf DataGridView.Columns(e.ColumnIndex).HeaderText = "User" Then
-                If Not DotNet.IsEmpty(DataGridView.Rows(e.RowIndex).Cells("Resources ID").Value) Then
-                    ' *********************
-                    ' * Load data of user *
-                    ' *********************
+            If (e.RowIndex <> -1) Then
+                If DataGridView.Columns(e.ColumnIndex).HeaderText = "Project" Then
+                    Frm_CI_PF.Id_Project = DataGridView.Rows(e.RowIndex).Cells("ID").Value
+                    Frm_CI_PF.loadProject()
                     Me.Close()
                     DataGridView.Columns.Remove("selectProject")
                     DataGridView.Columns.Remove("selectUser")
-                Else
-                    MessageBox.Show("The project not have resources assigned.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ElseIf DataGridView.Columns(e.ColumnIndex).HeaderText = "User" Then
+                    If Not DotNet.IsEmpty(DataGridView.Rows(e.RowIndex).Cells("Resources ID").Value) Then
+                        Dim f As New Frm_CI_Resources_Edit_Person
+                        f.TNumber = DataGridView.Rows(e.RowIndex).Cells("Owner").Value
+                        f.dbTables = dbTables
+                        f.Show(Me)
+                    Else
+                        MessageBox.Show("The project not have resources assigned.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End If
             End If
         Catch ex As Exception

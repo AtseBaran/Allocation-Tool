@@ -129,8 +129,18 @@ C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocatio
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\AxInterop.MSChart20Lib.dll
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\AxInterop.OWC11.dll
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation Tool.vbproj.ResolveComReference.cache
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_AI.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_AI_History.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_AI_Popup.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_PF.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Report.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Report_Popup.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Resources.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Resources_Edit.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Resources_Edit_Person.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Resources_History.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_SearchProject.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Vacations_Holidays.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_AI_History.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_AI_Popup.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_AI.resources
@@ -154,4 +164,3 @@ C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocatio
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.exe
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.xml
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\PSS Project Allocation Tool.pdb
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Resources.resources

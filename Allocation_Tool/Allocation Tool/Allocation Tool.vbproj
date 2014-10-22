@@ -26,7 +26,7 @@
     <ProductName>PSS Project Allocation Tool</ProductName>
     <SuiteName>PSS Project Allocation Tool</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>41</ApplicationRevision>
+    <ApplicationRevision>42</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -207,6 +207,12 @@
     <Compile Include="Forms\CI\Frm_CI_SearchProject.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\CI\Frm_CI_Vacations_Holidays.Designer.vb">
+      <DependentUpon>Frm_CI_Vacations_Holidays.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CI\Frm_CI_Vacations_Holidays.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\CP-PSS\Frm_AI_History.Designer.vb">
       <DependentUpon>Frm_AI_History.vb</DependentUpon>
     </Compile>
@@ -323,14 +329,41 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_AI.resx">
+      <DependentUpon>Frm_CI_AI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_AI_History.resx">
+      <DependentUpon>Frm_CI_AI_History.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_AI_Popup.resx">
+      <DependentUpon>Frm_CI_AI_Popup.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CI\Frm_CI_PF.resx">
       <DependentUpon>Frm_CI_PF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_Report.resx">
+      <DependentUpon>Frm_CI_Report.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_Report_Popup.resx">
+      <DependentUpon>Frm_CI_Report_Popup.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CI\Frm_CI_Resources.resx">
       <DependentUpon>Frm_CI_Resources.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_Resources_Edit.resx">
+      <DependentUpon>Frm_CI_Resources_Edit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_Resources_Edit_Person.resx">
+      <DependentUpon>Frm_CI_Resources_Edit_Person.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_Resources_History.resx">
+      <DependentUpon>Frm_CI_Resources_History.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CI\Frm_CI_SearchProject.resx">
       <DependentUpon>Frm_CI_SearchProject.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_Vacations_Holidays.resx">
+      <DependentUpon>Frm_CI_Vacations_Holidays.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CP-PSS\Frm_AI_History.resx">
       <DependentUpon>Frm_AI_History.vb</DependentUpon>
@@ -510,6 +543,8 @@
     <None Include="Resources\pie_chart.png" />
     <None Include="Resources\PSS1.png" />
     <None Include="Resources\PSS2.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\plus.png" />
     <Content Include="time_frame.ico" />
   </ItemGroup>
   <ItemGroup>
