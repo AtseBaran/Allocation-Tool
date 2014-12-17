@@ -120,6 +120,54 @@
   <metadata name="ToolStripFilter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>249, 17</value>
   </metadata>
+  <data name="AxSpreadsheet.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAmQkAAAIB
+        AAAAAQAAAAAbAAAAQ2Fubm90IExpY2Vuc2UgaW4gdGhpcyBob3N0AAAAAGkJAAA8P3htbCB2ZXJzaW9u
+        PSIxLjAiPz4NCjxzczpXb3JrYm9vayB4bWxuczp4PSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOm9m
+        ZmljZTpleGNlbCINCiB4bWxuczpzcz0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTpvZmZpY2U6c3By
+        ZWFkc2hlZXQiDQogeG1sbnM6Yz0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTpvZmZpY2U6Y29tcG9u
+        ZW50OnNwcmVhZHNoZWV0Ij4NCiA8eDpFeGNlbFdvcmtib29rPg0KICA8eDpQcm90ZWN0U3RydWN0dXJl
+        PkZhbHNlPC94OlByb3RlY3RTdHJ1Y3R1cmU+DQogIDx4OkFjdGl2ZVNoZWV0PjA8L3g6QWN0aXZlU2hl
+        ZXQ+DQogPC94OkV4Y2VsV29ya2Jvb2s+DQogPHNzOlN0eWxlcz4NCiAgPHNzOlN0eWxlIHNzOklEPSJE
+        ZWZhdWx0Ij4NCiAgIDxzczpBbGlnbm1lbnQgc3M6SG9yaXpvbnRhbD0iQXV0b21hdGljIiBzczpSb3Rh
+        dGU9IjAuMCIgc3M6VmVydGljYWw9IkJvdHRvbSINCiAgICBzczpSZWFkaW5nT3JkZXI9IkNvbnRleHQi
+        Lz4NCiAgIDxzczpCb3JkZXJzPg0KICAgPC9zczpCb3JkZXJzPg0KICAgPHNzOkZvbnQgc3M6Rm9udE5h
+        bWU9IkFyaWFsIiBzczpTaXplPSIxMCIgc3M6Q29sb3I9IkF1dG9tYXRpYyIgc3M6Qm9sZD0iMCINCiAg
+        ICBzczpJdGFsaWM9IjAiIHNzOlVuZGVybGluZT0iTm9uZSIvPg0KICAgPHNzOkludGVyaW9yIHNzOkNv
+        bG9yPSJBdXRvbWF0aWMiIHNzOlBhdHRlcm49Ik5vbmUiLz4NCiAgIDxzczpOdW1iZXJGb3JtYXQgc3M6
+        Rm9ybWF0PSJHZW5lcmFsIi8+DQogICA8c3M6UHJvdGVjdGlvbiBzczpQcm90ZWN0ZWQ9IjEiLz4NCiAg
+        PC9zczpTdHlsZT4NCiA8L3NzOlN0eWxlcz4NCiA8YzpDb21wb25lbnRPcHRpb25zPg0KICA8YzpMYWJl
+        bD4NCiAgIDxjOkNhcHRpb24+TWljcm9zb2Z0IE9mZmljZSBTcHJlYWRzaGVldDwvYzpDYXB0aW9uPg0K
+        ICA8L2M6TGFiZWw+DQogIDxjOk1heEhlaWdodD44MCU8L2M6TWF4SGVpZ2h0Pg0KICA8YzpNYXhXaWR0
+        aD44MCU8L2M6TWF4V2lkdGg+DQogIDxjOk5leHRTaGVldE51bWJlcj40PC9jOk5leHRTaGVldE51bWJl
+        cj4NCiAgPGM6T3JpZ2luYWxTb3VyY2UgYzpUeXBlPSI2Ii8+DQogPC9jOkNvbXBvbmVudE9wdGlvbnM+
+        DQogPHg6V29ya2Jvb2tPcHRpb25zPg0KICA8YzpPV0NWZXJzaW9uPjEyLjAuMC42MjExICAgICAgICAg
+        PC9jOk9XQ1ZlcnNpb24+DQogIDx4OkhlaWdodD42OTMyPC94OkhlaWdodD4NCiAgPHg6V2lkdGg+MjA3
+        MTc8L3g6V2lkdGg+DQogPC94Oldvcmtib29rT3B0aW9ucz4NCiA8c3M6V29ya3NoZWV0IHNzOk5hbWU9
+        IlNoZWV0MSI+DQogIDx4OldvcmtzaGVldE9wdGlvbnM+DQogICA8eDpTZWxlY3RlZC8+DQogICA8eDpW
+        aWV3YWJsZVJhbmdlPlIxOlIyNjIxNDQ8L3g6Vmlld2FibGVSYW5nZT4NCiAgIDx4OlNlbGVjdGlvbj5S
+        MUMxPC94OlNlbGVjdGlvbj4NCiAgIDx4OlRvcFJvd1Zpc2libGU+MDwveDpUb3BSb3dWaXNpYmxlPg0K
+        ICAgPHg6TGVmdENvbHVtblZpc2libGU+MDwveDpMZWZ0Q29sdW1uVmlzaWJsZT4NCiAgIDx4OlByb3Rl
+        Y3RDb250ZW50cz5GYWxzZTwveDpQcm90ZWN0Q29udGVudHM+DQogIDwveDpXb3Jrc2hlZXRPcHRpb25z
+        Pg0KICA8YzpXb3Jrc2hlZXRPcHRpb25zPg0KICA8L2M6V29ya3NoZWV0T3B0aW9ucz4NCiA8L3NzOldv
+        cmtzaGVldD4NCiA8c3M6V29ya3NoZWV0IHNzOk5hbWU9IlNoZWV0MiI+DQogIDx4OldvcmtzaGVldE9w
+        dGlvbnM+DQogICA8eDpWaWV3YWJsZVJhbmdlPlIxOlIyNjIxNDQ8L3g6Vmlld2FibGVSYW5nZT4NCiAg
+        IDx4OlNlbGVjdGlvbj5SMUMxPC94OlNlbGVjdGlvbj4NCiAgIDx4OlRvcFJvd1Zpc2libGU+MDwveDpU
+        b3BSb3dWaXNpYmxlPg0KICAgPHg6TGVmdENvbHVtblZpc2libGU+MDwveDpMZWZ0Q29sdW1uVmlzaWJs
+        ZT4NCiAgIDx4OlByb3RlY3RDb250ZW50cz5GYWxzZTwveDpQcm90ZWN0Q29udGVudHM+DQogIDwveDpX
+        b3Jrc2hlZXRPcHRpb25zPg0KICA8YzpXb3Jrc2hlZXRPcHRpb25zPg0KICA8L2M6V29ya3NoZWV0T3B0
+        aW9ucz4NCiA8L3NzOldvcmtzaGVldD4NCiA8c3M6V29ya3NoZWV0IHNzOk5hbWU9IlNoZWV0MyI+DQog
+        IDx4OldvcmtzaGVldE9wdGlvbnM+DQogICA8eDpWaWV3YWJsZVJhbmdlPlIxOlIyNjIxNDQ8L3g6Vmll
+        d2FibGVSYW5nZT4NCiAgIDx4OlNlbGVjdGlvbj5SMUMxPC94OlNlbGVjdGlvbj4NCiAgIDx4OlRvcFJv
+        d1Zpc2libGU+MDwveDpUb3BSb3dWaXNpYmxlPg0KICAgPHg6TGVmdENvbHVtblZpc2libGU+MDwveDpM
+        ZWZ0Q29sdW1uVmlzaWJsZT4NCiAgIDx4OlByb3RlY3RDb250ZW50cz5GYWxzZTwveDpQcm90ZWN0Q29u
+        dGVudHM+DQogIDwveDpXb3Jrc2hlZXRPcHRpb25zPg0KICA8YzpXb3Jrc2hlZXRPcHRpb25zPg0KICA8
+        L2M6V29ya3NoZWV0T3B0aW9ucz4NCiA8L3NzOldvcmtzaGVldD4NCjwvc3M6V29ya2Jvb2s+DQoL
+</value>
+  </data>
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

@@ -209,7 +209,7 @@ Partial Class Frm_CI_PF
         '
         Me.ToolStripButtonCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.ToolStripButtonCancel.Enabled = False
-        Me.ToolStripButtonCancel.Image = Global.Allocation_Tool.My.Resources.Resources.Delete
+        Me.ToolStripButtonCancel.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
         Me.ToolStripButtonCancel.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonCancel.Name = "ToolStripButtonCancel"
         Me.ToolStripButtonCancel.Size = New System.Drawing.Size(28, 28)
@@ -300,7 +300,7 @@ Partial Class Frm_CI_PF
         Me.DataGridViewResources.Location = New System.Drawing.Point(3, 35)
         Me.DataGridViewResources.Name = "DataGridViewResources"
         Me.DataGridViewResources.ReadOnly = True
-        Me.DataGridViewResources.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridViewResources.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DataGridViewResources.Size = New System.Drawing.Size(1093, 168)
         Me.DataGridViewResources.TabIndex = 0
         '
@@ -372,7 +372,7 @@ Partial Class Frm_CI_PF
         'ToolStripButtonClearAll
         '
         Me.ToolStripButtonClearAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonClearAll.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
+        Me.ToolStripButtonClearAll.Image = Global.Allocation_Tool.My.Resources.Resources.filter_remove
         Me.ToolStripButtonClearAll.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonClearAll.Name = "ToolStripButtonClearAll"
         Me.ToolStripButtonClearAll.Size = New System.Drawing.Size(32, 29)

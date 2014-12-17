@@ -95,6 +95,10 @@ PSSProjectAllocationTool
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:Allocation_Tool.My.Resources.Resources.filter_remove">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:Allocation_Tool.My.Resources.Resources.folder_dropbox">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

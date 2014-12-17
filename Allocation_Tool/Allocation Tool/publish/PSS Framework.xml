@@ -89,7 +89,13 @@ PSSFramework
 </member><member name="M:PSS_Framework.SAPCOM.BKPF_Report.Execute">
 	<summary>
  Returns:
-    [Doc_Number] [Reference_Key] 
+    [Doc_Number] [Reference_Key] [Company_Code] [Doc_Type]
+ </summary>
+	<remarks></remarks>
+</member><member name="M:PSS_Framework.SAPCOM.RBKP_Report.Execute">
+	<summary>
+ Returns:
+    [Doc_Number] [Company_Code] [Doc_Type]
  </summary>
 	<remarks></remarks>
 </member><member name="M:PSS_Framework.SAPCOM.BSEG_Report.Execute">

@@ -160,4 +160,18 @@
         Catch ex As Exception
         End Try
     End Sub
+
+    Private Sub ComboBoxPrimaryProcess_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxPrimaryProcess.SelectedIndexChanged
+        Try
+            If Not ComboBoxPrimaryProcess.SelectedValue = Nothing Then
+                dataTableTaskName = Nothing
+                dataTableTaskName = SQL.Return_DataTable("select * from " & dbTables & "_Task_Name where ID_Primary_Process='" & ComboBoxPrimaryProcess.SelectedValue.ToString & "'")
+                ComboBoxTaskName.DataSource = dataTableTaskName
+                ComboBoxTaskName.DisplayMember = "Task_Name"
+                ComboBoxTaskName.ValueMember = "ID"
+                ComboBoxTaskName.SelectedIndex = -1
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
 End Class

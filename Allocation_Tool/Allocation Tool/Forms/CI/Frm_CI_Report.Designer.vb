@@ -87,6 +87,7 @@ Partial Class Frm_CI_Report
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButtonExcel = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButtonGraphic = New System.Windows.Forms.ToolStripButton()
+        Me.AxSpreadsheet = New AxMicrosoft.Office.Interop.Owc11.AxSpreadsheet()
         CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -112,6 +113,7 @@ Partial Class Frm_CI_Report
         Me.Panel10.SuspendLayout()
         Me.Panel13.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
+        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SaveFileDialog
@@ -217,6 +219,7 @@ Partial Class Frm_CI_Report
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.TableLayoutPanel1)
+        Me.TabPage2.Controls.Add(Me.AxSpreadsheet)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -231,14 +234,15 @@ Partial Class Frm_CI_Report
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.DataGridView, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.ToolStripFilter, 0, 0)
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 3)
+        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(694, 3)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(783, 262)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(92, 262)
         Me.TableLayoutPanel1.TabIndex = 3
+        Me.TableLayoutPanel1.Visible = False
         '
         'DataGridView
         '
@@ -249,7 +253,7 @@ Partial Class Frm_CI_Report
         Me.DataGridView.Location = New System.Drawing.Point(3, 43)
         Me.DataGridView.Name = "DataGridView"
         Me.DataGridView.ReadOnly = True
-        Me.DataGridView.Size = New System.Drawing.Size(777, 216)
+        Me.DataGridView.Size = New System.Drawing.Size(86, 216)
         Me.DataGridView.TabIndex = 1
         '
         'ToolStripFilter
@@ -258,7 +262,7 @@ Partial Class Frm_CI_Report
         Me.ToolStripFilter.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonFilter, Me.ToolStripButtonClearFilter})
         Me.ToolStripFilter.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripFilter.Name = "ToolStripFilter"
-        Me.ToolStripFilter.Size = New System.Drawing.Size(783, 39)
+        Me.ToolStripFilter.Size = New System.Drawing.Size(92, 39)
         Me.ToolStripFilter.TabIndex = 2
         Me.ToolStripFilter.Text = "ToolStrip1"
         '
@@ -274,7 +278,7 @@ Partial Class Frm_CI_Report
         'ToolStripButtonClearFilter
         '
         Me.ToolStripButtonClearFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonClearFilter.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
+        Me.ToolStripButtonClearFilter.Image = Global.Allocation_Tool.My.Resources.Resources.filter_remove
         Me.ToolStripButtonClearFilter.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonClearFilter.Name = "ToolStripButtonClearFilter"
         Me.ToolStripButtonClearFilter.Size = New System.Drawing.Size(36, 36)
@@ -727,6 +731,17 @@ Partial Class Frm_CI_Report
         Me.ToolStripButtonGraphic.Size = New System.Drawing.Size(28, 28)
         Me.ToolStripButtonGraphic.Text = "Export to Image"
         '
+        'AxSpreadsheet
+        '
+        Me.AxSpreadsheet.DataSource = Nothing
+        Me.AxSpreadsheet.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AxSpreadsheet.Enabled = True
+        Me.AxSpreadsheet.Location = New System.Drawing.Point(3, 3)
+        Me.AxSpreadsheet.Name = "AxSpreadsheet"
+        Me.AxSpreadsheet.OcxState = CType(resources.GetObject("AxSpreadsheet.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxSpreadsheet.Size = New System.Drawing.Size(783, 262)
+        Me.AxSpreadsheet.TabIndex = 4
+        '
         'Frm_CI_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -779,6 +794,7 @@ Partial Class Frm_CI_Report
         Me.Panel13.PerformLayout()
         Me.ToolStrip.ResumeLayout(False)
         Me.ToolStrip.PerformLayout()
+        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -840,4 +856,5 @@ Partial Class Frm_CI_Report
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripButtonExcel As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButtonGraphic As System.Windows.Forms.ToolStripButton
+    Friend WithEvents AxSpreadsheet As AxMicrosoft.Office.Interop.Owc11.AxSpreadsheet
 End Class

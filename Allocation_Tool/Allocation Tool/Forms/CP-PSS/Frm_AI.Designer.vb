@@ -87,7 +87,7 @@ Partial Class Frm_AI
         'ToolStripButtonClearAll
         '
         Me.ToolStripButtonClearAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonClearAll.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
+        Me.ToolStripButtonClearAll.Image = Global.Allocation_Tool.My.Resources.Resources.filter_remove
         Me.ToolStripButtonClearAll.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonClearAll.Name = "ToolStripButtonClearAll"
         Me.ToolStripButtonClearAll.Size = New System.Drawing.Size(28, 28)
@@ -135,7 +135,7 @@ Partial Class Frm_AI
         Me.DataGridViewActuals.Size = New System.Drawing.Size(1097, 359)
         Me.DataGridViewActuals.TabIndex = 1
         '
-        'Frm_CP_AI
+        'Frm_AI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -143,7 +143,7 @@ Partial Class Frm_AI
         Me.ClientSize = New System.Drawing.Size(1103, 400)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Frm_CP_AI"
+        Me.Name = "Frm_AI"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Actuals Input"
         Me.ToolStrip.ResumeLayout(False)

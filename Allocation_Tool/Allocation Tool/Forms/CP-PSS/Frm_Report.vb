@@ -7,8 +7,6 @@ Public Class Frm_Report
     Private dataTableProject As DataTable
     Dim dataTableF As DataTable = New DataTable()
 
-    Dim where As String = ""
-
     Private Category As String = ""
     Private ProjectID As String = ""
     Private ProjectType As String = ""
@@ -21,8 +19,15 @@ Public Class Frm_Report
     Private temp As String()
 
     Private Sub Frm_CP_Report_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If dbTables = "CP" Then
+            Me.Chart.Titles(0).Text = "Corporate Projects Allocation Report"
+        Else
+            Me.Chart.Titles(0).Text = "PSS Projects Allocation Report"
+        End If
         clearFilters()
         refreshData()
+
+        TabControl.TabPages(1).Hide()
     End Sub
 
     Private Function getDataCombo(table As String, field As String, Optional allField As String = "All") As DataTable
@@ -102,8 +107,6 @@ Public Class Frm_Report
         ButtonServiceLine.Text = "Select..."
         ButtonVSChevron.Text = "Select..."
         ButtonPrimaryProcess.Text = "Select..."
-
-        where = ""
     End Sub
 
     Private Sub ToolStripButtonRefresh_Click(sender As Object, e As EventArgs) Handles ToolStripButtonRefresh.Click
@@ -115,7 +118,7 @@ Public Class Frm_Report
         refreshData()
     End Sub
 
-    Private Sub refreshData()
+    Private Function filters(t As String) As String
         Dim temp() As String
         Dim query As String
         Dim first As Boolean
@@ -123,12 +126,16 @@ Public Class Frm_Report
         Dim dataTable As DataTable
         'Filters
 
-        where = ""
+        If t.Length > 0 And Not t.EndsWith(".") Then
+            t = t & "."
+        End If
+
+        Dim where As String = ""
 
         'Project_ID
         If ProjectID.Length > 0 Then
             temp = Split(ProjectID, ",")
-            where = where & "Project_ID in ( "
+            where = where & t & "Project_ID in ( "
             first = True
             For Each item As String In temp
                 If Not first Then
@@ -154,19 +161,21 @@ Public Class Frm_Report
             Next
             query = query & ")"
             tableTemp = SQL.Return_DataTable(query)
-            first = True
-            If where.Length > 0 Then
-                where = where & "or "
-            End If
-            where = where & "Project_ID in ( "
-            For Each row As DataRow In tableTemp.Rows
-                If Not first Then
-                    where = where & ","
+            If tableTemp.Rows.Count > 0 Then
+                first = True
+                If where.Length > 0 Then
+                    where = where & " and "
                 End If
-                where = where & "'" & row.Item(0) & "'"
-                first = False
-            Next
-            where = where & ") "
+                where = where & t & "Project_ID in ( "
+                For Each row As DataRow In tableTemp.Rows
+                    If Not first Then
+                        where = where & ","
+                    End If
+                    where = where & "'" & row.Item(0) & "'"
+                    first = False
+                Next
+                where = where & ") "
+            End If
         End If
 
         'Owner Name
@@ -182,19 +191,39 @@ Public Class Frm_Report
                 first = False
             Next
             tableTemp = SQL.Return_DataTable(query)
-            first = True
-            If where.Length > 0 Then
-                where = where & "or "
-            End If
-            where = where & "Project_ID in ( "
-            For Each row As DataRow In tableTemp.Rows
-                If Not first Then
-                    where = where & ","
+            If tableTemp.Rows.Count > 0 Then
+                first = True
+                If where.Length > 0 Then
+                    where = where & " and "
                 End If
-                where = where & "'" & row.Item(0) & "'"
-                first = False
-            Next
-            where = where & ") "
+                where = where & t & "Project_ID in ( "
+                For Each row As DataRow In tableTemp.Rows
+                    If Not first Then
+                        where = where & ","
+                    End If
+                    where = where & "'" & row.Item(0) & "'"
+                    first = False
+                Next
+                where = where & ") "
+            End If
+
+            If (DotNet.IsEmpty(t)) Then
+                first = True
+                query = ""
+                If where.Length > 0 Then
+                    where = where & " and "
+                End If
+                where = where & " Owner in ("
+                For Each item As String In temp
+                    If Not first Then
+                        query = query & " , "
+                    End If
+                    Dim tnumber() As String = Split(item, "/")
+                    query = query & " '" & Trim(tnumber(0)) & "' "
+                    first = False
+                Next
+                where = where & query & " ) "
+            End If
         End If
 
         'Service Line
@@ -211,19 +240,21 @@ Public Class Frm_Report
             Next
             query = query & ")"
             tableTemp = SQL.Return_DataTable(query)
-            first = True
-            If where.Length > 0 Then
-                where = where & "or "
-            End If
-            where = where & "Project_ID in ( "
-            For Each row As DataRow In tableTemp.Rows
-                If Not first Then
-                    where = where & ","
+            If tableTemp.Rows.Count > 0 Then
+                first = True
+                If where.Length > 0 Then
+                    where = where & " and "
                 End If
-                where = where & "'" & row.Item(0) & "'"
-                first = False
-            Next
-            where = where & ") "
+                where = where & t & "Project_ID in ( "
+                For Each row As DataRow In tableTemp.Rows
+                    If Not first Then
+                        where = where & ","
+                    End If
+                    where = where & "'" & row.Item(0) & "'"
+                    first = False
+                Next
+                where = where & ") "
+            End If
         End If
 
         'User Type
@@ -231,121 +262,141 @@ Public Class Frm_Report
             temp = Split(UserType, ",")
 
             dataTable = UsersInfo.PeerList(AppName)
-            Dim rowUser As DataRow = dataTable.NewRow
-            rowUser.Item(0) = UsersInfo.TNumber
-            rowUser.Item(1) = UsersInfo.Name
-            dataTable.Rows.InsertAt(rowUser, 0)
+            If dataTable.Rows.Count > 0 Then
+                Dim rowUser As DataRow = dataTable.NewRow
+                rowUser.Item(0) = UsersInfo.TNumber
+                rowUser.Item(1) = UsersInfo.Name
+                dataTable.Rows.InsertAt(rowUser, 0)
 
-            Dim role As String
-            first = True
-            query = "select distinct Project_ID from " & dbTables & "_Resources where "
-            For Each row As DataRow In dataTable.Rows
-                role = UsersInfo.GetRole(row.Item(0), AppName)
-                If Array.IndexOf(temp, role) <> -1 Then
-                    If Not first Then
-                        query = query & " or "
+                Dim role As String
+                first = True
+                Dim continueQuery As Boolean = False
+                query = "select distinct Project_ID from " & dbTables & "_Resources where "
+                For Each row As DataRow In dataTable.Rows
+                    role = UsersInfo.GetRole(row.Item(0), AppName)
+                    If Array.IndexOf(temp, role) <> -1 Then
+                        If Not first Then
+                            query = query & " or "
+                        End If
+                        query = query & "Owner = '" & row.Item(0) & "' "
+                        first = False
+                        continueQuery = True
                     End If
-                    query = query & "Owner = '" & row.Item(0) & "' "
-                    first = False
-                End If
-            Next
+                Next
 
-            tableTemp = SQL.Return_DataTable(query)
-            first = True
-            If where.Length > 0 Then
-                where = where & "or "
-            End If
-            where = where & "Project_ID in ( "
-            For Each row As DataRow In tableTemp.Rows
-                If Not first Then
-                    where = where & ","
+                If continueQuery Then
+                    tableTemp = SQL.Return_DataTable(query)
+                    If tableTemp.Rows.Count > 0 Then
+                        first = True
+                        If where.Length > 0 Then
+                            where = where & " and "
+                        End If
+                        where = where & t & "Project_ID in ( "
+                        For Each row As DataRow In tableTemp.Rows
+                            If Not first Then
+                                where = where & ","
+                            End If
+                            where = where & "'" & row.Item(0) & "'"
+                            first = False
+                        Next
+                        where = where & ") "
+                    End If
                 End If
-                where = where & "'" & row.Item(0) & "'"
-                first = False
-            Next
-            where = where & ") "
+            End If
         End If
 
         'Region America
         If CheckBoxRegionAmerica.Checked Then
             query = "select distinct ID from " & dbTables & "_Project where Americas = 1"
             tableTemp = SQL.Return_DataTable(query)
-            first = True
-            If where.Length > 0 Then
-                where = where & "or "
-            End If
-            where = where & "Project_ID in ( "
-            For Each row As DataRow In tableTemp.Rows
-                If Not first Then
-                    where = where & ","
+            If tableTemp.Rows.Count > 0 Then
+                first = True
+                If where.Length > 0 Then
+                    where = where & " and "
                 End If
-                where = where & "'" & row.Item(0) & "'"
-                first = False
-            Next
-            where = where & ") "
+                where = where & t & "Project_ID in ( "
+                For Each row As DataRow In tableTemp.Rows
+                    If Not first Then
+                        where = where & ","
+                    End If
+                    where = where & "'" & row.Item(0) & "'"
+                    first = False
+                Next
+                where = where & ") "
+            End If
         End If
 
         'Region Asia
         If CheckBoxRegionAsia.Checked Then
             query = "select distinct ID from " & dbTables & "_Project where Asia = 1"
             tableTemp = SQL.Return_DataTable(query)
-            first = True
-            If where.Length > 0 Then
-                where = where & "or "
-            End If
-            where = where & "Project_ID in ( "
-            For Each row As DataRow In tableTemp.Rows
-                If Not first Then
-                    where = where & ","
+            If tableTemp.Rows.Count > 0 Then
+                first = True
+                If where.Length > 0 Then
+                    where = where & " and "
                 End If
-                where = where & "'" & row.Item(0) & "'"
-                first = False
-            Next
-            where = where & ") "
+                where = where & t & "Project_ID in ( "
+                For Each row As DataRow In tableTemp.Rows
+                    If Not first Then
+                        where = where & ","
+                    End If
+                    where = where & "'" & row.Item(0) & "'"
+                    first = False
+                Next
+                where = where & ") "
+            End If
         End If
 
         'Region EMEA
         If CheckBoxRegionEMEA.Checked Then
             query = "select distinct ID from " & dbTables & "_Project where EMEA = 1"
             tableTemp = SQL.Return_DataTable(query)
-            first = True
-            If where.Length > 0 Then
-                where = where & "or "
-            End If
-            where = where & "Project_ID in ( "
-            For Each row As DataRow In tableTemp.Rows
-                If Not first Then
-                    where = where & ","
+            If tableTemp.Rows.Count > 0 Then
+                first = True
+                If where.Length > 0 Then
+                    where = where & " and "
                 End If
-                where = where & "'" & row.Item(0) & "'"
-                first = False
-            Next
-            where = where & ") "
+                where = where & t & "Project_ID in ( "
+                For Each row As DataRow In tableTemp.Rows
+                    If Not first Then
+                        where = where & ","
+                    End If
+                    where = where & "'" & row.Item(0) & "'"
+                    first = False
+                Next
+                where = where & ") "
+            End If
         End If
 
         'Region Global
         If CheckBoxRegionGlobal.Checked Then
             query = "select distinct ID from " & dbTables & "_Project where Global = 1"
             tableTemp = SQL.Return_DataTable(query)
-            first = True
-            If where.Length > 0 Then
-                where = where & "or "
-            End If
-            where = where & "Project_ID in ( "
-            For Each row As DataRow In tableTemp.Rows
-                If Not first Then
-                    where = where & ","
+            If tableTemp.Rows.Count > 0 Then
+                first = True
+                If where.Length > 0 Then
+                    where = where & " and "
                 End If
-                where = where & "'" & row.Item(0) & "'"
-                first = False
-            Next
-            where = where & ") "
+                where = where & t & "Project_ID in ( "
+                For Each row As DataRow In tableTemp.Rows
+                    If Not first Then
+                        where = where & ","
+                    End If
+                    where = where & "'" & row.Item(0) & "'"
+                    first = False
+                Next
+                where = where & ") "
+            End If
         End If
 
         If where.Length > 0 Then
             where = " and (" & where & ")"
         End If
 
+        Return where
+    End Function
+
+    Private Sub refreshData()
         If DTPStartDate.Value < DTPEndDate.Value Then
             drawGraph()
         End If
@@ -353,6 +404,7 @@ Public Class Frm_Report
 
     Private Sub ButtonProjectCategory_Click(sender As Object, e As EventArgs) Handles ButtonProjectCategory.Click
         Frm_Report_Popup.fields = "ID, Category"
+        Frm_Report_Popup.order = "order by CAST(Category as varchar(max)) asc"
         Frm_Report_Popup.tables = dbTables & "_Category"
         Frm_Report_Popup.selected = Category
         Frm_Report_Popup.ShowDialog(Me)
@@ -371,6 +423,7 @@ Public Class Frm_Report
 
     Private Sub ButtonProjectName_Click(sender As Object, e As EventArgs) Handles ButtonProjectName.Click
         Frm_Report_Popup.fields = "ID, Project_Name"
+        Frm_Report_Popup.order = "order by CAST(Project_Name as varchar(max)) asc"
         Frm_Report_Popup.tables = dbTables & "_Project"
         Frm_Report_Popup.selected = ProjectID
         Frm_Report_Popup.ShowDialog(Me)
@@ -389,6 +442,7 @@ Public Class Frm_Report
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ButtonProjectType.Click
         Frm_Report_Popup.fields = "ID, Project_Type"
+        Frm_Report_Popup.order = "order by CAST(Project_Type as varchar(max)) asc"
         Frm_Report_Popup.tables = dbTables & "_Project_Type"
         Frm_Report_Popup.selected = ProjectType
         Frm_Report_Popup.ShowDialog(Me)
@@ -407,6 +461,7 @@ Public Class Frm_Report
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles ButtonUserType.Click
         Frm_Report_Popup.fields = "ID, Role"
+        Frm_Report_Popup.order = "order by CAST(Role as varchar(max)) asc"
         Frm_Report_Popup.returnField = 1
         Frm_Report_Popup.tables = "Role"
         Frm_Report_Popup.selected = UserType
@@ -426,6 +481,7 @@ Public Class Frm_Report
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ButtonServiceLine.Click
         Frm_Report_Popup.fields = "ID, Service_Line"
+        'Frm_Report_Popup.order = "order by CAST(Service_Line as varchar(max)) asc"
         Frm_Report_Popup.tables = "Project_Service_Line"
         Frm_Report_Popup.selected = ServiceLine
         Frm_Report_Popup.ShowDialog(Me)
@@ -445,6 +501,7 @@ Public Class Frm_Report
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles ButtonVSChevron.Click
         If Category.Length > 0 Then
             Frm_Report_Popup.fields = "ID, VS_Chevron"
+            Frm_Report_Popup.order = "order by CAST(VS_Chevron as varchar(max)) asc"
             Frm_Report_Popup.tables = dbTables & "_VS_Chevron"
             Frm_Report_Popup.where = "where ID_Category IN (" & Category & ")"
             Frm_Report_Popup.selected = VSChevron
@@ -468,6 +525,7 @@ Public Class Frm_Report
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles ButtonPrimaryProcess.Click
         If VSChevron.Length > 0 Then
             Frm_Report_Popup.fields = "ID, Primary_Process"
+            Frm_Report_Popup.order = "order by CAST(Primary_Process as varchar(max)) asc"
             Frm_Report_Popup.tables = dbTables & "_Primary_Process"
             Frm_Report_Popup.where = "where ID_VS_Chevron IN (" & VSChevron & ") "
             Frm_Report_Popup.selected = PrimaryProcess
@@ -526,7 +584,7 @@ Public Class Frm_Report
         Dim eDate As Date = DTPEndDate.Value
 
         dataTableR = SQL.Return_DataTable(
-            "(select " & _
+            "select " & _
                 dbTables & "_Resources.Project_ID, " & _
                 "(select " & dbTables & "_Project.Project_Name from " & dbTables & "_Project where " & dbTables & "_Project.ID=" & dbTables & "_Resources.Project_ID) as Project_Name, " & _
                 dbTables & "_Resources.Month as Month, " & _
@@ -544,18 +602,18 @@ Public Class Frm_Report
             "where " & _
                 dbTables & "_Resources.Status != 0 and " & _
                 dbTables & "_Resources.Month between '" & DateSerial(sDate.Year, sDate.Month, "1") & "' and '" & DateSerial(eDate.Year, eDate.Month + 1, "0") & "' " & _
-                where & _
+                filters("") & _
             "group by " & _
                 dbTables & "_Resources.Project_ID, " & _
                 dbTables & "_Resources.ID, " & _
                 dbTables & "_Resources.[Owner], " & _
                 dbTables & "_Resources.Entry_Type, " & _
-                dbTables & "_Resources.Month) "
+                dbTables & "_Resources.Month"
         )
 
         dataTableA = SQL.Return_DataTable(
-            "(select " & _
-                "CP_Actuals.Resource_ID as ResourceID," & _
+            "select " & _
+                dbTables & "_Actuals.Resource_ID as ResourceID," & _
                 "sum(" & dbTables & "_Actuals.Value) as Actual_FTE, " & _
                 "CONVERT(DATE, " & dbTables & "_Actuals.Actual_Date) as [Date] " & _
             "from " & _
@@ -563,11 +621,11 @@ Public Class Frm_Report
                 dbTables & "_Resources " & _
             "where " & _
                 dbTables & "_Actuals.Actual_Date between '" & DateSerial(sDate.Year, sDate.Month, sDate.Day) & "' and '" & DateSerial(eDate.Year, eDate.Month, eDate.Day + 1) & "' " & _
-                where & _
+                filters(dbTables & "_Actuals") & _
             "group by " & _
                 dbTables & "_Actuals.Project_ID, " & _
                 dbTables & "_Actuals.Resource_ID, " & _
-                dbTables & "_Actuals.Actual_Date)"
+                dbTables & "_Actuals.Actual_Date"
         )
 
         dataTableF.Clear()
@@ -626,10 +684,21 @@ Public Class Frm_Report
         BindingSource.DataSource = dataTableF
         DataGridView.DataSource = dataTableF
 
+        DataGridView.Columns("Role").HeaderText = "User Type"
+
         DataGridView.Columns(0).Visible = False
         DataGridView.Columns(7).Visible = False
         DataGridView.Columns(9).Visible = False
         DataGridView.Columns(11).Visible = False
+
+        For cl As Integer = 0 To DataGridView.Columns.Count - 1
+            AxSpreadsheet.Worksheets(1).Cells(1, cl + 1) = DataGridView.Columns(cl).HeaderText.ToString
+        Next
+        For ro As Integer = 1 To DataGridView.Rows.Count - 1
+            For cl As Integer = 0 To DataGridView.Columns.Count - 1
+                AxSpreadsheet.Worksheets(1).Cells(ro + 1, cl + 1) = DataGridView.Item(cl, ro).Value.ToString
+            Next
+        Next
     End Sub
 
     Private Sub ToolStripButtonExcel_Click(sender As Object, e As EventArgs) Handles ToolStripButtonExcel.Click
@@ -638,15 +707,19 @@ Public Class Frm_Report
         SaveFileDialog.ShowDialog(Me)
         fileName = SaveFileDialog.FileName
 
-        Dim dataTemp As DataTable = dataTableF
+        Dim dataTemp As DataTable = DataGridView.DataSource
 
-        datatemp.Columns.RemoveAt(0)
-        datatemp.Columns.RemoveAt(7)
-        datatemp.Columns.RemoveAt(9)
-        datatemp.Columns.RemoveAt(11)
+        Try
+            dataTemp.Columns.RemoveAt(11)
+            dataTemp.Columns.RemoveAt(9)
+            dataTemp.Columns.RemoveAt(7)
+            dataTemp.Columns.RemoveAt(6)
+            dataTemp.Columns.RemoveAt(0)
+        Catch ex As Exception
+        End Try
 
         If ExportDataTableToExcel(datatemp, fileName, "Report", "A1") Then
-            MessageBox.Show("The export was successful.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("File successfully exported.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             MessageBox.Show("There has been an error, please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -696,7 +769,6 @@ Public Class Frm_Report
     End Sub
 
     Private Sub drawGraph()
-        Chart.Titles(0).Text = "Allocation Report"
         Chart.Series(0).Name = "Total Forecast"
         Chart.Series(1).Name = "Total Actuals"
 
@@ -724,7 +796,7 @@ Public Class Frm_Report
             "where " & _
                 "resources.Status != 0 and " & _
                 "resources.Month between '" & DateSerial(sDate.Year, sDate.Month, "1") & "' and '" & DateSerial(eDate.Year, eDate.Month + 1, "0") & "' " & _
-                where & _
+                filters("") & _
             "group by " & _
                 "resources.Project_ID, " & _
                 "resources.ID, " & _
@@ -746,7 +818,7 @@ Public Class Frm_Report
                 dbTables & "_Actuals " & _
             "where " & _
                 dbTables & "_Actuals.Actual_Date between '" & DateSerial(sDate.Year, sDate.Month, sDate.Day) & "' and '" & DateSerial(eDate.Year, eDate.Month, eDate.Day + 1) & "' " & _
-                where & _
+                filters(dbTables & "_Actuals") & _
             "group by " & _
                 dbTables & "_Actuals.Project_ID, " & _
                 dbTables & "_Actuals.Resource_ID, " & _

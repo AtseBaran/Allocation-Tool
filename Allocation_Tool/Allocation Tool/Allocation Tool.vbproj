@@ -13,6 +13,8 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>C:\Users\loria.e\Desktop\Projects\Builds\Allocation Tool\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +28,7 @@
     <ProductName>PSS Project Allocation Tool</ProductName>
     <SuiteName>PSS Project Allocation Tool</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>42</ApplicationRevision>
+    <ApplicationRevision>48</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -46,6 +48,7 @@
     <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
     <WarningsAsErrors>
     </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,6 +61,7 @@
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
     <WarningsAsErrors>
     </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -273,6 +277,30 @@
     <Compile Include="Forms\CP-PSS\Frm_SearchProject.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Frm_Documents.Designer.vb">
+      <DependentUpon>Frm_Documents.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Documents.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_Documents_Upload.Designer.vb">
+      <DependentUpon>Frm_Documents_Upload.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Documents_Upload.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_Reports.Designer.vb">
+      <DependentUpon>Frm_Reports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Reports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_Reports_Popup.Designer.vb">
+      <DependentUpon>Frm_Reports_Popup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Reports_Popup.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Frm_Wait.Designer.vb">
       <DependentUpon>Frm_Wait.vb</DependentUpon>
     </Compile>
@@ -395,6 +423,18 @@
     <EmbeddedResource Include="Forms\CP-PSS\Frm_SearchProject.resx">
       <DependentUpon>Frm_SearchProject.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Documents.resx">
+      <DependentUpon>Frm_Documents.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Documents_Upload.resx">
+      <DependentUpon>Frm_Documents_Upload.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Reports.resx">
+      <DependentUpon>Frm_Reports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Reports_Popup.resx">
+      <DependentUpon>Frm_Reports_Popup.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Wait.resx">
       <DependentUpon>Frm_Wait.vb</DependentUpon>
     </EmbeddedResource>
@@ -497,7 +537,7 @@
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
+      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
@@ -545,6 +585,7 @@
     <None Include="Resources\PSS2.png" />
     <None Include="Resources\calendar.png" />
     <None Include="Resources\plus.png" />
+    <None Include="Resources\filter-remove.png" />
     <Content Include="time_frame.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -109,7 +109,7 @@ Partial Class Frm_CI_Vacations_Holidays
         'ToolStripButtonCancel
         '
         Me.ToolStripButtonCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonCancel.Image = Global.Allocation_Tool.My.Resources.Resources.Delete
+        Me.ToolStripButtonCancel.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
         Me.ToolStripButtonCancel.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonCancel.Name = "ToolStripButtonCancel"
         Me.ToolStripButtonCancel.Size = New System.Drawing.Size(28, 28)

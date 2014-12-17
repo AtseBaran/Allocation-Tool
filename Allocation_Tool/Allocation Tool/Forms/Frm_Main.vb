@@ -5,8 +5,10 @@ Public Class Frm_Main
     Private comandos As String
 
     Private Sub Frm_Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If DotNet.IsConfirmed("Are you sure?") = False Then
-            e.Cancel = True
+        If Not UsersInfo.IsRegistered(AppName) Then
+            If DotNet.IsConfirmed("Are you sure?") = False Then
+                e.Cancel = True
+            End If
         End If
     End Sub
 
@@ -117,36 +119,40 @@ Public Class Frm_Main
     End Sub
 
     Private Function numberTask(table As String) As Integer
-        Dim dataTable As DataTable
-        dataTable = SQL.Return_DataTable("select " & _
-                "resources.id, " & _
-                "project.id, " & _
-                "project.Project_Name, " & _
-                "resources.Owner_Name, " & _
-                "phase.Project_Phase, " & _
-                "entry_type.Entry_Type, " & _
-                "resources.[Month], " & _
-                "resources.Value, " & _
-                "resources.Monthly_FTE " & _
-            "from " & _
-                table & "_Resources as resources, " & _
-                table & "_Project as project, " & _
-                table & "_Project_Phase as phase, " & _
-                "Project_Entry_Type as entry_type " & _
-            "where " & _
-                "resources.Project_ID = project.ID and " & _
-                "resources.Project_Phase = phase.ID and " & _
-                "resources.Entry_Type = entry_type.ID and " & _
-                "resources.Status <> 0 and " & _
-                "project.Status = 7 and " & _
-                "resources.Month between '" & DateSerial(Date.Now.Year, Date.Now.Month, "1") & "' and '" & DateSerial(Date.Now.Year, Date.Now.Month + 1, "0") & "' and " & _
-                "( " & _
-                    "Owner " & UsersInfo.Workflow_Onwer_String(AppName) & _
-                ") " & _
-            "order by " & _
-                "resources.[Month] asc") '"Owner = 'CS1214' or " & _
+        Try
+            Dim dataTable As DataTable
+            dataTable = SQL.Return_DataTable("select " & _
+                    "resources.id, " & _
+                    "project.id, " & _
+                    "project.Project_Name, " & _
+                    "resources.Owner_Name, " & _
+                    "phase.Project_Phase, " & _
+                    "entry_type.Entry_Type, " & _
+                    "resources.[Month], " & _
+                    "resources.Value, " & _
+                    "resources.Monthly_FTE " & _
+                "from " & _
+                    table & "_Resources as resources, " & _
+                    table & "_Project as project, " & _
+                    table & "_Project_Phase as phase, " & _
+                    "Project_Entry_Type as entry_type " & _
+                "where " & _
+                    "resources.Project_ID = project.ID and " & _
+                    "resources.Project_Phase = phase.ID and " & _
+                    "resources.Entry_Type = entry_type.ID and " & _
+                    "resources.Status <> 0 and " & _
+                    "project.Status = 7 and " & _
+                    "resources.Month between '" & DateSerial(Date.Now.Year, Date.Now.Month, "1") & "' and '" & DateSerial(Date.Now.Year, Date.Now.Month + 1, "0") & "' and " & _
+                    "( " & _
+                        "Owner " & UsersInfo.Workflow_Onwer_String(AppName) & _
+                    ") " & _
+                "order by " & _
+                    "resources.[Month] asc") '"Owner = 'CS1214' or " & _
 
-        Return dataTable.Rows.Count
+            Return dataTable.Rows.Count
+        Catch ex As Exception
+            Return 0
+        End Try
     End Function
 
     Private Sub EnableControls(enable As Boolean)
@@ -524,5 +530,19 @@ Public Class Frm_Main
 
     Private Sub LinkLabelCIReports_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCIReports.LinkClicked
         CIReportToolStripMenuItem_Click(sender, e)
+    End Sub
+
+    Private Sub DocumentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DocumentsToolStripMenuItem.Click
+        Frm_Documents.ShowDialog(Me)
+        Frm_Documents.Dispose()
+    End Sub
+
+    Private Sub ReportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportsToolStripMenuItem.Click
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Dim f As New Frm_Reports
+            f.dbTables = ""
+            f.ShowDialog(Me)
+            f.Dispose()
+        End If
     End Sub
 End Class

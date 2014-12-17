@@ -73,7 +73,8 @@
                                                 "ID_Resource, " & _
                                                 "Old_Value, " & _
                                                 "New_Value, " & _
-                                                "CONVERT(DATE, Date) " & _
+                                                "CONVERT(DATE, Date), " & _
+                                                "Comment " & _
                                             "from " & _
                                                 "" & dbTables & "_Resources_Historical " & _
                                             "where " & _
@@ -87,5 +88,6 @@
         DataGridViewHistory.Columns(2).HeaderText = "Old Value"
         DataGridViewHistory.Columns(3).HeaderText = "New Value"
         DataGridViewHistory.Columns(4).HeaderText = "Date"
+        DataGridViewHistory.Columns(5).HeaderText = "Comment"
     End Sub
 End Class

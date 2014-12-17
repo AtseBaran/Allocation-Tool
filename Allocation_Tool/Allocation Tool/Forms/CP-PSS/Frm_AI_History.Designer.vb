@@ -83,7 +83,7 @@ Partial Class Frm_AI_History
         'ToolStripButtonClear
         '
         Me.ToolStripButtonClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButtonClear.Image = Global.Allocation_Tool.My.Resources.Resources.edit_clear
+        Me.ToolStripButtonClear.Image = Global.Allocation_Tool.My.Resources.Resources.filter_remove
         Me.ToolStripButtonClear.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButtonClear.Name = "ToolStripButtonClear"
         Me.ToolStripButtonClear.Size = New System.Drawing.Size(28, 28)

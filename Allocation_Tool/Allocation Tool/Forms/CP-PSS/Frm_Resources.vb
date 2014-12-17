@@ -182,15 +182,16 @@
             If continueInsert Then
                 Dim data As New DataTable
                 data.Columns.Add("Project ID")
-                data.Columns.Add("TNumber")
-                data.Columns.Add("Name")
+                data.Columns.Add("Resource Type")
+                data.Columns.Add("RT")
                 data.Columns.Add("Service Line")
+                data.Columns.Add("Name")
+                data.Columns.Add("TNumber")
                 data.Columns.Add("Project Phase")
                 data.Columns.Add("PP")
                 data.Columns.Add("Entry Type")
                 data.Columns.Add("ET")
                 data.Columns.Add("Value")
-                data.Columns.Add("Resource Type")
                 data.Columns.Add("ID")
                 data.Columns.Add("Monthly FTE")
                 data.Columns.Add("Month Number")
@@ -225,6 +226,7 @@
                                 row("Year") = tmes(1)
                                 data.Rows.Add(row)
 
+                                row("RT") = SQL.Execute("select Resource_Type from Project_Resource_Type where id='" & row("Resource Type") & "'")
                                 row("PP") = SQL.Execute("select Project_Phase from " & dbTables & "_Project_Phase where id='" & row("Project Phase") & "'")
                                 row("ET") = SQL.Execute("select Entry_Type from Project_Entry_Type where id='" & row("Entry Type") & "'")
                             Next
@@ -232,6 +234,7 @@
                     Next
                 Next
                 DataGridViewSelected.DataSource = data
+                DataGridViewSelected.Columns("RT").HeaderText = "Resource Type"
                 DataGridViewSelected.Columns("PP").HeaderText = "Project Phase"
                 DataGridViewSelected.Columns("ET").HeaderText = "Entry Type"
                 DataGridViewSelected.Columns("Project ID").Visible = False
@@ -259,7 +262,7 @@
     Private Sub ToolStripButtonSave_Click(sender As Object, e As EventArgs) Handles ToolStripButtonSave.Click
         Dim count As Integer = DataGridViewSelected.Rows.Count
         If count > 0 Then
-            If DotNet.IsConfirmed("Are you sure you want to include this resource(s)?") Then
+            If DotNet.IsConfirmed("Are you sure you want to include the resource(s)?") Then
                 Dim retorno As Integer
                 For Each dr As DataGridViewRow In DataGridViewSelected.Rows
                     retorno = SQL.Execute("insert into " & dbTables & "_Resources (" & _

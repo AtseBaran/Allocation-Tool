@@ -140,7 +140,7 @@ Partial Class Frm_Main
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CorporateProjectsToolStripMenuItem, Me.PSSProjectsToolStripMenuItem, Me.ContinuousImprovementToolStripMenuItem, Me.DocumentsToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.MaintananceToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(686, 24)
+        Me.MenuStrip.Size = New System.Drawing.Size(694, 24)
         Me.MenuStrip.TabIndex = 0
         Me.MenuStrip.Text = "MenuStrip"
         '
@@ -464,7 +464,7 @@ Partial Class Frm_Main
         Me.StatusStrip.Location = New System.Drawing.Point(0, 504)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.StatusStrip.Size = New System.Drawing.Size(686, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(694, 22)
         Me.StatusStrip.TabIndex = 10
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -493,7 +493,7 @@ Partial Class Frm_Main
         Me.PanelLabels.Controls.Add(Me.Lbl_Txt_TNumber)
         Me.PanelLabels.Controls.Add(Me.Lbl_Txt_UserName)
         Me.PanelLabels.ForeColor = System.Drawing.Color.White
-        Me.PanelLabels.Location = New System.Drawing.Point(507, 3)
+        Me.PanelLabels.Location = New System.Drawing.Point(515, 3)
         Me.PanelLabels.Name = "PanelLabels"
         Me.PanelLabels.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.PanelLabels.Size = New System.Drawing.Size(170, 58)
@@ -514,7 +514,7 @@ Partial Class Frm_Main
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
-        Me.TableLayoutPanel.Size = New System.Drawing.Size(686, 480)
+        Me.TableLayoutPanel.Size = New System.Drawing.Size(694, 480)
         Me.TableLayoutPanel.TabIndex = 16
         '
         'FlowLayoutPanelLabels
@@ -525,7 +525,7 @@ Partial Class Frm_Main
         Me.FlowLayoutPanelLabels.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
         Me.FlowLayoutPanelLabels.Location = New System.Drawing.Point(3, 3)
         Me.FlowLayoutPanelLabels.Name = "FlowLayoutPanelLabels"
-        Me.FlowLayoutPanelLabels.Size = New System.Drawing.Size(680, 62)
+        Me.FlowLayoutPanelLabels.Size = New System.Drawing.Size(688, 62)
         Me.FlowLayoutPanelLabels.TabIndex = 16
         '
         'TableLayoutPanel1
@@ -540,7 +540,7 @@ Partial Class Frm_Main
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(680, 326)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(688, 326)
         Me.TableLayoutPanel1.TabIndex = 17
         '
         'FlowLayoutPanelControls
@@ -556,7 +556,7 @@ Partial Class Frm_Main
         Me.FlowLayoutPanelControls.Location = New System.Drawing.Point(20, 3)
         Me.FlowLayoutPanelControls.Name = "FlowLayoutPanelControls"
         Me.FlowLayoutPanelControls.Padding = New System.Windows.Forms.Padding(10)
-        Me.FlowLayoutPanelControls.Size = New System.Drawing.Size(640, 320)
+        Me.FlowLayoutPanelControls.Size = New System.Drawing.Size(647, 320)
         Me.FlowLayoutPanelControls.TabIndex = 16
         '
         'GroupBox1
@@ -921,7 +921,7 @@ Partial Class Frm_Main
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(3, 403)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(680, 74)
+        Me.Panel1.Size = New System.Drawing.Size(688, 74)
         Me.Panel1.TabIndex = 18
         '
         'PictureBox2
@@ -973,7 +973,7 @@ Partial Class Frm_Main
         Me.BackColor = System.Drawing.Color.Lavender
         Me.BackgroundImage = Global.Allocation_Tool.My.Resources.Resources.Shades_of_blue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(686, 526)
+        Me.ClientSize = New System.Drawing.Size(694, 526)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.MenuStrip)

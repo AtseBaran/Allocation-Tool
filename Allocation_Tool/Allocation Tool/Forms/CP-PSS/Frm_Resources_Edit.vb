@@ -23,7 +23,7 @@
         End If
 
         If bandera Then
-            MessageBox.Show("Please, all fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Please add value and comment, they are mandatory fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If DotNet.IsConfirmed("Are you sure?") Then
                 SQL.Execute("update " & dbTables & "_Resources set " & _
@@ -37,11 +37,13 @@
                                     "ID_Resource, " & _
                                     "New_Value, " & _
                                     "Old_Value, " & _
-                                    "Date) values (" & _
+                                    "Date, " & _
+                                    "Comment) values (" & _
                                     "'" & id_resource & "', " & _
                                     "'" & Trim(TextBoxNewValue.Value) & "', " & _
                                     "'" & Trim(TextBoxOldValue.Text) & "', " & _
-                                    "GETDATE())")
+                                    "GETDATE(), " & _
+                                    "'" & Trim(TextBoxComments.Text) & "')")
                 Frm_PF.loadProject()
                 clearData()
                 Me.Close()

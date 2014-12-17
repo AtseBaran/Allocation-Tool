@@ -9,6 +9,7 @@ Public Class Frm_PF
     Friend dbTables As String = ""
 
     Dim ResourceBindingSource As New BindingSource
+    Private projectStatus As Integer = 0
 
     Private Sub Frm_CP_PF_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If GroupBoxProject.Enabled Then
@@ -85,17 +86,17 @@ Public Class Frm_PF
     Private Sub unLockControlsProjects() 'Unlock all controls of projects
         GroupBoxProject.Enabled = True
         'Load ComboBox
-        Dim Table_Category As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Category")
+        Dim Table_Category As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Category order by CAST(Category as varchar(max)) asc")
         ComboBoxCategory.DisplayMember = "Category"
         ComboBoxCategory.ValueMember = "ID"
         ComboBoxCategory.DataSource = Table_Category
 
-        Dim Table_Status As DataTable = SQL.Return_DataTable("select * from Project_Status")
+        Dim Table_Status As DataTable = SQL.Return_DataTable("select * from Project_Status order by CAST(Status as varchar(max)) asc")
         ComboBoxStatus.DisplayMember = "Status"
         ComboBoxStatus.ValueMember = "ID"
         ComboBoxStatus.DataSource = Table_Status
 
-        Dim Table_Type As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Project_Type")
+        Dim Table_Type As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Project_Type order by CAST(Project_Type as varchar(max)) asc")
         ComboBoxProjectType.DisplayMember = "Project_Type"
         ComboBoxProjectType.ValueMember = "ID"
         ComboBoxProjectType.DataSource = Table_Type
@@ -215,54 +216,56 @@ Public Class Frm_PF
                 End If
             End If
         ElseIf Id_Project <> 0 Then
-            Dim change As Boolean = False
-            Dim dataTemp As DataTable
-            dataTemp = SQL.Return_DataTable("select Status.Status from " & dbTables & "_Project as project, Project_Status as status where project.ID = '" & Id_Project & "' and status.ID = project.Status")
+            If DotNet.IsConfirmed("Once you put the status to Closed, Paid or Completed, you can’t modify this field anymore." & vbCrLf & "Are you sure?") Then
+                Dim change As Boolean = False
+                Dim dataTemp As DataTable
+                dataTemp = SQL.Return_DataTable("select Status.Status from " & dbTables & "_Project as project, Project_Status as status where project.ID = '" & Id_Project & "' and status.ID = project.Status")
 
-            For Each rowTemp As DataRow In dataTemp.Rows
-                If (rowTemp.Item(0).ToString = "Closed") Then
-                    change = False
-                ElseIf (rowTemp.Item(0).ToString = "In Process") Then
-                    If ComboBoxStatus.Text = "Paid" Then
+                For Each rowTemp As DataRow In dataTemp.Rows
+                    If (rowTemp.Item(0).ToString = "Closed") Then
                         change = False
-                    Else
-                        change = True
-                    End If
-                ElseIf (rowTemp.Item(0).ToString = "On Hold") Then
-                    If ComboBoxStatus.Text = "Paid" Then
+                    ElseIf (rowTemp.Item(0).ToString = "In Process") Then
+                        If ComboBoxStatus.Text = "Paid" Then
+                            change = False
+                        Else
+                            change = True
+                        End If
+                    ElseIf (rowTemp.Item(0).ToString = "On Hold") Then
+                        If ComboBoxStatus.Text = "Paid" Then
+                            change = False
+                        Else
+                            change = True
+                        End If
+                    ElseIf (rowTemp.Item(0).ToString = "Paid") Then
                         change = False
-                    Else
-                        change = True
+                    ElseIf (rowTemp.Item(0).ToString = "Completed") Then
+                        If ComboBoxStatus.Text = "Paid" Then
+                            change = True
+                        Else
+                            change = False
+                        End If
                     End If
-                ElseIf (rowTemp.Item(0).ToString = "Paid") Then
-                    change = False
-                ElseIf (rowTemp.Item(0).ToString = "Completed") Then
-                    If ComboBoxStatus.Text = "Paid" Then
-                        change = True
-                    Else
-                        change = False
-                    End If
+                Next
+
+                If change Then
+                    SQL.Execute("update " & dbTables & "_Project set Status='" & ComboBoxStatus.SelectedValue & "', Updated_Date=GETDATE(), Updated_By = '" & UsersInfo.TNumber & "' where ID='" & Id_Project & "'")
+                    MessageBox.Show("Project saved!", "System", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    ToolStripButtonSave.Enabled = False
+                    ToolStripButtonCancel.Enabled = False
+                    ToolStripButtonNew.Enabled = True
+
+                    TextBoxProjectName.Enabled = True
+                    TextBoxXGBSPM.Enabled = True
+                    TextBoxPSSDeliveryPM.Enabled = True
+                    ComboBoxProjectType.Enabled = True
+                    GroupBoxRegion.Enabled = True
+
+                    clearControlsProjects()
+                    lockControlsProjects()
+                Else
+                    MessageBox.Show("The current project cannot be safe, the new Status is not correct.", "System", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
-            Next
-
-            If change Then
-                SQL.Execute("update " & dbTables & "_Project set Status='" & ComboBoxStatus.SelectedValue & "', Updated_Date=GETDATE(), Updated_By = '" & UsersInfo.TNumber & "' where ID='" & Id_Project & "'")
-                MessageBox.Show("Project saved!", "System", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-                ToolStripButtonSave.Enabled = False
-                ToolStripButtonCancel.Enabled = False
-                ToolStripButtonNew.Enabled = True
-
-                TextBoxProjectName.Enabled = True
-                TextBoxXGBSPM.Enabled = True
-                TextBoxPSSDeliveryPM.Enabled = True
-                ComboBoxProjectType.Enabled = True
-                GroupBoxRegion.Enabled = True
-
-                clearControlsProjects()
-                lockControlsProjects()
-            Else
-                MessageBox.Show("The current project cannot be safe, the new Status is not correct.", "System", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
@@ -320,6 +323,7 @@ Public Class Frm_PF
             TextBoxPSSDeliveryPM.Text = row.Item("PSS_Delivery_PM").ToString
             ComboBoxProjectType.SelectedValue = row.Item("Project_Type")
             ComboBoxStatus.SelectedValue = row.Item("Status")
+            projectStatus = row.Item("Status")
             CheckBoxRegionAmerica.CheckState = row.Item("Americas") * -1
             CheckBoxRegionAsia.CheckState = row.Item("Asia") * -1
             CheckBoxRegionEMEA.CheckState = row.Item("EMEA") * -1
@@ -347,14 +351,14 @@ Public Class Frm_PF
     End Sub
 
     Private Sub ComboBoxCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxCategory.SelectedIndexChanged
-        Dim Table As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_VS_Chevron where ID_Category='" & sender.SelectedValue & "'")
+        Dim Table As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_VS_Chevron where ID_Category='" & sender.SelectedValue & "' order by CAST(VS_Chevron as varchar(max)) asc")
         ComboBoxVSChevron.DisplayMember = "VS_Chevron"
         ComboBoxVSChevron.ValueMember = "ID"
         ComboBoxVSChevron.DataSource = Table
     End Sub
 
     Private Sub ComboBoxVSChevron_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxVSChevron.SelectedIndexChanged
-        Dim Table As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Primary_Process where ID_VS_Chevron='" & sender.SelectedValue & "'")
+        Dim Table As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Primary_Process where ID_VS_Chevron='" & sender.SelectedValue & "' order by CAST(Primary_Process as varchar(max)) asc")
         ComboBoxPrimaryProcessProject.DisplayMember = "Primary_Process"
         ComboBoxPrimaryProcessProject.ValueMember = "ID"
         ComboBoxPrimaryProcessProject.DataSource = Table
@@ -377,9 +381,9 @@ Public Class Frm_PF
                                                 "resources.[Check], " & _
                                                 "resource_type.Resource_Type, " & _
                                                 "service_line.Service_Line, " & _
-                                                "phase.Project_Phase, " & _
                                                 "Resources.[Owner], " & _
                                                 "resources.Owner_Name, " & _
+                                                "phase.Project_Phase, " & _
                                                 "entry_type.Entry_Type, " & _
                                                 "resources.Value, " & _
                                                 "resources.Monthly_FTE, " & _
@@ -405,9 +409,9 @@ Public Class Frm_PF
         DataGridViewResources.Columns(1).Visible = False
         DataGridViewResources.Columns(2).HeaderText = "Resource Type"
         DataGridViewResources.Columns(3).HeaderText = "Service Line"
-        DataGridViewResources.Columns(4).HeaderText = "Project Phase"
-        DataGridViewResources.Columns(5).HeaderText = "TNumber"
-        DataGridViewResources.Columns(6).HeaderText = "Name"
+        DataGridViewResources.Columns(4).HeaderText = "TNumber"
+        DataGridViewResources.Columns(5).HeaderText = "Owner Name"
+        DataGridViewResources.Columns(6).HeaderText = "Project Phase"
         DataGridViewResources.Columns(7).HeaderText = "Entry Type"
         DataGridViewResources.Columns(8).HeaderText = "Monthly Value"
         DataGridViewResources.Columns(9).HeaderText = "Monthly FTE"
@@ -512,18 +516,22 @@ Public Class Frm_PF
         Try
             If (e.RowIndex <> -1) Then
                 If DataGridViewResources.Columns(e.ColumnIndex).HeaderText = "Actions" Then
-                    Dim dateValue As Date = DataGridViewResources.Item(10, e.RowIndex).Value
-                    If DateSerial(dateValue.Year, dateValue.Month, "5") >= DateSerial(Today.Year, Today.Month, Today.Day) Then
-                        If DataGridViewResources.Rows.Count > 0 Then
-                            'Edit data
-                            Frm_Resources_Edit.dbTables = dbTables
-                            Frm_Resources_Edit.entry_type = DataGridViewResources.Item(7, e.RowIndex).Value
-                            Frm_Resources_Edit.old_value = DataGridViewResources.Item(8, e.RowIndex).Value
-                            Frm_Resources_Edit.id_resource = DataGridViewResources.Item(0, e.RowIndex).Value
-                            Frm_Resources_Edit.ShowDialog(Me)
-                        End If
+                    If projectStatus = 9 Or projectStatus = 10 Or projectStatus = 11 Then
+                        MessageBox.Show("The current resource cannot be modify.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Else
-                        MessageBox.Show("Please check, this resource can not be modified.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Dim dateValue As Date = DataGridViewResources.Item(10, e.RowIndex).Value
+                        If DateSerial(dateValue.Year, dateValue.Month, "5") >= DateSerial(Today.Year, Today.Month, Today.Day) Then
+                            If DataGridViewResources.Rows.Count > 0 Then
+                                'Edit data
+                                Frm_Resources_Edit.dbTables = dbTables
+                                Frm_Resources_Edit.entry_type = DataGridViewResources.Item(7, e.RowIndex).Value
+                                Frm_Resources_Edit.old_value = DataGridViewResources.Item(8, e.RowIndex).Value
+                                Frm_Resources_Edit.id_resource = DataGridViewResources.Item(0, e.RowIndex).Value
+                                Frm_Resources_Edit.ShowDialog(Me)
+                            End If
+                        Else
+                            MessageBox.Show("This entry can’t be modified, month to be edited is in the past or it’s the current one, please check.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End If
                     End If
                 End If
             End If
@@ -629,6 +637,7 @@ Public Class Frm_PF
             DataGridViewFiles.Columns(0).Visible = False
             DataGridViewFiles.Columns(1).Visible = False
             DataGridViewFiles.Columns(2).Name = "File Name"
+            DataGridViewFiles.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             DataGridViewFiles.Columns(3).Visible = False
             DataGridViewFiles.Columns(4).Name = "Owner"
 
@@ -678,4 +687,7 @@ Public Class Frm_PF
         End If
     End Sub
 
+    Private Sub DataGridViewResources_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewResources.CellContentClick
+
+    End Sub
 End Class

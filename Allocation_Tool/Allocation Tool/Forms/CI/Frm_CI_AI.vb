@@ -76,25 +76,31 @@
         Catch ex As Exception
         End Try
 
-        DataGridView.Columns.Add("OwnerName", "Owner Name")
-        DataGridView.Columns.Add("TNumber", "TNumber")
-        DataGridView.Columns.Add("Category", "Category")
-        DataGridView.Columns("Category").Visible = False
-        DataGridView.Columns.Add("CategoryName", "Category")
-        DataGridView.Columns.Add("VSChevron", "VS Chevron")
-        DataGridView.Columns("VSChevron").Visible = False
-        DataGridView.Columns.Add("VSChevronName", "VS Chevron")
         DataGridView.Columns.Add("PrimaryProcess", "Primary Process")
         DataGridView.Columns("PrimaryProcess").Visible = False
         DataGridView.Columns.Add("PrimaryProcessName", "Primary Process")
         DataGridView.Columns.Add("TaskType", "Task Type")
         DataGridView.Columns("TaskType").Visible = False
-        DataGridView.Columns.Add("TaskTypeName", "Task Type")
         DataGridView.Columns.Add("TaskName", "Task Name")
+        DataGridView.Columns.Add("TaskTypeName", "Task Type")
+        DataGridView.Columns.Add("OwnerName", "Owner Name")
+        DataGridView.Columns.Add("TNumber", "TNumber")
+        DataGridView.Columns("TNumber").Visible = False
+
+        DataGridView.Columns.Add("Category", "Category")
+        DataGridView.Columns("Category").Visible = False
+        DataGridView.Columns.Add("CategoryName", "Category")
+        DataGridView.Columns("CategoryName").Visible = False
+        DataGridView.Columns.Add("VSChevron", "VS Chevron")
+        DataGridView.Columns("VSChevron").Visible = False
+        DataGridView.Columns.Add("VSChevronName", "VS Chevron")
+        DataGridView.Columns("VSChevronName").Visible = False
         DataGridView.Columns.Add("ServiceLine", "Service Line")
         DataGridView.Columns("ServiceLine").Visible = False
         DataGridView.Columns.Add("ServiceLineName", "Service Line")
+        DataGridView.Columns("ServiceLineName").Visible = False
         DataGridView.Columns.Add("EntryType", "Entry Type")
+        DataGridView.Columns("EntryType").Visible = False
         DataGridView.Columns.Add("ResourceID", "Resource ID")
         DataGridView.Columns("ResourceID").Visible = False
 
@@ -103,17 +109,17 @@
         For Each row As DataRow In dataTable.Rows
             DataGridView.Rows.Add()
 
-            DataGridView.Rows(rowIndex).Cells(0).Value = row.Item(13) ' Owner Name
-            DataGridView.Rows(rowIndex).Cells(1).Value = row.Item(14) ' TNumber
-            DataGridView.Rows(rowIndex).Cells(2).Value = row.Item(0) ' Category
-            DataGridView.Rows(rowIndex).Cells(3).Value = row.Item(1) ' Category Name
-            DataGridView.Rows(rowIndex).Cells(4).Value = row.Item(2) ' VS Chevron
-            DataGridView.Rows(rowIndex).Cells(5).Value = row.Item(3) ' VS Chevron Name
-            DataGridView.Rows(rowIndex).Cells(6).Value = row.Item(4) ' Primary Process
-            DataGridView.Rows(rowIndex).Cells(7).Value = row.Item(5) ' Primary Process Name
-            DataGridView.Rows(rowIndex).Cells(8).Value = row.Item(11) ' Task Type
-            DataGridView.Rows(rowIndex).Cells(9).Value = row.Item(12) ' Task Type Name
-            DataGridView.Rows(rowIndex).Cells(10).Value = row.Item(10) ' Task Name
+            DataGridView.Rows(rowIndex).Cells(0).Value = row.Item(4) ' Primary Process
+            DataGridView.Rows(rowIndex).Cells(1).Value = row.Item(5) ' Primary Process Name
+            DataGridView.Rows(rowIndex).Cells(2).Value = row.Item(11) ' Task Type
+            DataGridView.Rows(rowIndex).Cells(3).Value = row.Item(10) ' Task Name
+            DataGridView.Rows(rowIndex).Cells(4).Value = row.Item(12) ' Task Type Name
+            DataGridView.Rows(rowIndex).Cells(5).Value = row.Item(13) ' Owner Name
+            DataGridView.Rows(rowIndex).Cells(6).Value = row.Item(14) ' TNumber
+            DataGridView.Rows(rowIndex).Cells(7).Value = row.Item(0) ' Category
+            DataGridView.Rows(rowIndex).Cells(8).Value = row.Item(1) ' Category Name
+            DataGridView.Rows(rowIndex).Cells(9).Value = row.Item(2) ' VS Chevron
+            DataGridView.Rows(rowIndex).Cells(10).Value = row.Item(3) ' VS Chevron Name
             DataGridView.Rows(rowIndex).Cells(11).Value = row.Item(20) ' Service Line
             DataGridView.Rows(rowIndex).Cells(12).Value = row.Item(21) ' Service Line Name
             DataGridView.Rows(rowIndex).Cells(13).Value = row.Item(18) ' Entry Type Name
@@ -353,7 +359,7 @@
         'Vacations...
         If DataGridView.Rows.Count > 0 Then
             Frm_CI_Vacations_Holidays.VHDates = VHDates
-            Frm_CI_Vacations_Holidays.Show(Me)
+            Frm_CI_Vacations_Holidays.ShowDialog(Me)
         End If
     End Sub
 

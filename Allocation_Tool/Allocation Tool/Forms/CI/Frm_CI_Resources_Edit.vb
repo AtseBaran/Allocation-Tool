@@ -25,6 +25,12 @@
 
         Dim recurrence() As String = Split(dataTable.Item(3), ",")
 
+        If IsDate(recurrence(recurrence.Length - 1)) Then
+            CheckBoxEndDate.CheckState = CheckState.Checked
+        Else
+            CheckBoxEndDate.CheckState = CheckState.Unchecked
+        End If
+
         If recurrence(0) = "DAILY" Then
             TabControlRecipe.SelectTab(0)
             If recurrence(2) = "1" Then
@@ -111,7 +117,7 @@
         End If
 
         If Trim(TextBoxComments.Text).Length = 0 Then
-            bandera = True
+            bandera = False
             LabelComments.ForeColor = Color.Red
         Else
             LabelComments.ForeColor = Color.Black
@@ -211,7 +217,7 @@
         End If
 
         If Not bandera Then
-            MessageBox.Show("Please, all fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Please add value and comment, they are mandatory fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If DotNet.IsConfirmed("Are you sure?") Then
 
@@ -316,12 +322,14 @@
                                     "New_Value, " & _
                                     "Old_Value, " & _
                                     "Date, " & _
-                                    "Recurrence ) values ( " & _
+                                    "Recurrence, " & _
+                                    "Comment) values ( " & _
                                     "'" & id_resource & "', " & _
                                     "'" & Trim(TextBoxMonthlyValue.Text) & "', " & _
                                     "'" & Trim(TextBoxOldValue.Text) & "', " & _
                                     "GETDATE(), " & _
-                                    "'" & recipe & "')")
+                                    "'" & recipe & "', " & _
+                                    "'" & Trim(TextBoxComments.Text) & "')")
                 Frm_CI_PF.loadProject()
                 Me.Close()
             End If

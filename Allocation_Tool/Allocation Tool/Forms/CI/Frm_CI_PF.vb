@@ -53,21 +53,21 @@ Public Class Frm_CI_PF
     Private Sub unLockControlsProjects() 'Unlock all controls of projects
         GroupBoxProject.Enabled = True
         'Load ComboBox
-        Dim Table_Category As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Category")
+        Dim Table_Category As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Category order by CAST(Category as varchar(max)) asc")
         ComboBoxCategory.DisplayMember = "Category"
         ComboBoxCategory.ValueMember = "ID"
         ComboBoxCategory.DataSource = Table_Category
-
-        Dim Table_Status As DataTable = SQL.Return_DataTable("select * from Project_Status")
+        
+        Dim Table_Status As DataTable = SQL.Return_DataTable("select * from Project_Status order by CAST(Status as varchar(max)) asc")
         ComboBoxStatus.DisplayMember = "Status"
         ComboBoxStatus.ValueMember = "ID"
         ComboBoxStatus.DataSource = Table_Status
-
-        Dim Table_Type As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Project_Type")
+        
+        Dim Table_Type As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Project_Type order by CAST(Project_Type as varchar(max)) asc")
         ComboBoxProjectType.DisplayMember = "Project_Type"
         ComboBoxProjectType.ValueMember = "ID"
         ComboBoxProjectType.DataSource = Table_Type
-
+        
         'Select Value
         If ComboBoxCategory.Items.Count > 0 Then
             ComboBoxCategory.SelectedIndex = 0
@@ -160,6 +160,9 @@ Public Class Frm_CI_PF
 
                     'Insert resources...
                     If retorno <> 0 Then
+                        clearControlsProjects()
+                        lockControlsProjects()
+
                         Id_Project = retorno
                         loadProject()
                         TabControl.Enabled = True
@@ -259,6 +262,8 @@ Public Class Frm_CI_PF
         Try
             DataGridViewResources.Columns.Remove("selectProject")
             DataGridViewResources.Columns.Remove("recurrenceText")
+            DataGridViewResources.Columns.Remove("totalValue")
+            DataGridViewResources.Columns.Remove("totalFTE")
         Catch ex As Exception
 
         End Try
@@ -268,6 +273,20 @@ Public Class Frm_CI_PF
 
         Dim dataTable As DataTable = SQL.Return_DataTable(
                                                             "select " & _
+                                                                "resources.Task_Type, " & _
+                                                                "(select Task_Type from " & dbTables & "_Task_Type where ID=resources.Task_Type) as Task_Type_Name, " & _
+                                                                "resources.Task_Name, " & _
+                                                                "resources.Owner_Name, " & _
+                                                                "resources.Owner, " & _
+                                                                "resources.Start_Date, " & _
+                                                                "resources.End_Date, " & _
+                                                                "resources.Entry_Type, " & _
+                                                                "(select Entry_Type from Project_Entry_Type where ID=resources.Entry_Type) as Entry_Type_Name, " & _
+                                                                "resources.Value, " & _
+                                                                "resources.Service_Line, " & _
+                                                                "(select Service_Line from Project_Service_Line where ID=resources.Service_Line) as Service_Line_Name, " & _
+                                                                "Resources.Recurrence, " & _
+                                                                " " & _
                                                                 "project.Category, " & _
                                                                 "(select Category from " & dbTables & "_Category where ID=project.Category) as Category_Name, " & _
                                                                 "project.VS_Chevron, " & _
@@ -278,20 +297,7 @@ Public Class Frm_CI_PF
                                                                 "project.Updated_By, " & _
                                                                 "resources.ID, " & _
                                                                 "resources.Project_ID, " & _
-                                                                "resources.Task_Name, " & _
-                                                                "resources.Task_Type, " & _
-                                                                "(select Task_Type from " & dbTables & "_Task_Type where ID=resources.Task_Type) as Task_Type_Name, " & _
-                                                                "resources.Owner_Name, " & _
-                                                                "resources.Owner, " & _
-                                                                "resources.Start_Date, " & _
-                                                                "resources.End_Date, " & _
-                                                                "resources.Entry_Type, " & _
-                                                                "(select Entry_Type from Project_Entry_Type where ID=resources.Entry_Type) as Entry_Type_Name, " & _
-                                                                "resources.Value, " & _
-                                                                "resources.Service_Line, " & _
-                                                                "(select Service_Line from Project_Service_Line where ID=resources.Service_Line) as Service_Line_Name, " & _
-                                                                "Resources.Comment, " & _
-                                                                "Resources.Recurrence " & _
+                                                                "Resources.Comment " & _
                                                             "from  " & _
                                                                 dbTables & "_Project as project, " & _
                                                                 dbTables & "_Resources as resources " & _
@@ -305,28 +311,35 @@ Public Class Frm_CI_PF
         DataGridViewResources.DataSource = ResourceBindingSource
 
         DataGridViewResources.Columns(0).Visible = False
-        DataGridViewResources.Columns(2).Visible = False
-        DataGridViewResources.Columns(4).Visible = False
-        DataGridViewResources.Columns(6).Visible = False
+        DataGridViewResources.Columns(1).HeaderText = "Task Type"
+        DataGridViewResources.Columns(4).HeaderText = "Owner TNumber"
         DataGridViewResources.Columns(7).Visible = False
-        DataGridViewResources.Columns(8).Visible = False
-        DataGridViewResources.Columns(9).Visible = False
-        DataGridViewResources.Columns(11).Visible = False
+        DataGridViewResources.Columns(8).HeaderText = "Entry Type"
+        DataGridViewResources.Columns(10).Visible = False
+        DataGridViewResources.Columns(11).HeaderText = "Service Line"
+
+        DataGridViewResources.Columns(12).Visible = False
+        DataGridViewResources.Columns(13).Visible = False
+        DataGridViewResources.Columns(14).Visible = False
         DataGridViewResources.Columns(15).Visible = False
         DataGridViewResources.Columns(16).Visible = False
         DataGridViewResources.Columns(17).Visible = False
+        DataGridViewResources.Columns(18).Visible = False
         DataGridViewResources.Columns(19).Visible = False
         DataGridViewResources.Columns(20).Visible = False
+        DataGridViewResources.Columns(21).Visible = False
         DataGridViewResources.Columns(22).Visible = False
         DataGridViewResources.Columns(23).Visible = False
 
         Dim TotalValue As New DataGridViewTextBoxColumn()
-        DataGridViewResources.Columns.Insert(20, TotalValue)
+        DataGridViewResources.Columns.Insert(DataGridViewResources.Rows.Count - 1, TotalValue) '20
         TotalValue.HeaderText = "Total Value"
         TotalValue.Name = "totalValue"
+        TotalValue.Visible = False
+
         Dim TotalFTE As New DataGridViewTextBoxColumn()
-        DataGridViewResources.Columns.Insert(20, TotalFTE)
-        TotalFTE.HeaderText = "Total FTE"
+        DataGridViewResources.Columns.Insert(DataGridViewResources.Rows.Count - 1, TotalFTE) '20
+        TotalFTE.HeaderText = "Monthly FTE"
         TotalFTE.Name = "totalFTE"
 
 
@@ -358,7 +371,7 @@ Public Class Frm_CI_PF
 
         DataGridViewResources.Columns.Add(recurrence)
 
-        recurrence.HeaderText = "Recurrence Text"
+        recurrence.HeaderText = "Recurrence"
         recurrence.Name = "recurrenceText"
 
         For Each row As DataGridViewRow In DataGridViewResources.Rows
@@ -431,6 +444,7 @@ Public Class Frm_CI_PF
             DataGridViewFiles.Columns(0).Visible = False
             DataGridViewFiles.Columns(1).Visible = False
             DataGridViewFiles.Columns(2).Name = "File Name"
+            DataGridViewFiles.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             DataGridViewFiles.Columns(3).Visible = False
             DataGridViewFiles.Columns(4).Name = "Owner"
 
@@ -475,14 +489,14 @@ Public Class Frm_CI_PF
     End Sub
 
     Private Sub ComboBoxCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxCategory.SelectedIndexChanged
-        Dim Table As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_VS_Chevron where ID_Category='" & sender.SelectedValue & "'")
+        Dim Table As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_VS_Chevron where ID_Category='" & sender.SelectedValue & "' order by CAST(VS_Chevron as varchar(max)) asc")
         ComboBoxVSChevron.DisplayMember = "VS_Chevron"
         ComboBoxVSChevron.ValueMember = "ID"
         ComboBoxVSChevron.DataSource = Table
     End Sub
 
     Private Sub ComboBoxVSChevron_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxVSChevron.SelectedIndexChanged
-        Dim Table As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Primary_Process where ID_VS_Chevron='" & sender.SelectedValue & "'")
+        Dim Table As DataTable = SQL.Return_DataTable("select * from " & dbTables & "_Primary_Process where ID_VS_Chevron='" & sender.SelectedValue & "' order by CAST(Primary_Process as varchar(max)) asc")
         ComboBoxPrimaryProcessProject.DisplayMember = "Primary_Process"
         ComboBoxPrimaryProcessProject.ValueMember = "ID"
         ComboBoxPrimaryProcessProject.DataSource = Table
@@ -568,7 +582,7 @@ Public Class Frm_CI_PF
     Private Sub ToolStripButtonRemove_Click(sender As Object, e As EventArgs) Handles ToolStripButtonRemove.Click
         If DotNet.IsConfirmed("Are you sure you want to delete this resource?") Then
             For Each dr As DataGridViewRow In DataGridViewResources.SelectedRows
-                SQL.Execute("Delete from " & dbTables & "_Resources where id = '" & dr.Cells(0).Value & "'")
+                SQL.Execute("Delete from " & dbTables & "_Resources where id = '" & dr.Cells("ID").Value & "'")
             Next
             loadResources(Id_Project)
         End If
@@ -660,5 +674,48 @@ Public Class Frm_CI_PF
             CheckBoxRegionAsia.CheckState = CheckState.Unchecked
             CheckBoxRegionEMEA.CheckState = CheckState.Unchecked
         End If
+    End Sub
+
+    Private Sub ToolStripButtonAddFiles_Click(sender As Object, e As EventArgs) Handles ToolStripButtonAddFiles.Click
+        Try
+            Dim fs As FileStream
+
+            OpenFileDialog.ShowDialog(Me)
+            Dim sFile As String = OpenFileDialog.FileName
+
+            fs = New FileStream(sFile, FileMode.Open, FileAccess.Read)
+            Dim docByte As Byte() = New Byte(fs.Length - 1) {}
+            fs.Read(docByte, 0, System.Convert.ToInt32(fs.Length))
+            fs.Close()
+
+            Dim SQLquery As String = "insert into " & dbTables & "_Files (Project_ID, FileName, [File], Owner) values ('" & Id_Project & "', '" & OpenFileDialog.SafeFileName & "', @fdoc, '" & UsersInfo.TNumber & "')"
+            Dim docfile As New SqlParameter
+            docfile.SqlDbType = SqlDbType.Binary
+            docfile.ParameterName = "fdoc"
+            docfile.Value = docByte
+
+            Dim myConn As New SqlConnection(SQL.Connection_String)
+            myConn.Open()
+            Dim sqlcmd As SqlCommand = New SqlCommand(SQLquery, myConn)
+            sqlcmd.Parameters.Add(docfile)
+            sqlcmd.ExecuteNonQuery()
+            myConn.Close()
+        Catch ex As Exception
+
+        End Try
+        loadFiles()
+    End Sub
+
+    Private Sub ToolStripButtonRemoveFiles_Click(sender As Object, e As EventArgs) Handles ToolStripButtonRemoveFiles.Click
+        If DotNet.IsConfirmed("Are you sure?") Then
+            For Each dr As DataGridViewRow In DataGridViewFiles.SelectedRows
+                SQL.Execute("Delete From " & dbTables & "_Files where id = '" & dr.Cells("ID").Value & "'")
+            Next
+            loadFiles()
+        End If
+    End Sub
+
+    Private Sub DataGridViewResources_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewResources.CellContentClick
+
     End Sub
 End Class

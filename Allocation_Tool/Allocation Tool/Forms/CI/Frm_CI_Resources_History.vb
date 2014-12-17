@@ -74,7 +74,8 @@
                                                 "Old_Value, " & _
                                                 "New_Value, " & _
                                                 "CONVERT(DATE, Date), " & _
-                                                "Recurrence " & _
+                                                "Recurrence, " & _
+                                                "Comment " & _
                                             "from " & _
                                                 "" & dbTables & "_Resources_Historical " & _
                                             "where " & _
@@ -90,6 +91,7 @@
         DataGridViewHistory.Columns(4).HeaderText = "Date"
         DataGridViewHistory.Columns(5).HeaderText = "Recurrence"
         DataGridViewHistory.Columns(5).Visible = False
+        DataGridViewHistory.Columns(6).HeaderText = "Comment"
 
         Dim recurrence As New DataGridViewTextBoxColumn()
 
@@ -100,39 +102,9 @@
 
         For Each row As DataGridViewRow In DataGridViewHistory.Rows
             Dim recipe As String = row.Cells(5).Value
-            Dim words() As String = Split(recipe, ",")
             Dim recipeText As String = ""
 
-            If words(0) = "DAILY" Then
-                If words(2) = "1" Then
-                    recipeText = "Occurs daily, every " & words(3) & " day(s) from " & words(1) & " until " & words(4)
-                ElseIf words(2) = "2" Then
-                    recipeText = "Occurs daily, every weekday from " & words(1) & " until " & words(4)
-                End If
-            ElseIf words(0) = "WEEKLY" Then
-                recipeText = "Occurs weekly, every " & words(2) & " week(s) on "
-                Dim days As String = ""
-                For c As Integer = 3 To (words.Count - 2)
-                    If days.Length > 0 Then
-                        days = days & ", "
-                    End If
-                    days = days & words(c).ToLower
-                Next
-                recipeText = recipeText & " " & days & " from " & words(1) & " until " & words(words.Count - 1)
-            ElseIf words(0) = "MONTHLY" Then
-                If words(2) = "1" Then
-                    recipeText = "Occurs monthly, on " & words(3) & " of every " & words(4) & " month(s) from " & words(1) & " until " & words(words.Count - 1)
-                ElseIf words(2) = "2" Then
-                    recipeText = "Occurs monthly, the " & words(3).ToLower & " " & words(4).ToLower & " of every " & words(5) & " month(s) from " & words(1) & " until " & words(words.Count - 1)
-                End If
-            ElseIf words(0) = "YEARLY" Then
-                recipeText = "Occurs every " & words(2) & " year(s) "
-                If words(2) = "1" Then
-                    recipeText = recipeText & "on " & words(4).ToLower & " " & words(5) & " from " & words(1) & " until " & words(words.Count - 1)
-                ElseIf words(2) = "2" Then
-                    recipeText = recipeText & "on the " & words(4).ToLower & " " & words(5).ToLower & " of " & words(6).ToLower & " from " & words(1) & " until " & words(words.Count - 1)
-                End If
-            End If
+            recipeText = translateRecipe(recipe)
             row.Cells("recurrenceText").Value = recipeText
         Next
 

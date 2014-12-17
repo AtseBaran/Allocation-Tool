@@ -64,10 +64,10 @@
                     MessageBox.Show("The date of vacations / holiday is out of week, please check the date.")
                     bandera = True
                 ElseIf VHDays.Value < 1 Or VHDays.Value > 5 Then
-                    MessageBox.Show("The number of the days of vacations / holiday is too much longer than expected, please check the date.")
+                    MessageBox.Show("Number of vacation/holiday days are higher than the working days in the time frame selected, please check.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     bandera = True
                 ElseIf (dTemp > DTP_End_Date.Value.Date) Then
-                    MessageBox.Show("The number of the days of vacations / holiday is too much longer than expected, please check the date.")
+                    MessageBox.Show("Number of vacation/holiday days are higher than the working days in the time frame selected, please check.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     bandera = True
                 End If
             End If
@@ -110,7 +110,7 @@
                         SQL.Execute("update " & _
                                         dbTables & "_Actuals " & _
                                     "set " & _
-                                        "Value='" & ValueTab1.Value & "', " & _
+                                        "Value= Value + " & ValueTab1.Value & ", " & _
                                         "Comment='" & Trim(TextBoxCommentTab1.Text) & "', " & _
                                         "Vacation_Holiday='" & Trim(CheckBoxVHTab1.CheckState) & "' " & _
                                     "where " & _
@@ -234,7 +234,7 @@
                                     SQL.Execute("update " & _
                                         dbTables & "_Actuals " & _
                                     "set " & _
-                                        "Value='" & ValueTab2.Value & "', " & _
+                                        "Value= Value + " & ValueTab2.Value & ", " & _
                                         "Comment='" & Trim(TextBoxCommentTab1.Text) & "', " & _
                                         "Vacation_Holiday='" & Trim(CheckBoxVHTab1.CheckState) & "' " & _
                                     "where " & _

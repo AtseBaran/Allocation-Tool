@@ -285,9 +285,9 @@
 
                 Dim data As New DataTable
                 data.Columns.Add("Project ID")
-                data.Columns.Add("Task Name")
                 data.Columns.Add("Id Task Type")
                 data.Columns.Add("Task Type")
+                data.Columns.Add("Task Name")
                 data.Columns.Add("Owner Name")
                 data.Columns.Add("Owner")
                 data.Columns.Add("Start Date")
@@ -483,6 +483,9 @@
                 DataGridViewSelected.Columns("Id Entry Type").Visible = False
                 DataGridViewSelected.Columns("Id Service Line").Visible = False
                 DataGridViewSelected.Columns("Recurrence").Visible = False
+
+                DataGridViewSelected.Columns("Owner").HeaderText = "Owner TNumber"
+                DataGridViewSelected.Columns("Recurrence Text").HeaderText = "Recurrence"
 
                 For i As Integer = 0 To (DataGridViewSelected.Columns.Count - 1)
                     DataGridViewSelected.Columns(i).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells

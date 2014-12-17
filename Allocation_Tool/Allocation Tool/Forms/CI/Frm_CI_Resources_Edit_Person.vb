@@ -113,7 +113,7 @@
         Next
 
         ' Get the dates
-        If DateDiff(DateInterval.Day, dateStart, dateEnd) < 23 Then
+        If DateDiff(DateInterval.Day, dateStart, dateEnd) <= 31 Then
             ' Values for day
             addBtn = True
             While dateTemp <= dateEnd
@@ -280,7 +280,7 @@
                             Next
                         End If
                     Next
-                    MessageBox.Show("Saved!")
+                    MessageBox.Show("The changes has been saved.")
                     loadData()
                 End If
             End If

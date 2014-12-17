@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="PSS Project Allocation Tool.exe" version="1.0.0.42" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="PSS Project Allocation Tool.exe" version="1.0.0.48" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="time_frame.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>azLJu+VJad0va5fuweiem2NsvrVvICDHZF5rvFXbkSc=</dsig:DigestValue>
+        <dsig:DigestValue>Cbg51krGtqtW89cmR9hwjgUH4Cjj8MFWkxHfDwD9l2I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EU7T4ei3YMIAUQNqcfENZga9/G2ijtgJzZ7kNDrgEYI=</dsig:DigestValue>
+        <dsig:DigestValue>AW3Dyt5ttpKqIFtYS6/GF7sm5lD4QafpPLhxJmumhq0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -122,7 +122,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fXpzgt55XV7ihTepoJ9y/6uD4eFRob1Tz6ZupZaeic4=</dsig:DigestValue>
+        <dsig:DigestValue>LG4wqWeuVxXfTyVJLVE/xJqzB+Z1gMCuBB8/0ysKak4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -151,26 +151,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS Framework.dll" size="375808">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS Framework.dll" size="377856">
       <assemblyIdentity name="PSS Framework" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>T2qZnVNMgjRnzMuDwls/tSAR/4v0nfKVb2umghVuCrA=</dsig:DigestValue>
+        <dsig:DigestValue>HAeHIgC1LtUT7OXtUjS7meySlzh62Z3l9qQx3LNKeqQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS Project Allocation Tool.exe" size="6405120">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PSS Project Allocation Tool.exe" size="7497728">
       <assemblyIdentity name="PSS Project Allocation Tool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XKy9iJIRR/aftERPExowwpmfb35siWeR1wSwZtcnwGY=</dsig:DigestValue>
+        <dsig:DigestValue>WOYJaCn79LTV0ABcuguG58JNb8qmGhSKw7iGYo8auY4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -258,13 +258,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="PSS Project Allocation Tool.exe.config" size="994">
+  <file name="PSS Project Allocation Tool.exe.config" size="965">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Jgf6Hv+e+1N50kFNIP5LwE7jq0FpJJtSPzmiK3/V9m8=</dsig:DigestValue>
+      <dsig:DigestValue>sbZGlSkNjon9BcwXh1BBUWDzrVycXbPAEtQt01px42g=</dsig:DigestValue>
     </hash>
   </file>
   <file name="time_frame.ico" size="99678">

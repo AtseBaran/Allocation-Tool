@@ -86,6 +86,9 @@
                                     "resources.id, " & _
                                     "project.id, " & _
                                     "project.Project_Name, " & _
+                                    "resources.Service_Line, " & _
+                                    "(select Service_Line from Project_Service_Line where Project_Service_Line.ID = resources.Service_Line) as Service_Line_Name, " & _
+                                    "resources.Owner, " & _
                                     "resources.Owner_Name, " & _
                                     "phase.Project_Phase, " & _
                                     "entry_type.Entry_Type, " & _
@@ -102,13 +105,12 @@
                                     "resources.Project_Phase = phase.ID and " & _
                                     "resources.Entry_Type = entry_type.ID and " & _
                                     "resources.Status <> 0 and " & _
-                                    "project.Status = 7 and " & _
-                                    "resources.Month between '" & DateSerial(Date.Now.Year, Date.Now.Month, "1") & "' and '" & DateSerial(Date.Now.Year, Date.Now.Month + 1, "0") & "' and " & _
+                                    "resources.[Month] >= CONVERT(date, (CONVERT(CHAR(4),YEAR(GETDATE())) + '-' + CONVERT(CHAR(2),MONTH(GETDATE())) + '-01')) and " & _
                                     "( " & _
                                         "Owner " & UsersInfo.Workflow_Onwer_String(AppName) & _
                                     ") " & _
                                 "order by " & _
-                                    "resources.[Month] asc") '"Owner = 'CS1214' or " & _ ' 7 = In Process
+                                    "resources.[Month] asc")
 
         BindingSourceActuals.DataSource = dataTable
         DataGridViewActuals.DataSource = dataTable
@@ -116,14 +118,17 @@
         DataGridViewActuals.Columns(0).Visible = False
         DataGridViewActuals.Columns(1).Visible = False
         DataGridViewActuals.Columns(2).HeaderText = "Project Name"
-        DataGridViewActuals.Columns(3).HeaderText = "Owner Name"
-        DataGridViewActuals.Columns(4).HeaderText = "Project Phase"
-        DataGridViewActuals.Columns(5).HeaderText = "Entry Type"
-        DataGridViewActuals.Columns(5).Name = "Entry_Type"
-        DataGridViewActuals.Columns(6).HeaderText = "Month"
-        DataGridViewActuals.Columns(6).DefaultCellStyle.Format = "MMMM yyyy"
-        DataGridViewActuals.Columns(7).HeaderText = "Monthly Value"
-        DataGridViewActuals.Columns(8).HeaderText = "Monthly FTE"
+        DataGridViewActuals.Columns(3).Visible = False
+        DataGridViewActuals.Columns(4).HeaderText = "Service Line"
+        DataGridViewActuals.Columns(5).HeaderText = "TNumber"
+        DataGridViewActuals.Columns(6).HeaderText = "Owner Name"
+        DataGridViewActuals.Columns(7).HeaderText = "Project Phase"
+        DataGridViewActuals.Columns(8).HeaderText = "Entry Type"
+        DataGridViewActuals.Columns(8).Name = "Entry_Type"
+        DataGridViewActuals.Columns(9).HeaderText = "Month"
+        DataGridViewActuals.Columns(9).DefaultCellStyle.Format = "MMMM yyyy"
+        DataGridViewActuals.Columns(10).HeaderText = "Monthly Value"
+        DataGridViewActuals.Columns(11).HeaderText = "Monthly FTE"
         DataGridViewActuals.Columns.Add("ATV", "Actuals Total Value")
         DataGridViewActuals.Columns.Add("AMFTE", "Actuals Monthly FTE")
 
@@ -172,9 +177,9 @@
                 End Try
 
                 DataGridViewActuals.Item("ATV", row.Index).Value = value
-                If (row.Cells(7).Value / 3) > value Then
+                If (row.Cells(10).Value / 3) > value Then
                     DataGridViewActuals.Item("ATV", row.Index).Style.BackColor = Color.RosyBrown
-                ElseIf ((row.Cells(7).Value / 3) * 2) > value Then
+                ElseIf ((row.Cells(10).Value / 3) * 2) > value Then
                     DataGridViewActuals.Item("ATV", row.Index).Style.BackColor = Color.LightYellow
                 Else
                     DataGridViewActuals.Item("ATV", row.Index).Style.BackColor = Color.LightGreen

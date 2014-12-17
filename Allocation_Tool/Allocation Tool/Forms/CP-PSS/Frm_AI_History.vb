@@ -20,6 +20,10 @@
         dataTable = SQL.Return_DataTable("select " & _
                                                 "actuals.ID, " & _
                                                 "project.Project_Name, " & _
+                                                "Resources.Service_Line, " & _
+                                                "(select Service_Line from Project_Service_Line where ID=resources.Service_Line) as Service_Line_Name, " & _
+                                                "resources.Owner, " & _
+                                                "resources.Owner_Name, " & _
                                                 "actuals.Actual_Date, " & _
                                                 "phase.Project_Phase, " & _
                                                 "entry_type.Entry_Type, " & _
@@ -45,20 +49,26 @@
         DataGridViewHistory.Columns(0).HeaderText = "ID"
         DataGridViewHistory.Columns(0).Visible = False
         DataGridViewHistory.Columns(1).HeaderText = "Project Name"
-        DataGridViewHistory.Columns(2).HeaderText = "Actual Date"
-        DataGridViewHistory.Columns(3).HeaderText = "Project Phase"
-        DataGridViewHistory.Columns(4).HeaderText = "Entry Type"
-        DataGridViewHistory.Columns(4).Name = "Entry_Type"
-        DataGridViewHistory.Columns(5).HeaderText = "Value"
-        DataGridViewHistory.Columns(5).Name = "Value"
-        DataGridViewHistory.Columns(5).DefaultCellStyle.Format = "N3"
-        DataGridViewHistory.Columns(6).HeaderText = "Comment"
+
+        DataGridViewHistory.Columns(2).Visible = False
+        DataGridViewHistory.Columns(3).HeaderText = "Service Line"
+        DataGridViewHistory.Columns(4).HeaderText = "TNumber"
+        DataGridViewHistory.Columns(5).HeaderText = "Owner"
+
+        DataGridViewHistory.Columns(6).HeaderText = "Actual Date"
+        DataGridViewHistory.Columns(7).HeaderText = "Project Phase"
+        DataGridViewHistory.Columns(8).HeaderText = "Entry Type"
+        DataGridViewHistory.Columns(8).Name = "Entry_Type"
+        DataGridViewHistory.Columns(9).HeaderText = "Value"
+        DataGridViewHistory.Columns(9).Name = "Value"
+        DataGridViewHistory.Columns(9).DefaultCellStyle.Format = "N3"
+        DataGridViewHistory.Columns(10).HeaderText = "Comment"
 
         Dim FTEcolumn As New DataGridViewTextBoxColumn()
 
-        DataGridViewHistory.Columns.Insert(6, FTEcolumn)
+        DataGridViewHistory.Columns.Insert(11, FTEcolumn)
 
-        FTEcolumn.HeaderText = "FTE"
+        FTEcolumn.HeaderText = "Monthly FTE"
         FTEcolumn.Name = "FTEcolumn"
 
         calculate()
