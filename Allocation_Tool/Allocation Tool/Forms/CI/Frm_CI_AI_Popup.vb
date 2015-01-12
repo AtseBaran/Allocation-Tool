@@ -139,7 +139,7 @@
                     Dim endDate As Date = DTP_End_Date.Value
                     Dim curDate As Date = startDate
                     Dim vsDate As Date = DTPVH.Value.Date
-                    Dim veDate As Date = DTPVH.Value.Date.AddDays(VHDays.Value - 1)
+                    Dim veDate As Date = DTPVH.Value.Date '.AddDays(VHDays.Value - 1)
 
                     Dim recipe As String
                     Dim dataTable As DataTable = SQL.Return_DataTable("select recurrence from " & dbTables & "_Resources where ID='" & id_resource & "'")

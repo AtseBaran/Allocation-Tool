@@ -29,14 +29,20 @@ Partial Class Frm_Main
         Me.CPProjectForecastToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CPActualsInputToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CPReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CPForecastVsActualsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CPForecastChangesHistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PSSProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PSSProjectForecastToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PSSActualsInputToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PSSReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PSSForecastVSActualsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PSSForecastChangesHistoryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContinuousImprovementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CIAllocationProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CIActualsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CIReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CIForecastVSActualsToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CIForecastChangesHistoryToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MaintananceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -78,26 +84,31 @@ Partial Class Frm_Main
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.FlowLayoutPanelControls = New System.Windows.Forms.FlowLayoutPanel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.LinkLabelCPReports = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabelCPRH = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabelCPR = New System.Windows.Forms.LinkLabel()
         Me.LinkLabelCPAI = New System.Windows.Forms.LinkLabel()
         Me.LinkLabelCPPF = New System.Windows.Forms.LinkLabel()
         Me.PictureBoxCP = New System.Windows.Forms.PictureBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.LinkLabelPSSRH = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabelPSSR = New System.Windows.Forms.LinkLabel()
         Me.PictureBoxPSS = New System.Windows.Forms.PictureBox()
-        Me.LinkLabelPSSReports = New System.Windows.Forms.LinkLabel()
         Me.LinkLabelPSSAI = New System.Windows.Forms.LinkLabel()
         Me.LinkLabelPSSPF = New System.Windows.Forms.LinkLabel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.LinkLabelCIRH = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabelCIR = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel12 = New System.Windows.Forms.LinkLabel()
         Me.PictureBoxCI = New System.Windows.Forms.PictureBox()
         Me.LinkLabel11 = New System.Windows.Forms.LinkLabel()
-        Me.LinkLabelCIReports = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel10 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabelCIAI = New System.Windows.Forms.LinkLabel()
         Me.LinkLabelCIAP = New System.Windows.Forms.LinkLabel()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.LinkLabelGR = New System.Windows.Forms.LinkLabel()
         Me.PictureBoxDoc = New System.Windows.Forms.PictureBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.LinkLabelDocs = New System.Windows.Forms.LinkLabel()
         Me.PictureBoxRep = New System.Windows.Forms.PictureBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.LinkLabelMaintenanceUsers = New System.Windows.Forms.LinkLabel()
@@ -168,10 +179,25 @@ Partial Class Frm_Main
         '
         'CPReportToolStripMenuItem
         '
+        Me.CPReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CPForecastVsActualsToolStripMenuItem, Me.CPForecastChangesHistoryToolStripMenuItem})
         Me.CPReportToolStripMenuItem.Name = "CPReportToolStripMenuItem"
         Me.CPReportToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
         Me.CPReportToolStripMenuItem.Tag = "CP_R"
         Me.CPReportToolStripMenuItem.Text = "Report"
+        '
+        'CPForecastVsActualsToolStripMenuItem
+        '
+        Me.CPForecastVsActualsToolStripMenuItem.Name = "CPForecastVsActualsToolStripMenuItem"
+        Me.CPForecastVsActualsToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.CPForecastVsActualsToolStripMenuItem.Tag = "CP_R"
+        Me.CPForecastVsActualsToolStripMenuItem.Text = "Forecast VS Actuals"
+        '
+        'CPForecastChangesHistoryToolStripMenuItem
+        '
+        Me.CPForecastChangesHistoryToolStripMenuItem.Name = "CPForecastChangesHistoryToolStripMenuItem"
+        Me.CPForecastChangesHistoryToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.CPForecastChangesHistoryToolStripMenuItem.Tag = "CP_RH"
+        Me.CPForecastChangesHistoryToolStripMenuItem.Text = "Forecast Changes History"
         '
         'PSSProjectsToolStripMenuItem
         '
@@ -197,10 +223,25 @@ Partial Class Frm_Main
         '
         'PSSReportsToolStripMenuItem
         '
+        Me.PSSReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PSSForecastVSActualsToolStripMenuItem1, Me.PSSForecastChangesHistoryToolStripMenuItem1})
         Me.PSSReportsToolStripMenuItem.Name = "PSSReportsToolStripMenuItem"
         Me.PSSReportsToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
         Me.PSSReportsToolStripMenuItem.Tag = "PSS_R"
         Me.PSSReportsToolStripMenuItem.Text = "Reports"
+        '
+        'PSSForecastVSActualsToolStripMenuItem1
+        '
+        Me.PSSForecastVSActualsToolStripMenuItem1.Name = "PSSForecastVSActualsToolStripMenuItem1"
+        Me.PSSForecastVSActualsToolStripMenuItem1.Size = New System.Drawing.Size(208, 22)
+        Me.PSSForecastVSActualsToolStripMenuItem1.Tag = "PSS_R"
+        Me.PSSForecastVSActualsToolStripMenuItem1.Text = "Forecast VS Actuals"
+        '
+        'PSSForecastChangesHistoryToolStripMenuItem1
+        '
+        Me.PSSForecastChangesHistoryToolStripMenuItem1.Name = "PSSForecastChangesHistoryToolStripMenuItem1"
+        Me.PSSForecastChangesHistoryToolStripMenuItem1.Size = New System.Drawing.Size(208, 22)
+        Me.PSSForecastChangesHistoryToolStripMenuItem1.Tag = "PSS_RH"
+        Me.PSSForecastChangesHistoryToolStripMenuItem1.Text = "Forecast Changes History"
         '
         'ContinuousImprovementToolStripMenuItem
         '
@@ -226,10 +267,25 @@ Partial Class Frm_Main
         '
         'CIReportToolStripMenuItem
         '
+        Me.CIReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CIForecastVSActualsToolStripMenuItem2, Me.CIForecastChangesHistoryToolStripMenuItem2})
         Me.CIReportToolStripMenuItem.Name = "CIReportToolStripMenuItem"
         Me.CIReportToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.CIReportToolStripMenuItem.Tag = "CI_R"
         Me.CIReportToolStripMenuItem.Text = "Report"
+        '
+        'CIForecastVSActualsToolStripMenuItem2
+        '
+        Me.CIForecastVSActualsToolStripMenuItem2.Name = "CIForecastVSActualsToolStripMenuItem2"
+        Me.CIForecastVSActualsToolStripMenuItem2.Size = New System.Drawing.Size(208, 22)
+        Me.CIForecastVSActualsToolStripMenuItem2.Tag = "CI_R"
+        Me.CIForecastVSActualsToolStripMenuItem2.Text = "Forecast VS Actuals"
+        '
+        'CIForecastChangesHistoryToolStripMenuItem2
+        '
+        Me.CIForecastChangesHistoryToolStripMenuItem2.Name = "CIForecastChangesHistoryToolStripMenuItem2"
+        Me.CIForecastChangesHistoryToolStripMenuItem2.Size = New System.Drawing.Size(208, 22)
+        Me.CIForecastChangesHistoryToolStripMenuItem2.Tag = "CI_RH"
+        Me.CIForecastChangesHistoryToolStripMenuItem2.Text = "Forecast Changes History"
         '
         'DocumentsToolStripMenuItem
         '
@@ -562,7 +618,8 @@ Partial Class Frm_Main
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.LinkLabelCPReports)
+        Me.GroupBox1.Controls.Add(Me.LinkLabelCPRH)
+        Me.GroupBox1.Controls.Add(Me.LinkLabelCPR)
         Me.GroupBox1.Controls.Add(Me.LinkLabelCPAI)
         Me.GroupBox1.Controls.Add(Me.LinkLabelCPPF)
         Me.GroupBox1.Controls.Add(Me.PictureBoxCP)
@@ -576,20 +633,33 @@ Partial Class Frm_Main
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Corporate Projects"
         '
-        'LinkLabelCPReports
+        'LinkLabelCPRH
         '
-        Me.LinkLabelCPReports.ActiveLinkColor = System.Drawing.Color.Black
-        Me.LinkLabelCPReports.AutoSize = True
-        Me.LinkLabelCPReports.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabelCPReports.LinkColor = System.Drawing.Color.White
-        Me.LinkLabelCPReports.Location = New System.Drawing.Point(8, 89)
-        Me.LinkLabelCPReports.Name = "LinkLabelCPReports"
-        Me.LinkLabelCPReports.Size = New System.Drawing.Size(44, 13)
-        Me.LinkLabelCPReports.TabIndex = 16
-        Me.LinkLabelCPReports.TabStop = True
-        Me.LinkLabelCPReports.Tag = "CP_R"
-        Me.LinkLabelCPReports.Text = "Reports"
-        Me.LinkLabelCPReports.VisitedLinkColor = System.Drawing.Color.White
+        Me.LinkLabelCPRH.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabelCPRH.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabelCPRH.LinkColor = System.Drawing.Color.White
+        Me.LinkLabelCPRH.Location = New System.Drawing.Point(8, 109)
+        Me.LinkLabelCPRH.Name = "LinkLabelCPRH"
+        Me.LinkLabelCPRH.Size = New System.Drawing.Size(103, 30)
+        Me.LinkLabelCPRH.TabIndex = 20
+        Me.LinkLabelCPRH.TabStop = True
+        Me.LinkLabelCPRH.Tag = "CP_RH"
+        Me.LinkLabelCPRH.Text = "Forecast Changes History Report"
+        Me.LinkLabelCPRH.VisitedLinkColor = System.Drawing.Color.White
+        '
+        'LinkLabelCPR
+        '
+        Me.LinkLabelCPR.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabelCPR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabelCPR.LinkColor = System.Drawing.Color.White
+        Me.LinkLabelCPR.Location = New System.Drawing.Point(8, 77)
+        Me.LinkLabelCPR.Name = "LinkLabelCPR"
+        Me.LinkLabelCPR.Size = New System.Drawing.Size(103, 30)
+        Me.LinkLabelCPR.TabIndex = 19
+        Me.LinkLabelCPR.TabStop = True
+        Me.LinkLabelCPR.Tag = "CP_R"
+        Me.LinkLabelCPR.Text = "Forecast VS Actuals Report"
+        Me.LinkLabelCPR.VisitedLinkColor = System.Drawing.Color.White
         '
         'LinkLabelCPAI
         '
@@ -597,7 +667,7 @@ Partial Class Frm_Main
         Me.LinkLabelCPAI.AutoSize = True
         Me.LinkLabelCPAI.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabelCPAI.LinkColor = System.Drawing.Color.White
-        Me.LinkLabelCPAI.Location = New System.Drawing.Point(8, 64)
+        Me.LinkLabelCPAI.Location = New System.Drawing.Point(8, 56)
         Me.LinkLabelCPAI.Name = "LinkLabelCPAI"
         Me.LinkLabelCPAI.Size = New System.Drawing.Size(69, 13)
         Me.LinkLabelCPAI.TabIndex = 15
@@ -636,8 +706,9 @@ Partial Class Frm_Main
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox2.Controls.Add(Me.LinkLabelPSSRH)
+        Me.GroupBox2.Controls.Add(Me.LinkLabelPSSR)
         Me.GroupBox2.Controls.Add(Me.PictureBoxPSS)
-        Me.GroupBox2.Controls.Add(Me.LinkLabelPSSReports)
         Me.GroupBox2.Controls.Add(Me.LinkLabelPSSAI)
         Me.GroupBox2.Controls.Add(Me.LinkLabelPSSPF)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -649,6 +720,34 @@ Partial Class Frm_Main
         Me.GroupBox2.TabIndex = 17
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "PSS Projects"
+        '
+        'LinkLabelPSSRH
+        '
+        Me.LinkLabelPSSRH.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabelPSSRH.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabelPSSRH.LinkColor = System.Drawing.Color.White
+        Me.LinkLabelPSSRH.Location = New System.Drawing.Point(8, 109)
+        Me.LinkLabelPSSRH.Name = "LinkLabelPSSRH"
+        Me.LinkLabelPSSRH.Size = New System.Drawing.Size(103, 30)
+        Me.LinkLabelPSSRH.TabIndex = 20
+        Me.LinkLabelPSSRH.TabStop = True
+        Me.LinkLabelPSSRH.Tag = "PSS_RH"
+        Me.LinkLabelPSSRH.Text = "Forecast Changes History Report"
+        Me.LinkLabelPSSRH.VisitedLinkColor = System.Drawing.Color.White
+        '
+        'LinkLabelPSSR
+        '
+        Me.LinkLabelPSSR.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabelPSSR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabelPSSR.LinkColor = System.Drawing.Color.White
+        Me.LinkLabelPSSR.Location = New System.Drawing.Point(8, 77)
+        Me.LinkLabelPSSR.Name = "LinkLabelPSSR"
+        Me.LinkLabelPSSR.Size = New System.Drawing.Size(103, 30)
+        Me.LinkLabelPSSR.TabIndex = 19
+        Me.LinkLabelPSSR.TabStop = True
+        Me.LinkLabelPSSR.Tag = "PSS_R"
+        Me.LinkLabelPSSR.Text = "Forecast VS Actuals Report"
+        Me.LinkLabelPSSR.VisitedLinkColor = System.Drawing.Color.White
         '
         'PictureBoxPSS
         '
@@ -662,28 +761,13 @@ Partial Class Frm_Main
         Me.PictureBoxPSS.TabStop = False
         Me.PictureBoxPSS.Tag = "PSS Projects"
         '
-        'LinkLabelPSSReports
-        '
-        Me.LinkLabelPSSReports.ActiveLinkColor = System.Drawing.Color.Black
-        Me.LinkLabelPSSReports.AutoSize = True
-        Me.LinkLabelPSSReports.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabelPSSReports.LinkColor = System.Drawing.Color.White
-        Me.LinkLabelPSSReports.Location = New System.Drawing.Point(8, 89)
-        Me.LinkLabelPSSReports.Name = "LinkLabelPSSReports"
-        Me.LinkLabelPSSReports.Size = New System.Drawing.Size(44, 13)
-        Me.LinkLabelPSSReports.TabIndex = 16
-        Me.LinkLabelPSSReports.TabStop = True
-        Me.LinkLabelPSSReports.Tag = "PSS_R"
-        Me.LinkLabelPSSReports.Text = "Reports"
-        Me.LinkLabelPSSReports.VisitedLinkColor = System.Drawing.Color.White
-        '
         'LinkLabelPSSAI
         '
         Me.LinkLabelPSSAI.ActiveLinkColor = System.Drawing.Color.Black
         Me.LinkLabelPSSAI.AutoSize = True
         Me.LinkLabelPSSAI.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabelPSSAI.LinkColor = System.Drawing.Color.White
-        Me.LinkLabelPSSAI.Location = New System.Drawing.Point(8, 64)
+        Me.LinkLabelPSSAI.Location = New System.Drawing.Point(8, 56)
         Me.LinkLabelPSSAI.Name = "LinkLabelPSSAI"
         Me.LinkLabelPSSAI.Size = New System.Drawing.Size(69, 13)
         Me.LinkLabelPSSAI.TabIndex = 15
@@ -710,10 +794,11 @@ Partial Class Frm_Main
         'GroupBox3
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox3.Controls.Add(Me.LinkLabelCIRH)
+        Me.GroupBox3.Controls.Add(Me.LinkLabelCIR)
         Me.GroupBox3.Controls.Add(Me.LinkLabel12)
         Me.GroupBox3.Controls.Add(Me.PictureBoxCI)
         Me.GroupBox3.Controls.Add(Me.LinkLabel11)
-        Me.GroupBox3.Controls.Add(Me.LinkLabelCIReports)
         Me.GroupBox3.Controls.Add(Me.LinkLabel10)
         Me.GroupBox3.Controls.Add(Me.LinkLabelCIAI)
         Me.GroupBox3.Controls.Add(Me.LinkLabelCIAP)
@@ -726,6 +811,34 @@ Partial Class Frm_Main
         Me.GroupBox3.TabIndex = 18
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Continuous Improvement"
+        '
+        'LinkLabelCIRH
+        '
+        Me.LinkLabelCIRH.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabelCIRH.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabelCIRH.LinkColor = System.Drawing.Color.White
+        Me.LinkLabelCIRH.Location = New System.Drawing.Point(8, 109)
+        Me.LinkLabelCIRH.Name = "LinkLabelCIRH"
+        Me.LinkLabelCIRH.Size = New System.Drawing.Size(103, 30)
+        Me.LinkLabelCIRH.TabIndex = 20
+        Me.LinkLabelCIRH.TabStop = True
+        Me.LinkLabelCIRH.Tag = "CI_RH"
+        Me.LinkLabelCIRH.Text = "Forecast Changes History Report"
+        Me.LinkLabelCIRH.VisitedLinkColor = System.Drawing.Color.White
+        '
+        'LinkLabelCIR
+        '
+        Me.LinkLabelCIR.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabelCIR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabelCIR.LinkColor = System.Drawing.Color.White
+        Me.LinkLabelCIR.Location = New System.Drawing.Point(8, 77)
+        Me.LinkLabelCIR.Name = "LinkLabelCIR"
+        Me.LinkLabelCIR.Size = New System.Drawing.Size(103, 30)
+        Me.LinkLabelCIR.TabIndex = 19
+        Me.LinkLabelCIR.TabStop = True
+        Me.LinkLabelCIR.Tag = "CI_R"
+        Me.LinkLabelCIR.Text = "Forecast VS Actuals Report"
+        Me.LinkLabelCIR.VisitedLinkColor = System.Drawing.Color.White
         '
         'LinkLabel12
         '
@@ -763,21 +876,6 @@ Partial Class Frm_Main
         Me.LinkLabel11.Text = "Actuals Input"
         Me.LinkLabel11.VisitedLinkColor = System.Drawing.Color.White
         '
-        'LinkLabelCIReports
-        '
-        Me.LinkLabelCIReports.ActiveLinkColor = System.Drawing.Color.Black
-        Me.LinkLabelCIReports.AutoSize = True
-        Me.LinkLabelCIReports.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabelCIReports.LinkColor = System.Drawing.Color.White
-        Me.LinkLabelCIReports.Location = New System.Drawing.Point(8, 89)
-        Me.LinkLabelCIReports.Name = "LinkLabelCIReports"
-        Me.LinkLabelCIReports.Size = New System.Drawing.Size(44, 13)
-        Me.LinkLabelCIReports.TabIndex = 16
-        Me.LinkLabelCIReports.TabStop = True
-        Me.LinkLabelCIReports.Tag = "CI_R"
-        Me.LinkLabelCIReports.Text = "Reports"
-        Me.LinkLabelCIReports.VisitedLinkColor = System.Drawing.Color.White
-        '
         'LinkLabel10
         '
         Me.LinkLabel10.AutoSize = True
@@ -796,7 +894,7 @@ Partial Class Frm_Main
         Me.LinkLabelCIAI.AutoSize = True
         Me.LinkLabelCIAI.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabelCIAI.LinkColor = System.Drawing.Color.White
-        Me.LinkLabelCIAI.Location = New System.Drawing.Point(8, 64)
+        Me.LinkLabelCIAI.Location = New System.Drawing.Point(8, 56)
         Me.LinkLabelCIAI.Name = "LinkLabelCIAI"
         Me.LinkLabelCIAI.Size = New System.Drawing.Size(69, 13)
         Me.LinkLabelCIAI.TabIndex = 15
@@ -823,6 +921,7 @@ Partial Class Frm_Main
         'GroupBox4
         '
         Me.GroupBox4.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox4.Controls.Add(Me.LinkLabelGR)
         Me.GroupBox4.Controls.Add(Me.PictureBoxDoc)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.ForeColor = System.Drawing.Color.White
@@ -833,6 +932,21 @@ Partial Class Frm_Main
         Me.GroupBox4.TabIndex = 19
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Reports"
+        '
+        'LinkLabelGR
+        '
+        Me.LinkLabelGR.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabelGR.AutoSize = True
+        Me.LinkLabelGR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabelGR.LinkColor = System.Drawing.Color.White
+        Me.LinkLabelGR.Location = New System.Drawing.Point(8, 34)
+        Me.LinkLabelGR.Name = "LinkLabelGR"
+        Me.LinkLabelGR.Size = New System.Drawing.Size(79, 13)
+        Me.LinkLabelGR.TabIndex = 17
+        Me.LinkLabelGR.TabStop = True
+        Me.LinkLabelGR.Tag = "REPORTS"
+        Me.LinkLabelGR.Text = "General Report"
+        Me.LinkLabelGR.VisitedLinkColor = System.Drawing.Color.White
         '
         'PictureBoxDoc
         '
@@ -849,6 +963,7 @@ Partial Class Frm_Main
         'GroupBox6
         '
         Me.GroupBox6.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox6.Controls.Add(Me.LinkLabelDocs)
         Me.GroupBox6.Controls.Add(Me.PictureBoxRep)
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox6.ForeColor = System.Drawing.Color.White
@@ -859,6 +974,20 @@ Partial Class Frm_Main
         Me.GroupBox6.TabIndex = 19
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Documents"
+        '
+        'LinkLabelDocs
+        '
+        Me.LinkLabelDocs.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabelDocs.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabelDocs.LinkColor = System.Drawing.Color.White
+        Me.LinkLabelDocs.Location = New System.Drawing.Point(8, 34)
+        Me.LinkLabelDocs.Name = "LinkLabelDocs"
+        Me.LinkLabelDocs.Size = New System.Drawing.Size(103, 41)
+        Me.LinkLabelDocs.TabIndex = 18
+        Me.LinkLabelDocs.TabStop = True
+        Me.LinkLabelDocs.Tag = "DOC"
+        Me.LinkLabelDocs.Text = "Upload and Download Documents"
+        Me.LinkLabelDocs.VisitedLinkColor = System.Drawing.Color.White
         '
         'PictureBoxRep
         '
@@ -927,8 +1056,9 @@ Partial Class Frm_Main
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Right
         Me.PictureBox2.Image = Global.Allocation_Tool.My.Resources.Resources.PSS2
-        Me.PictureBox2.Location = New System.Drawing.Point(398, 0)
+        Me.PictureBox2.Location = New System.Drawing.Point(417, 0)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(271, 74)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -1004,6 +1134,7 @@ Partial Class Frm_Main
         Me.GroupBox3.PerformLayout()
         CType(Me.PictureBoxCI, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         CType(Me.PictureBoxDoc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         CType(Me.PictureBoxRep, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1067,18 +1198,15 @@ Partial Class Frm_Main
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents FlowLayoutPanelControls As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents LinkLabelCPReports As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabelCPAI As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabelCPPF As System.Windows.Forms.LinkLabel
     Friend WithEvents PictureBoxCP As System.Windows.Forms.PictureBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents PictureBoxPSS As System.Windows.Forms.PictureBox
-    Friend WithEvents LinkLabelPSSReports As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabelPSSAI As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabelPSSPF As System.Windows.Forms.LinkLabel
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents PictureBoxCI As System.Windows.Forms.PictureBox
-    Friend WithEvents LinkLabelCIReports As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabelCIAI As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabelCIAP As System.Windows.Forms.LinkLabel
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
@@ -1102,5 +1230,19 @@ Partial Class Frm_Main
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents TaskNameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents CPForecastVsActualsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CPForecastChangesHistoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PSSForecastVSActualsToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PSSForecastChangesHistoryToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CIForecastVSActualsToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CIForecastChangesHistoryToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LinkLabelDocs As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabelCPRH As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabelCPR As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabelPSSRH As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabelPSSR As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabelCIRH As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabelCIR As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabelGR As System.Windows.Forms.LinkLabel
 
 End Class

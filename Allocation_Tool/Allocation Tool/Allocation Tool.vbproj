@@ -15,7 +15,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>C:\Users\loria.e\Desktop\Projects\Builds\Allocation Tool\</PublishUrl>
+    <PublishUrl>ftp://131.190.68.219/Allocation/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,13 +27,15 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>PSS Project Allocation Tool</ProductName>
     <SuiteName>PSS Project Allocation Tool</SuiteName>
+    <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>48</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>759</ApplicationRevision>
+    <ApplicationVersion>1.112.2015.759</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -175,6 +177,12 @@
     <Compile Include="Forms\CI\Frm_CI_Report.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\CI\Frm_CI_Report_History.Designer.vb">
+      <DependentUpon>Frm_CI_Report_History.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CI\Frm_CI_Report_History.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\CI\Frm_CI_Report_Popup.Designer.vb">
       <DependentUpon>Frm_CI_Report_Popup.vb</DependentUpon>
     </Compile>
@@ -301,6 +309,12 @@
     <Compile Include="Forms\Frm_Reports_Popup.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\CP-PSS\Frm_Report_History.Designer.vb">
+      <DependentUpon>Frm_Report_History.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CP-PSS\Frm_Report_History.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Frm_Wait.Designer.vb">
       <DependentUpon>Frm_Wait.vb</DependentUpon>
     </Compile>
@@ -372,6 +386,9 @@
     <EmbeddedResource Include="Forms\CI\Frm_CI_Report.resx">
       <DependentUpon>Frm_CI_Report.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CI\Frm_CI_Report_History.resx">
+      <DependentUpon>Frm_CI_Report_History.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CI\Frm_CI_Report_Popup.resx">
       <DependentUpon>Frm_CI_Report_Popup.vb</DependentUpon>
     </EmbeddedResource>
@@ -434,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Reports_Popup.resx">
       <DependentUpon>Frm_Reports_Popup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CP-PSS\Frm_Report_History.resx">
+      <DependentUpon>Frm_Report_History.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Wait.resx">
       <DependentUpon>Frm_Wait.vb</DependentUpon>

@@ -178,6 +178,51 @@ Public Class Frm_Report
             End If
         End If
 
+        'Category
+        If Category.Length > 0 Then
+            temp = Split(Category, ",")
+            first = True
+            where = where & t & "Category in ( "
+            For Each item As String In temp
+                If Not first Then
+                    where = where & ","
+                End If
+                where = where & "'" & Mid(item, 3) & "'"
+                first = False
+            Next
+            where = where & ") "
+        End If
+
+        'VS_Chevron
+        If VSChevron.Length > 0 Then
+            temp = Split(VSChevron, ",")
+            first = True
+            where = where & t & "VS_Chevron in ( "
+            For Each item As String In temp
+                If Not first Then
+                    where = where & ","
+                End If
+                where = where & "'" & Mid(item, 3) & "'"
+                first = False
+            Next
+            where = where & ") "
+        End If
+
+        'Primary_Process
+        If Category.Length > 0 Then
+            temp = Split(PrimaryProcess, ",")
+            first = True
+            where = where & t & "Primary_Process in ( "
+            For Each item As String In temp
+                If Not first Then
+                    where = where & ","
+                End If
+                where = where & "'" & Mid(item, 3) & "'"
+                first = False
+            Next
+            where = where & ") "
+        End If
+
         'Owner Name
         If OwnerName.Length > 0 Then
             temp = Split(OwnerName, ",")
@@ -585,47 +630,62 @@ Public Class Frm_Report
 
         dataTableR = SQL.Return_DataTable(
             "select " & _
-                dbTables & "_Resources.Project_ID, " & _
-                "(select " & dbTables & "_Project.Project_Name from " & dbTables & "_Project where " & dbTables & "_Project.ID=" & dbTables & "_Resources.Project_ID) as Project_Name, " & _
-                dbTables & "_Resources.Month as Month, " & _
-                "sum(" & dbTables & "_Resources.Value) as Monthly_FTE_REQ, " & _
-                "(select " & dbTables & "_Project.XGBS_PM from " & dbTables & "_Project where " & dbTables & "_Project.ID=" & dbTables & "_Resources.Project_ID) as XGBS_PM, " & _
-                dbTables & "_Resources.[Owner], " & _
-                "(select top 1 " & dbTables & "_Resources.Owner_Name from " & dbTables & "_Resources where " & dbTables & "_Resources.ID = " & dbTables & "_Resources.ID) as Owner_Name, " & _
-                dbTables & "_Resources.ID as Resource_ID, " & _
-                "(select top 1 " & dbTables & "_Resources.Comment from " & dbTables & "_Resources where " & dbTables & "_Resources.ID = " & dbTables & "_Resources.ID) as Resource_Description, " & _
-                dbTables & "_Resources.Entry_Type, " & _
-                "(select Project_Entry_Type.Entry_Type from Project_Entry_Type where Project_Entry_Type.ID=" & dbTables & "_Resources.Entry_Type) as Entry_Type_Name " & _
+            "	" & dbTables & "_Resources.Project_ID, " & _
+            "	(SELECT top 1 [Month] FROM " & dbTables & "_Resources WHERE Project_ID = " & dbTables & "_Resources.Project_ID ORDER BY [Month] asc) as Start_Date, " & _
+            "	(SELECT top 1 [Month] FROM " & dbTables & "_Resources WHERE Project_ID = " & dbTables & "_Resources.Project_ID ORDER BY [Month] desc) as End_Date, " & _
+            "	(select " & dbTables & "_Project.Project_Name from " & dbTables & "_Project where " & dbTables & "_Project.ID=" & dbTables & "_Resources.Project_ID) as Project_Name, " & _
+            "	" & dbTables & "_Resources.[Owner], " & _
+            "	(select top 1 " & dbTables & "_Resources.Owner_Name from " & dbTables & "_Resources where " & dbTables & "_Resources.ID = " & dbTables & "_Resources.ID) as Owner_Name, " & _
+            "	'' as User_Type, " & _
+            "	(SELECT Americas FROM " & dbTables & "_Project where ID=" & dbTables & "_Resources.Project_ID) as Americas, " & _
+            "	(SELECT EMEA FROM " & dbTables & "_Project where ID=" & dbTables & "_Resources.Project_ID) as EMEA, " & _
+            "	(SELECT Asia FROM " & dbTables & "_Project where ID=" & dbTables & "_Resources.Project_ID) as Asia, " & _
+            "	(SELECT Global FROM " & dbTables & "_Project where ID=" & dbTables & "_Resources.Project_ID) as Global, " & _
+            "	(select Service_Line from Project_Service_Line where ID=" & dbTables & "_Resources.Service_Line) as Service_Line, " & _
+            "	(select " & dbTables & "_Category.Category from " & dbTables & "_Category, " & dbTables & "_Project where " & dbTables & "_Category.ID=" & dbTables & "_Project.Category and " & dbTables & "_Project.ID=" & dbTables & "_Resources.Project_ID) as Category, " & _
+            "	(select " & dbTables & "_VS_Chevron.VS_Chevron from " & dbTables & "_VS_Chevron, " & dbTables & "_Project where " & dbTables & "_VS_Chevron.ID=" & dbTables & "_Project.VS_Chevron and " & dbTables & "_Project.ID=" & dbTables & "_Resources.Project_ID) as VS_Chevron, " & _
+            "	(select " & dbTables & "_Primary_Process.Primary_Process from " & dbTables & "_Primary_Process, " & dbTables & "_Project where " & dbTables & "_Primary_Process.ID=" & dbTables & "_Project.Primary_Process and " & dbTables & "_Project.ID=" & dbTables & "_Resources.Project_ID) as Primary_Process, " & _
+            "	" & dbTables & "_Resources.Month as Month, " & _
+            "	sum(" & dbTables & "_Resources.Value) as Monthly_FTE_REQ, " & _
+            "	(select " & dbTables & "_Project.XGBS_PM from " & dbTables & "_Project where " & dbTables & "_Project.ID=" & dbTables & "_Resources.Project_ID) as XGBS_PM, " & _
+            "	" & dbTables & "_Resources.ID as Resource_ID, " & _
+            "	(select top 1 " & dbTables & "_Resources.Comment from " & dbTables & "_Resources where " & dbTables & "_Resources.ID = " & dbTables & "_Resources.ID order by " & dbTables & "_Resources.ID desc) as Resource_Description, " & _
+            "	" & dbTables & "_Resources.Entry_Type, " & _
+            "	(select Project_Entry_Type.Entry_Type from Project_Entry_Type where Project_Entry_Type.ID=" & dbTables & "_Resources.Entry_Type) as Entry_Type_Name " & _
             "from " & _
-               dbTables & "_Resources, " & _
-               dbTables & "_Project " & _
+            "	" & dbTables & "_Resources, " & _
+            "	" & dbTables & "_Project " & _
             "where " & _
-                dbTables & "_Resources.Status != 0 and " & _
-                dbTables & "_Resources.Month between '" & DateSerial(sDate.Year, sDate.Month, "1") & "' and '" & DateSerial(eDate.Year, eDate.Month + 1, "0") & "' " & _
-                filters("") & _
+            "	" & dbTables & "_Resources.Status != 0 and " & _
+            "	" & dbTables & "_Resources.Month between '" & DateSerial(sDate.Year, sDate.Month, "1") & "' and '" & DateSerial(eDate.Year, eDate.Month + 1, "0") & "' " & _
+            filters("") & _
             "group by " & _
-                dbTables & "_Resources.Project_ID, " & _
-                dbTables & "_Resources.ID, " & _
-                dbTables & "_Resources.[Owner], " & _
-                dbTables & "_Resources.Entry_Type, " & _
-                dbTables & "_Resources.Month"
+            "	" & dbTables & "_Resources.Project_ID, " & _
+            "	" & dbTables & "_Resources.ID, " & _
+            "	" & dbTables & "_Resources.[Owner], " & _
+            "	Service_Line, " & _
+            "	" & dbTables & "_Resources.Entry_Type, " & _
+            "	" & dbTables & "_Resources.Month "
         )
 
         dataTableA = SQL.Return_DataTable(
             "select " & _
-                dbTables & "_Actuals.Resource_ID as ResourceID," & _
-                "sum(" & dbTables & "_Actuals.Value) as Actual_FTE, " & _
-                "CONVERT(DATE, " & dbTables & "_Actuals.Actual_Date) as [Date] " & _
+            "	" & dbTables & "_Actuals.Resource_ID as ResourceID, " & _
+            "	sum(" & dbTables & "_Actuals.Value) as Actual_FTE, " & _
+            "	CONVERT(DATE, " & dbTables & "_Actuals.Actual_Date) as [Date], " & _
+            "	" & dbTables & "_Resources.Project_ID as Resources_Project_ID " & _
             "from " & _
-                dbTables & "_Actuals, " & _
-                dbTables & "_Resources " & _
+            "	" & dbTables & "_Actuals, " & _
+            "	" & dbTables & "_Resources " & _
             "where " & _
-                dbTables & "_Actuals.Actual_Date between '" & DateSerial(sDate.Year, sDate.Month, sDate.Day) & "' and '" & DateSerial(eDate.Year, eDate.Month, eDate.Day + 1) & "' " & _
-                filters(dbTables & "_Actuals") & _
+            "	" & dbTables & "_Actuals.Actual_Date between '" & DateSerial(sDate.Year, sDate.Month, "1") & "' and '" & DateSerial(eDate.Year, eDate.Month + 1, "0") & "' " & _
             "group by " & _
-                dbTables & "_Actuals.Project_ID, " & _
-                dbTables & "_Actuals.Resource_ID, " & _
-                dbTables & "_Actuals.Actual_Date"
+            "	" & dbTables & "_Actuals.Project_ID, " & _
+            "	" & dbTables & "_Actuals.Resource_ID, " & _
+            "	" & dbTables & "_Actuals.Actual_Date, " & _
+            "	" & dbTables & "_Resources.Project_ID " & _
+            "order by " & _
+            "	" & dbTables & "_Resources.Project_ID "
         )
 
         dataTableF.Clear()
@@ -644,36 +704,32 @@ Public Class Frm_Report
                 Dim columnF As Integer = 0
                 Dim trow As DataRow = dataTableF.NewRow()
                 dataTableF.Rows.Add(trow)
-                For column As Integer = 0 To 10
-                    If column = 2 Then
+                For column As Integer = 0 To (dataTableR.Columns.Count - 1)
+                    If IsDate(rowR.Item(column)) Then
                         dataTableF.Rows(rowF).Item(column) = FormatDateTime(rowR.Item(column), DateFormat.ShortDate)
                     Else
                         dataTableF.Rows(rowF).Item(column) = rowR.Item(column)
                     End If
                 Next
-                dataTableF.Rows(rowF).Item(3) = getMonthlyFTE(rowR.Item(10), rowR.Item(3))
-                For column As Integer = 0 To 2
-                    If (rowR.Item(7) = rowA.Item(0)) Then
-                        If column = 2 Then
-                            dataTableF.Rows(rowF).Item(column + 11) = FormatDateTime(rowA.Item(column), DateFormat.ShortDate)
+                For column As Integer = 0 To (dataTableA.Columns.Count - 1)
+                    If (rowR.Item(18) = rowA.Item(0)) Then
+                        If IsDate(rowA.Item(column)) Then
+                            dataTableF.Rows(rowF).Item(column + dataTableR.Columns.Count) = FormatDateTime(rowA.Item(column), DateFormat.ShortDate)
                         ElseIf column = 1 Then
-                            dataTableF.Rows(rowF).Item(column + 11) = getMonthlyFTE(rowR.Item(10), rowA.Item(column))
+                            dataTableF.Rows(rowF).Item(column + dataTableR.Columns.Count) = getMonthlyFTE(rowR.Item("Entry_Type_Name"), rowA.Item(column))
                         Else
-                            dataTableF.Rows(rowF).Item(column + 11) = rowA.Item(column)
+                            dataTableF.Rows(rowF).Item(column + dataTableR.Columns.Count) = rowA.Item(column)
                         End If
                     End If
                 Next
+                dataTableF.Rows(rowF).Item("Monthly_FTE_REQ") = getMonthlyFTE(rowR.Item("Entry_Type_Name"), rowR.Item("Monthly_FTE_REQ"))
                 rowF = rowF + 1
             Next
         Next
 
-        Dim columnUserType As New DataColumn
-        columnUserType.ColumnName = "Role"
-        dataTableF.Columns.Add(columnUserType)
-
         For i As Integer = 0 To (dataTableF.Rows.Count - 1)
             If Not DotNet.IsEmpty(dataTableF.Rows(i).Item("ResourceID")) Then
-                dataTableF.Rows(i).Item("Role") = UsersInfo.GetRole(dataTableF.Rows(i).Item("Owner"), AppName)
+                dataTableF.Rows(i).Item("User_Type") = UsersInfo.GetRole(dataTableF.Rows(i).Item("Owner"), AppName)
             End If
         Next
 
@@ -684,19 +740,29 @@ Public Class Frm_Report
         BindingSource.DataSource = dataTableF
         DataGridView.DataSource = dataTableF
 
-        DataGridView.Columns("Role").HeaderText = "User Type"
+        DataGridView.Columns.Remove("Project ID")
+        DataGridView.Columns.Remove("Owner")
+        DataGridView.Columns.Remove("Month")
+        DataGridView.Columns.Remove("XGBS PM")
+        DataGridView.Columns.Remove("Resource ID")
+        DataGridView.Columns.Remove("Entry Type")
+        DataGridView.Columns.Remove("ResourceID")
+        DataGridView.Columns.Remove("Resources Project ID")
 
-        DataGridView.Columns(0).Visible = False
-        DataGridView.Columns(7).Visible = False
-        DataGridView.Columns(9).Visible = False
-        DataGridView.Columns(11).Visible = False
+        AxSpreadsheet.Worksheets(1).usedrange.clear()
 
         For cl As Integer = 0 To DataGridView.Columns.Count - 1
             AxSpreadsheet.Worksheets(1).Cells(1, cl + 1) = DataGridView.Columns(cl).HeaderText.ToString
         Next
         For ro As Integer = 1 To DataGridView.Rows.Count - 1
             For cl As Integer = 0 To DataGridView.Columns.Count - 1
-                AxSpreadsheet.Worksheets(1).Cells(ro + 1, cl + 1) = DataGridView.Item(cl, ro).Value.ToString
+                If DataGridView.Item(cl, ro).Value.ToString = "True" Then
+                    AxSpreadsheet.Worksheets(1).Cells(ro + 1, cl + 1) = "Yes"
+                ElseIf DataGridView.Item(cl, ro).Value.ToString = "False" Then
+                    AxSpreadsheet.Worksheets(1).Cells(ro + 1, cl + 1) = "No"
+                Else
+                    AxSpreadsheet.Worksheets(1).Cells(ro + 1, cl + 1) = DataGridView.Item(cl, ro).Value.ToString
+                End If
             Next
         Next
     End Sub

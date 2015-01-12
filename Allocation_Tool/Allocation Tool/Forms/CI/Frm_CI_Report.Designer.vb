@@ -23,11 +23,11 @@ Partial Class Frm_CI_Report
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Title2 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_CI_Report))
         Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
@@ -42,6 +42,7 @@ Partial Class Frm_CI_Report
         Me.ToolStripFilter = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButtonFilter = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButtonClearFilter = New System.Windows.Forms.ToolStripButton()
+        Me.AxSpreadsheet = New AxMicrosoft.Office.Interop.Owc11.AxSpreadsheet()
         Me.TableLayoutPanelFilters = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanelFilter = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -87,7 +88,6 @@ Partial Class Frm_CI_Report
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButtonExcel = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButtonGraphic = New System.Windows.Forms.ToolStripButton()
-        Me.AxSpreadsheet = New AxMicrosoft.Office.Interop.Owc11.AxSpreadsheet()
         CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -98,6 +98,7 @@ Partial Class Frm_CI_Report
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStripFilter.SuspendLayout()
+        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanelFilters.SuspendLayout()
         Me.TableLayoutPanelFilter.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -113,7 +114,6 @@ Partial Class Frm_CI_Report
         Me.Panel10.SuspendLayout()
         Me.Panel13.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
-        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SaveFileDialog
@@ -168,53 +168,53 @@ Partial Class Frm_CI_Report
         '
         'Chart
         '
-        ChartArea2.Area3DStyle.Inclination = 1
-        ChartArea2.Area3DStyle.IsRightAngleAxes = False
-        ChartArea2.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
-        ChartArea2.Area3DStyle.Perspective = 1
-        ChartArea2.Area3DStyle.Rotation = 1
-        ChartArea2.Area3DStyle.WallWidth = 2
-        ChartArea2.AxisX.Title = "Dates / Months"
-        ChartArea2.AxisY.Title = "FTE"
-        ChartArea2.BackColor = System.Drawing.Color.Transparent
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart.ChartAreas.Add(ChartArea2)
+        ChartArea1.Area3DStyle.Inclination = 1
+        ChartArea1.Area3DStyle.IsRightAngleAxes = False
+        ChartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
+        ChartArea1.Area3DStyle.Perspective = 1
+        ChartArea1.Area3DStyle.Rotation = 1
+        ChartArea1.Area3DStyle.WallWidth = 2
+        ChartArea1.AxisX.Title = "Dates / Months"
+        ChartArea1.AxisY.Title = "FTE"
+        ChartArea1.BackColor = System.Drawing.Color.Transparent
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart.ChartAreas.Add(ChartArea1)
         Me.Chart.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend2.BackColor = System.Drawing.Color.Transparent
-        Legend2.Name = "Legend1"
-        Me.Chart.Legends.Add(Legend2)
+        Legend1.BackColor = System.Drawing.Color.Transparent
+        Legend1.Name = "Legend1"
+        Me.Chart.Legends.Add(Legend1)
         Me.Chart.Location = New System.Drawing.Point(3, 3)
         Me.Chart.Name = "Chart"
-        Series3.BorderWidth = 2
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series3.IsValueShownAsLabel = True
-        Series3.IsXValueIndexed = True
-        Series3.Legend = "Legend1"
-        Series3.LegendText = "Total Forecast"
-        Series3.MarkerSize = 8
-        Series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle
-        Series3.Name = "Total Forecast"
-        Series3.YValuesPerPoint = 6
-        Series4.BorderWidth = 2
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series4.Color = System.Drawing.Color.Red
-        Series4.IsValueShownAsLabel = True
-        Series4.IsXValueIndexed = True
-        Series4.Legend = "Legend1"
-        Series4.MarkerSize = 8
-        Series4.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle
-        Series4.Name = "Total Actuals"
-        Me.Chart.Series.Add(Series3)
-        Me.Chart.Series.Add(Series4)
+        Series1.BorderWidth = 2
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.IsValueShownAsLabel = True
+        Series1.IsXValueIndexed = True
+        Series1.Legend = "Legend1"
+        Series1.LegendText = "Total Forecast"
+        Series1.MarkerSize = 8
+        Series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle
+        Series1.Name = "Total Forecast"
+        Series1.YValuesPerPoint = 6
+        Series2.BorderWidth = 2
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Color = System.Drawing.Color.Red
+        Series2.IsValueShownAsLabel = True
+        Series2.IsXValueIndexed = True
+        Series2.Legend = "Legend1"
+        Series2.MarkerSize = 8
+        Series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle
+        Series2.Name = "Total Actuals"
+        Me.Chart.Series.Add(Series1)
+        Me.Chart.Series.Add(Series2)
         Me.Chart.Size = New System.Drawing.Size(783, 262)
         Me.Chart.TabIndex = 0
         Me.Chart.Text = "Chart"
-        Title2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Title2.Name = "Title"
-        Title2.Text = "Allocation Report"
-        Me.Chart.Titles.Add(Title2)
+        Title1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Title1.Name = "Title"
+        Title1.Text = "Continuos Improvement Allocation Report"
+        Me.Chart.Titles.Add(Title1)
         '
         'TabPage2
         '
@@ -283,6 +283,17 @@ Partial Class Frm_CI_Report
         Me.ToolStripButtonClearFilter.Name = "ToolStripButtonClearFilter"
         Me.ToolStripButtonClearFilter.Size = New System.Drawing.Size(36, 36)
         Me.ToolStripButtonClearFilter.Text = "Clear Filters"
+        '
+        'AxSpreadsheet
+        '
+        Me.AxSpreadsheet.DataSource = Nothing
+        Me.AxSpreadsheet.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AxSpreadsheet.Enabled = True
+        Me.AxSpreadsheet.Location = New System.Drawing.Point(3, 3)
+        Me.AxSpreadsheet.Name = "AxSpreadsheet"
+        Me.AxSpreadsheet.OcxState = CType(resources.GetObject("AxSpreadsheet.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxSpreadsheet.Size = New System.Drawing.Size(783, 262)
+        Me.AxSpreadsheet.TabIndex = 4
         '
         'TableLayoutPanelFilters
         '
@@ -721,6 +732,7 @@ Partial Class Frm_CI_Report
         Me.ToolStripButtonExcel.Name = "ToolStripButtonExcel"
         Me.ToolStripButtonExcel.Size = New System.Drawing.Size(28, 28)
         Me.ToolStripButtonExcel.Text = "Export to Excel"
+        Me.ToolStripButtonExcel.Visible = False
         '
         'ToolStripButtonGraphic
         '
@@ -730,17 +742,6 @@ Partial Class Frm_CI_Report
         Me.ToolStripButtonGraphic.Name = "ToolStripButtonGraphic"
         Me.ToolStripButtonGraphic.Size = New System.Drawing.Size(28, 28)
         Me.ToolStripButtonGraphic.Text = "Export to Image"
-        '
-        'AxSpreadsheet
-        '
-        Me.AxSpreadsheet.DataSource = Nothing
-        Me.AxSpreadsheet.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AxSpreadsheet.Enabled = True
-        Me.AxSpreadsheet.Location = New System.Drawing.Point(3, 3)
-        Me.AxSpreadsheet.Name = "AxSpreadsheet"
-        Me.AxSpreadsheet.OcxState = CType(resources.GetObject("AxSpreadsheet.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxSpreadsheet.Size = New System.Drawing.Size(783, 262)
-        Me.AxSpreadsheet.TabIndex = 4
         '
         'Frm_CI_Report
         '
@@ -765,6 +766,7 @@ Partial Class Frm_CI_Report
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStripFilter.ResumeLayout(False)
         Me.ToolStripFilter.PerformLayout()
+        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanelFilters.ResumeLayout(False)
         Me.TableLayoutPanelFilters.PerformLayout()
         Me.TableLayoutPanelFilter.ResumeLayout(False)
@@ -794,7 +796,6 @@ Partial Class Frm_CI_Report
         Me.Panel13.PerformLayout()
         Me.ToolStrip.ResumeLayout(False)
         Me.ToolStrip.PerformLayout()
-        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

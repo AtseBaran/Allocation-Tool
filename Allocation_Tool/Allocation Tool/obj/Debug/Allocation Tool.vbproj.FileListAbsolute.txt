@@ -166,3 +166,5 @@ C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocatio
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\publish\EntityFramework.dll
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\publish\EntityFramework.xml
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_Documents_Upload.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_Report_History.resources
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\obj\Debug\Allocation_Tool.Frm_CI_Report_History.resources

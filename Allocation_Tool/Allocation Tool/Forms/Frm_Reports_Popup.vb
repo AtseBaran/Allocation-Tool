@@ -1,5 +1,6 @@
 ﻿Public Class Frm_Reports_Popup
     Friend dbTables As String = ""
+    Friend sqlQuery As String = ""
 
     Private _retorno As String = ""
 
@@ -17,14 +18,12 @@
     Friend order As String = ""
     Friend where As String = ""
 
-    Friend sqlQuery As String = ""
-
     Friend selected As String = ""
-    Friend returnField As Integer = 0
+    Friend returnField As Integer = 1
 
     Private Sub Frm_Reports_Popup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim datatable As DataTable
-        If tables = "peerList" Then
+        If sqlQuery = "peerList" Then
             datatable = UsersInfo.PeerList(AppName)
 
             Dim rowUser As DataRow = datatable.NewRow
@@ -36,20 +35,17 @@
                 datatable.Rows(r).Item(1) = row.Item(0) & " / " & row.Item(1)
                 r = r + 1
             Next
+            returnField = 0
+            CheckedListBox.DataSource = datatable
+            CheckedListBox.DisplayMember = datatable.Columns(1).ColumnName.ToString
+            CheckedListBox.ValueMember = datatable.Columns(0).ColumnName.ToString
         Else
-            Dim sqlQuery As String = "select " & _
-                                        fields & " " & _
-                                    "from " & _
-                                        tables & " " & _
-                                    where & " " & _
-                                    order
-
             datatable = SQL.Return_DataTable(sqlQuery)
+            CheckedListBox.DataSource = datatable
+            CheckedListBox.DisplayMember = datatable.Columns(0).ColumnName.ToString
+            CheckedListBox.ValueMember = datatable.Columns(1).ColumnName.ToString
         End If
-        CheckedListBox.DataSource = datatable
-        CheckedListBox.DisplayMember = datatable.Columns(1).ColumnName.ToString
-        CheckedListBox.ValueMember = datatable.Columns(0).ColumnName.ToString
-
+        
         Dim indexes As String = ""
         For Each item As DataRowView In CheckedListBox.Items
             If InStr(selected, item.Row(0)) Then
@@ -110,7 +106,6 @@
             Me.retorno = Me.retorno & item.Row(returnField).ToString
             bandera = False
         Next
-
         Me.Close()
     End Sub
 End Class

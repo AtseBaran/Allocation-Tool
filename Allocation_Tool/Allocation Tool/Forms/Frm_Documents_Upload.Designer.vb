@@ -81,7 +81,7 @@ Partial Class Frm_Documents_Upload
         Me.BtnSelectFile.Name = "BtnSelectFile"
         Me.BtnSelectFile.Size = New System.Drawing.Size(75, 23)
         Me.BtnSelectFile.TabIndex = 5
-        Me.BtnSelectFile.Text = "Select File"
+        Me.BtnSelectFile.Text = "Browse File"
         Me.BtnSelectFile.UseVisualStyleBackColor = True
         '
         'OpenFileDialog

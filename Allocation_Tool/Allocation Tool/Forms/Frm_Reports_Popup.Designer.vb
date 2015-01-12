@@ -25,11 +25,11 @@ Partial Class Frm_Reports_Popup
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Reports_Popup))
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
-        Me.CheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.ToolStripButtonFilter = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.AllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.TableLayoutPanel.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -59,16 +59,6 @@ Partial Class Frm_Reports_Popup
         Me.ToolStrip.Size = New System.Drawing.Size(369, 35)
         Me.ToolStrip.TabIndex = 0
         Me.ToolStrip.Text = "ToolStrip1"
-        '
-        'CheckedListBox
-        '
-        Me.CheckedListBox.CheckOnClick = True
-        Me.CheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckedListBox.FormattingEnabled = True
-        Me.CheckedListBox.Location = New System.Drawing.Point(3, 38)
-        Me.CheckedListBox.Name = "CheckedListBox"
-        Me.CheckedListBox.Size = New System.Drawing.Size(363, 240)
-        Me.CheckedListBox.TabIndex = 1
         '
         'ToolStripButtonFilter
         '
@@ -101,6 +91,16 @@ Partial Class Frm_Reports_Popup
         Me.NoneToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.NoneToolStripMenuItem.Text = "None"
         '
+        'CheckedListBox
+        '
+        Me.CheckedListBox.CheckOnClick = True
+        Me.CheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CheckedListBox.FormattingEnabled = True
+        Me.CheckedListBox.Location = New System.Drawing.Point(3, 38)
+        Me.CheckedListBox.Name = "CheckedListBox"
+        Me.CheckedListBox.Size = New System.Drawing.Size(363, 240)
+        Me.CheckedListBox.TabIndex = 1
+        '
         'Frm_Reports_Popup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -109,6 +109,7 @@ Partial Class Frm_Reports_Popup
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Frm_Reports_Popup"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Select..."
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.TableLayoutPanel.PerformLayout()

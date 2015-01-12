@@ -299,11 +299,17 @@
             Dim visible As Boolean = False
             For column As Integer = 15 To (DataGridView.Columns.Count - 1)
                 Try
-                    If row.Cells(column).Value.ToString <> "" Then
-                        visible = True
+                    Dim tmp As DataRow = SQL.Return_DataRow("select * from " & dbTables & "_Resources where ID='" & row.Cells("ResourceID").Value & "'")
+                    Dim tmpDate As Date
+                    tmpDate = Mid(DataGridView.Columns(column).Name, 1, 2) & "/" & Mid(DataGridView.Columns(column).Name, 3, 2) & "/" & Mid(DataGridView.Columns(column).Name, 5)
+                    'Recurrences
+                    If getDates(tmpDate, tmp.Item("Recurrence").ToString) Then
+                        If row.Cells(column).Value.ToString <> "" Then
+                            visible = True
+                        End If
                     End If
                 Catch ex As Exception
-                    visible = True
+                    visible = False
                 End Try
             Next
             row.Visible = visible

@@ -49,16 +49,21 @@ Public Class Frm_Main
 
             controlUser.Add_Credential("Corporative Projects Forecast", "CP_PF")
             controlUser.Add_Credential("Corporative Projects Actuals Input", "CP_AI")
-            controlUser.Add_Credential("Corporative Projects Reports", "CP_R")
+            controlUser.Add_Credential("Forecast VS Actuals Reports", "CP_R")
+            controlUser.Add_Credential("Forecast Changes History Reports", "CP_RH")
+
             controlUser.Add_Credential("PSS Projects Forecast", "PSS_PF")
             controlUser.Add_Credential("PSS Projects Actuals Input", "PSS_AI")
-            controlUser.Add_Credential("PSS Projects Reports", "PSS_R")
+            controlUser.Add_Credential("PSS Forecast VS Actuals Reports", "PSS_R")
+            controlUser.Add_Credential("PSS Forecast Changes History Reports", "PSS_RH")
+
             controlUser.Add_Credential("Continuos Improvement Allocation Project", "CI_AP")
             controlUser.Add_Credential("Continuos Improvement Actuals Input", "CI_AI")
-            controlUser.Add_Credential("Continuos Improvement Reports", "CI_R")
+            controlUser.Add_Credential("CI Forecast VS Actuals Reports", "CI_R")
+            controlUser.Add_Credential("CI Forecast Changes History Reports", "CI_RH")
 
-            controlUser.Add_Credential("Documents", "DOC")
-            controlUser.Add_Credential("Reports", "REPORTS")
+            controlUser.Add_Credential("Upload and Download Documents", "DOC")
+            controlUser.Add_Credential("General Report", "REPORTS")
 
             controlUser.Add_Credential("Maintenance Corporate Projects", "MCP")
             controlUser.Add_Credential("Maintenance PSS Projects", "MPP")
@@ -386,15 +391,10 @@ Public Class Frm_Main
     End Sub
 
     Private Sub CPReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CPReportToolStripMenuItem.Click
-        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
-            Dim f As New Frm_Report
-            f.dbTables = "CP"
-            f.ShowDialog(Me)
-            f.Dispose()
-        End If
+        
     End Sub
 
-    Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCPReports.LinkClicked
+    Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
         CPReportToolStripMenuItem_Click(sender, e)
     End Sub
 
@@ -425,15 +425,10 @@ Public Class Frm_Main
     End Sub
 
     Private Sub PSSReportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PSSReportsToolStripMenuItem.Click
-        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
-            Dim f As New Frm_Report
-            f.dbTables = "PSS"
-            f.ShowDialog(Me)
-            f.Dispose()
-        End If
+        
     End Sub
 
-    Private Sub LinkLabelPSSReports_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelPSSReports.LinkClicked
+    Private Sub LinkLabelPSSReports_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
         PSSReportsToolStripMenuItem_Click(sender, e)
     End Sub
 
@@ -463,7 +458,7 @@ Public Class Frm_Main
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
-        If ((Today.DayOfWeek = DayOfWeek.Friday) And (DateTime.Now.Hour = 10)) Then
+        If ((Today.DayOfWeek = DayOfWeek.Friday) And (DateTime.Now.Hour = 10 Or DateTime.Now.Hour = 14)) Then
             NotifyIcon.ShowBalloonTip(5000, Application.ProductName, "Please input your actuals.", ToolTipIcon.Warning)
             Timer.Enabled = False
         End If
@@ -516,19 +511,14 @@ Public Class Frm_Main
     End Sub
 
     Private Sub CIReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CIReportToolStripMenuItem.Click
-        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
-            Dim f As New Frm_CI_Report
-            f.dbTables = "CI"
-            f.ShowDialog(Me)
-            f.Dispose()
-        End If
+        
     End Sub
 
     Private Sub LinkLabelCIAI_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCIAI.LinkClicked
         CIActualsToolStripMenuItem_Click(sender, e)
     End Sub
 
-    Private Sub LinkLabelCIReports_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCIReports.LinkClicked
+    Private Sub LinkLabelCIReports_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
         CIReportToolStripMenuItem_Click(sender, e)
     End Sub
 
@@ -543,6 +533,108 @@ Public Class Frm_Main
             f.dbTables = ""
             f.ShowDialog(Me)
             f.Dispose()
+        End If
+    End Sub
+
+    Private Sub ForecastVsActualsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CPForecastVsActualsToolStripMenuItem.Click
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Dim f As New Frm_Report
+            f.dbTables = "CP"
+            f.ShowDialog(Me)
+            f.Dispose()
+        End If
+    End Sub
+
+    Private Sub ForecastVSActualsToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PSSForecastVSActualsToolStripMenuItem1.Click
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Dim f As New Frm_Report
+            f.dbTables = "PSS"
+            f.ShowDialog(Me)
+            f.Dispose()
+        End If
+    End Sub
+
+    Private Sub ForecastVSActualsToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles CIForecastVSActualsToolStripMenuItem2.Click
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Dim f As New Frm_CI_Report
+            f.dbTables = "CI"
+            f.ShowDialog(Me)
+            f.Dispose()
+        End If
+    End Sub
+
+    Private Sub LinkLabelCPR_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCPR.LinkClicked
+        ForecastVsActualsToolStripMenuItem_Click(sender, e)
+    End Sub
+
+    Private Sub LinkLabelCPRH_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCPRH.LinkClicked
+        CPForecastChangesHistoryToolStripMenuItem_Click(sender, e)
+    End Sub
+
+    Private Sub CPForecastChangesHistoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CPForecastChangesHistoryToolStripMenuItem.Click
+        'Report CP_RH
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Dim f As New Frm_Report_History
+            f.dbTables = "CP"
+            f.ShowDialog(Me)
+            f.Dispose()
+        End If
+    End Sub
+
+    Private Sub LinkLabelPSSR_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelPSSR.LinkClicked
+        ForecastVSActualsToolStripMenuItem1_Click(sender, e)
+    End Sub
+
+    Private Sub LinkLabelPSSRH_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelPSSRH.LinkClicked
+        PSSForecastChangesHistoryToolStripMenuItem1_Click(sender, e)
+    End Sub
+
+    Private Sub PSSForecastChangesHistoryToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PSSForecastChangesHistoryToolStripMenuItem1.Click
+        'Report PSS_RH
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Dim f As New Frm_Report_History
+            f.dbTables = "PSS"
+            f.ShowDialog(Me)
+            f.Dispose()
+        End If
+    End Sub
+
+    Private Sub LinkLabelCIR_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCIR.LinkClicked
+        ForecastVSActualsToolStripMenuItem2_Click(sender, e)
+    End Sub
+
+    Private Sub LinkLabelCIRH_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCIRH.LinkClicked
+        CIForecastChangesHistoryToolStripMenuItem2_Click(sender, e)
+    End Sub
+
+    Private Sub CIForecastChangesHistoryToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles CIForecastChangesHistoryToolStripMenuItem2.Click
+        'Report CI_RH
+        If UsersInfo.Cleared(sender.Tag, AppName, True) Then
+            Dim f As New Frm_CI_Report_History
+            f.dbTables = "CI"
+            f.ShowDialog(Me)
+            f.Dispose()
+        End If
+    End Sub
+
+    Private Sub LinkLabelGR_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelGR.LinkClicked
+        ReportsToolStripMenuItem_Click(sender, e)
+    End Sub
+
+    Private Sub LinkLabelDocs_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelDocs.LinkClicked
+        DocumentsToolStripMenuItem_Click(sender, e)
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub Frm_Main_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        If Not Debugger.IsAttached Then
+            Dim update As New PSS_Framework.Updates.UpdateClass(AppName, My.Application.Info.Title, My.Application.Info.Version)
+            If update.UpdateAvailable Then
+                update.Update()
+            End If
         End If
     End Sub
 End Class

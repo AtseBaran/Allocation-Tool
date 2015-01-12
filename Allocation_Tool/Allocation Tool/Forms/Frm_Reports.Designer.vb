@@ -40,6 +40,7 @@ Partial Class Frm_Reports
         Me.ToolStripFilter = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButtonFilter = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButtonClearFilter = New System.Windows.Forms.ToolStripButton()
+        Me.AxSpreadsheet = New AxMicrosoft.Office.Interop.Owc11.AxSpreadsheet()
         Me.TableLayoutPanelFilters = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanelFilter = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -87,7 +88,6 @@ Partial Class Frm_Reports
         Me.ToolStripButtonGraphic = New System.Windows.Forms.ToolStripButton()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AxSpreadsheet = New AxMicrosoft.Office.Interop.Owc11.AxSpreadsheet()
         Me.TableLayoutPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.TabControl.SuspendLayout()
@@ -97,6 +97,7 @@ Partial Class Frm_Reports
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStripFilter.SuspendLayout()
+        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanelFilters.SuspendLayout()
         Me.TableLayoutPanelFilter.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -113,7 +114,6 @@ Partial Class Frm_Reports
         Me.Panel13.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel
@@ -208,7 +208,7 @@ Partial Class Frm_Reports
         Me.Chart.TabIndex = 0
         Me.Chart.Text = "Chart"
         Title1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Title1.Name = "Title"
+        Title1.Name = "General Allocation Report"
         Title1.Text = "Allocation Report"
         Me.Chart.Titles.Add(Title1)
         '
@@ -279,6 +279,17 @@ Partial Class Frm_Reports
         Me.ToolStripButtonClearFilter.Name = "ToolStripButtonClearFilter"
         Me.ToolStripButtonClearFilter.Size = New System.Drawing.Size(36, 36)
         Me.ToolStripButtonClearFilter.Text = "Clear Filters"
+        '
+        'AxSpreadsheet
+        '
+        Me.AxSpreadsheet.DataSource = Nothing
+        Me.AxSpreadsheet.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AxSpreadsheet.Enabled = True
+        Me.AxSpreadsheet.Location = New System.Drawing.Point(3, 3)
+        Me.AxSpreadsheet.Name = "AxSpreadsheet"
+        Me.AxSpreadsheet.OcxState = CType(resources.GetObject("AxSpreadsheet.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxSpreadsheet.Size = New System.Drawing.Size(783, 262)
+        Me.AxSpreadsheet.TabIndex = 4
         '
         'TableLayoutPanelFilters
         '
@@ -713,6 +724,7 @@ Partial Class Frm_Reports
         Me.ToolStripButtonExcel.Name = "ToolStripButtonExcel"
         Me.ToolStripButtonExcel.Size = New System.Drawing.Size(28, 28)
         Me.ToolStripButtonExcel.Text = "Export to Excel"
+        Me.ToolStripButtonExcel.Visible = False
         '
         'ToolStripButtonGraphic
         '
@@ -726,17 +738,6 @@ Partial Class Frm_Reports
         'SaveFileDialog
         '
         Me.SaveFileDialog.Filter = "Excel Files | *.xlsx"
-        '
-        'AxSpreadsheet
-        '
-        Me.AxSpreadsheet.DataSource = Nothing
-        Me.AxSpreadsheet.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AxSpreadsheet.Enabled = True
-        Me.AxSpreadsheet.Location = New System.Drawing.Point(3, 3)
-        Me.AxSpreadsheet.Name = "AxSpreadsheet"
-        Me.AxSpreadsheet.OcxState = CType(resources.GetObject("AxSpreadsheet.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxSpreadsheet.Size = New System.Drawing.Size(783, 262)
-        Me.AxSpreadsheet.TabIndex = 4
         '
         'Frm_Reports
         '
@@ -759,6 +760,7 @@ Partial Class Frm_Reports
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStripFilter.ResumeLayout(False)
         Me.ToolStripFilter.PerformLayout()
+        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanelFilters.ResumeLayout(False)
         Me.TableLayoutPanelFilters.PerformLayout()
         Me.TableLayoutPanelFilter.ResumeLayout(False)
@@ -789,7 +791,6 @@ Partial Class Frm_Reports
         Me.ToolStrip.ResumeLayout(False)
         Me.ToolStrip.PerformLayout()
         CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

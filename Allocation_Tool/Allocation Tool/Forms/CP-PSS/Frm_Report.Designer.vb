@@ -28,6 +28,8 @@ Partial Class Frm_Report
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Report))
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -40,6 +42,7 @@ Partial Class Frm_Report
         Me.ToolStripFilter = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButtonFilter = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButtonClearFilter = New System.Windows.Forms.ToolStripButton()
+        Me.AxSpreadsheet = New AxMicrosoft.Office.Interop.Owc11.AxSpreadsheet()
         Me.TableLayoutPanelFilters = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanelFilter = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -87,7 +90,6 @@ Partial Class Frm_Report
         Me.ToolStripButtonGraphic = New System.Windows.Forms.ToolStripButton()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AxSpreadsheet = New AxMicrosoft.Office.Interop.Owc11.AxSpreadsheet()
         Me.TableLayoutPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.TabControl.SuspendLayout()
@@ -97,6 +99,7 @@ Partial Class Frm_Report
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStripFilter.SuspendLayout()
+        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanelFilters.SuspendLayout()
         Me.TableLayoutPanelFilter.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -113,7 +116,6 @@ Partial Class Frm_Report
         Me.Panel13.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel
@@ -244,7 +246,23 @@ Partial Class Frm_Report
         '
         Me.DataGridView.AllowUserToAddRows = False
         Me.DataGridView.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView.Location = New System.Drawing.Point(3, 43)
         Me.DataGridView.Name = "DataGridView"
@@ -279,6 +297,17 @@ Partial Class Frm_Report
         Me.ToolStripButtonClearFilter.Name = "ToolStripButtonClearFilter"
         Me.ToolStripButtonClearFilter.Size = New System.Drawing.Size(36, 36)
         Me.ToolStripButtonClearFilter.Text = "Clear Filters"
+        '
+        'AxSpreadsheet
+        '
+        Me.AxSpreadsheet.DataSource = Nothing
+        Me.AxSpreadsheet.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AxSpreadsheet.Enabled = True
+        Me.AxSpreadsheet.Location = New System.Drawing.Point(3, 3)
+        Me.AxSpreadsheet.Name = "AxSpreadsheet"
+        Me.AxSpreadsheet.OcxState = CType(resources.GetObject("AxSpreadsheet.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxSpreadsheet.Size = New System.Drawing.Size(783, 262)
+        Me.AxSpreadsheet.TabIndex = 4
         '
         'TableLayoutPanelFilters
         '
@@ -716,6 +745,7 @@ Partial Class Frm_Report
         Me.ToolStripButtonExcel.Name = "ToolStripButtonExcel"
         Me.ToolStripButtonExcel.Size = New System.Drawing.Size(28, 28)
         Me.ToolStripButtonExcel.Text = "Export to Excel"
+        Me.ToolStripButtonExcel.Visible = False
         '
         'ToolStripButtonGraphic
         '
@@ -729,17 +759,6 @@ Partial Class Frm_Report
         'SaveFileDialog
         '
         Me.SaveFileDialog.Filter = "Excel Files | *.xlsx"
-        '
-        'AxSpreadsheet
-        '
-        Me.AxSpreadsheet.DataSource = Nothing
-        Me.AxSpreadsheet.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AxSpreadsheet.Enabled = True
-        Me.AxSpreadsheet.Location = New System.Drawing.Point(3, 3)
-        Me.AxSpreadsheet.Name = "AxSpreadsheet"
-        Me.AxSpreadsheet.OcxState = CType(resources.GetObject("AxSpreadsheet.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxSpreadsheet.Size = New System.Drawing.Size(783, 262)
-        Me.AxSpreadsheet.TabIndex = 4
         '
         'Frm_Report
         '
@@ -763,6 +782,7 @@ Partial Class Frm_Report
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStripFilter.ResumeLayout(False)
         Me.ToolStripFilter.PerformLayout()
+        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanelFilters.ResumeLayout(False)
         Me.TableLayoutPanelFilters.PerformLayout()
         Me.TableLayoutPanelFilter.ResumeLayout(False)
@@ -793,7 +813,6 @@ Partial Class Frm_Report
         Me.ToolStrip.ResumeLayout(False)
         Me.ToolStrip.PerformLayout()
         CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AxSpreadsheet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
