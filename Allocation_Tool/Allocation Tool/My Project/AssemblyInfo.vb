@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Allocation Tool")> 
+<Assembly: AssemblyTitle("PSS Project Allocation Tool")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("P&G")> 
-<Assembly: AssemblyProduct("Allocation Tool")> 
+<Assembly: AssemblyProduct("PSS Project Allocation Tool")> 
 <Assembly: AssemblyCopyright("Copyright © P&G 2014")> 
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.112.2015.759")> 
-<Assembly: AssemblyFileVersion("1.112.2015.759")> 
+<Assembly: AssemblyVersion("1.0114.2015.0710")> 
+<Assembly: AssemblyFileVersion("1.0114.2015.0710")> 

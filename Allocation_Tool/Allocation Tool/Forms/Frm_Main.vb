@@ -1,6 +1,7 @@
 ﻿Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class Frm_Main
+    Dim showNotify As Boolean = True
     Private controlUser As PSS_Framework.User_Management_Control
     Private comandos As String
 
@@ -391,7 +392,7 @@ Public Class Frm_Main
     End Sub
 
     Private Sub CPReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CPReportToolStripMenuItem.Click
-        
+
     End Sub
 
     Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
@@ -425,7 +426,7 @@ Public Class Frm_Main
     End Sub
 
     Private Sub PSSReportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PSSReportsToolStripMenuItem.Click
-        
+
     End Sub
 
     Private Sub LinkLabelPSSReports_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
@@ -459,8 +460,14 @@ Public Class Frm_Main
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If ((Today.DayOfWeek = DayOfWeek.Friday) And (DateTime.Now.Hour = 10 Or DateTime.Now.Hour = 14)) Then
-            NotifyIcon.ShowBalloonTip(5000, Application.ProductName, "Please input your actuals.", ToolTipIcon.Warning)
-            Timer.Enabled = False
+            If showNotify Then
+                NotifyIcon.ShowBalloonTip(15000, Application.ProductName, "Please input your actuals.", ToolTipIcon.Warning)
+                showNotify = False
+            End If
+        End If
+
+        If (DateTime.Now.Hour = 11 Or DateTime.Now.Hour = 15) Then
+            showNotify = True
         End If
     End Sub
 
@@ -511,7 +518,7 @@ Public Class Frm_Main
     End Sub
 
     Private Sub CIReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CIReportToolStripMenuItem.Click
-        
+
     End Sub
 
     Private Sub LinkLabelCIAI_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelCIAI.LinkClicked

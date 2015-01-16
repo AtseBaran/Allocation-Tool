@@ -377,7 +377,7 @@ Partial Class Frm_Main
         '
         Me.CPVSChevromToolStripMenuItem.Name = "CPVSChevromToolStripMenuItem"
         Me.CPVSChevromToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.CPVSChevromToolStripMenuItem.Text = "VS Chevrom"
+        Me.CPVSChevromToolStripMenuItem.Text = "VS Chevron"
         '
         'CPProjectPhaseToolStripMenuItem
         '
@@ -415,7 +415,7 @@ Partial Class Frm_Main
         '
         Me.PSSVSChevromToolStripMenuItem.Name = "PSSVSChevromToolStripMenuItem"
         Me.PSSVSChevromToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.PSSVSChevromToolStripMenuItem.Text = "VS Chevrom"
+        Me.PSSVSChevromToolStripMenuItem.Text = "VS Chevron"
         '
         'PSSProjectPhaseToolStripMenuItem
         '
@@ -447,7 +447,7 @@ Partial Class Frm_Main
         '
         Me.CIVSChevromToolStripMenuItem.Name = "CIVSChevromToolStripMenuItem"
         Me.CIVSChevromToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.CIVSChevromToolStripMenuItem.Text = "VS Chevrom"
+        Me.CIVSChevromToolStripMenuItem.Text = "VS Chevron"
         '
         'CIPrimaryProcessToolStripMenuItem
         '

@@ -13,6 +13,11 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PSS ANT", "PSS NAT\PSS ANT.
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PSS Framework", "..\..\PSS-Framework\PSS Framework\PSS Framework.vbproj", "{A2FD3D7D-7B3F-4261-8C04-CF3125D2A338}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Allocation Tool - Email Notification", "Allocation Tool - Email Notification\Allocation Tool - Email Notification.vbproj", "{A7324AF7-B5E5-4492-8156-6DB2014872E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2FD3D7D-7B3F-4261-8C04-CF3125D2A338} = {A2FD3D7D-7B3F-4261-8C04-CF3125D2A338}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +36,10 @@ Global
 		{A2FD3D7D-7B3F-4261-8C04-CF3125D2A338}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2FD3D7D-7B3F-4261-8C04-CF3125D2A338}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2FD3D7D-7B3F-4261-8C04-CF3125D2A338}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7324AF7-B5E5-4492-8156-6DB2014872E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7324AF7-B5E5-4492-8156-6DB2014872E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7324AF7-B5E5-4492-8156-6DB2014872E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7324AF7-B5E5-4492-8156-6DB2014872E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
