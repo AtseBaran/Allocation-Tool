@@ -450,7 +450,9 @@ Public Class Frm_CI_Report
 
     Private Sub refreshData()
         If DTPStartDate.Value < DTPEndDate.Value Then
+            Cursor = Cursors.WaitCursor
             drawGraph()
+            Cursor = Cursors.Arrow
         End If
     End Sub
 
@@ -751,6 +753,7 @@ Public Class Frm_CI_Report
             Chart.DataBind()
             RawData()
         Catch ex As Exception
+            MessageBox.Show(ex.ToString())
         End Try
     End Sub
 

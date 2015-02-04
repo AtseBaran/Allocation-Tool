@@ -443,7 +443,9 @@ Public Class Frm_Report
 
     Private Sub refreshData()
         If DTPStartDate.Value < DTPEndDate.Value Then
+            Cursor = Cursors.WaitCursor
             drawGraph()
+            Cursor = Cursors.Arrow
         End If
     End Sub
 

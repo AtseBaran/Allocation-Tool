@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#ToolStripButtonAddFiles_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-01-16 16:19:10Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-01-30 17:54:41Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\Forms\CI" File="Frm_CI_PF.vb" Line="699">The query string passed to 'SqlCommand.New(String, SqlConnection)' in 'Frm_CI_PF.ToolStripButtonAddFiles_Click(Object, EventArgs)' could contain the following variables 'Me.dbTables', 'Conversions.ToString(Me.Id_Project)', 'New String(9)(5)', 'Globales.UsersInfo.TNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
@@ -23,7 +23,7 @@
          <Members>
           <Member Name="#BtnUploadFile_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-01-16 16:19:10Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-01-30 17:54:41Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool\Forms" File="Frm_Documents_Upload.vb" Line="82">The query string passed to 'SqlCommand.New(String, SqlConnection)' in 'Frm_Documents_Upload.BtnUploadFile_Click(Object, EventArgs)' could contain the following variables 'Me.dbTables', 'Conversions.ToString(Me.Id_Project)', 'New String(9)(5)', 'Globales.UsersInfo.TNumber'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>

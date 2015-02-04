@@ -41,6 +41,7 @@ Partial Class FrmMain
         '
         'Timer
         '
+        Me.Timer.Enabled = True
         Me.Timer.Interval = 1000
         '
         'NotifyIcon

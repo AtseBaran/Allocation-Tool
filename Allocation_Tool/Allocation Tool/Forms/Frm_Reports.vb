@@ -51,8 +51,10 @@ Public Class Frm_Reports
     End Sub
 
     Private Sub refreshData()
-        If DTPStartDate.Value < DTPEndDate.Value Then
+        If DTPStartDate.Value <= DTPEndDate.Value Then
+            Cursor = Cursors.WaitCursor
             drawGraph()
+            Cursor = Cursors.Arrow
         End If
     End Sub
 
@@ -729,7 +731,7 @@ Public Class Frm_Reports
             Chart.DataBind()
             RawData()
         Catch ex As Exception
-            'MessageBox.Show(ex.ToString)
+            MessageBox.Show(ex.ToString)
         End Try
     End Sub
 
@@ -1018,7 +1020,7 @@ Public Class Frm_Reports
             Next
 
         Catch ex As Exception
-            'MessageBox.Show(ex.ToString)
+            MessageBox.Show(ex.ToString)
         End Try
     End Sub
 
@@ -1336,7 +1338,7 @@ Public Class Frm_Reports
         If where.Length > 0 Then
             where = " and (" & where & ")"
             If dbTables = "CI" Then
-                where += " and " & dbTables & "_Project.ID = resources.Project_ID "
+                'where += " and " & dbTables & "_Project.ID = resources.Project_ID "
             End If
         End If
 

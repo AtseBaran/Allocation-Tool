@@ -23,22 +23,22 @@ Public Class Frm_Main
         SetLabels()
         EnableControls(False)
         If UsersInfo.IsRegistered(AppName) Then 'Validation of user, is registered
-            My.Computer.Registry.CurrentUser.OpenSubKey(
-                    "SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
-                    True
-                ).SetValue(
-                    Application.ProductName,
-                    Application.ExecutablePath & " -m"
-                )
+            'My.Computer.Registry.CurrentUser.OpenSubKey(
+            '        "SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
+            '        True
+            '    ).SetValue(
+            '        Application.ProductName,
+            '        Application.ExecutablePath & " -m"
+            '    )
             refreshPermissions()
             EnableControls(True)
         Else 'Exit of application if user no have permissions
-            My.Computer.Registry.CurrentUser.OpenSubKey(
-                    "SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
-                    True
-                ).DeleteValue(
-                    Application.ProductName
-                )
+            'My.Computer.Registry.CurrentUser.OpenSubKey(
+            '        "SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
+            '        True
+            '    ).DeleteValue(
+            '        Application.ProductName
+            '    )
             MsgBox("User " & UsersInfo.TNumber & " is not registered!" & vbCr & "Please contact your system administrator.", MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
             Application.Exit()
         End If
@@ -637,11 +637,11 @@ Public Class Frm_Main
     End Sub
 
     Private Sub Frm_Main_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        If Not Debugger.IsAttached Then
-            Dim update As New PSS_Framework.Updates.UpdateClass(AppName, My.Application.Info.Title, My.Application.Info.Version)
-            If update.UpdateAvailable Then
-                update.Update()
-            End If
-        End If
+        'If Not Debugger.IsAttached Then
+        '    Dim update As New PSS_Framework.Updates.UpdateClass(AppName, My.Application.Info.Title, My.Application.Info.Version)
+        '    If update.UpdateAvailable Then
+        '        update.Update()
+        '    End If
+        'End If
     End Sub
 End Class

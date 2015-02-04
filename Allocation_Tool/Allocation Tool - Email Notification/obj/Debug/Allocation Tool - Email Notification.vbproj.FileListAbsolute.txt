@@ -6,7 +6,7 @@ C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocatio
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool - Email Notification\bin\Debug\ERPConnect35.dll
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool - Email Notification\bin\Debug\PSS Framework.pdb
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool - Email Notification\bin\Debug\PSS Framework.xml
-C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool - Email Notification\obj\Debug\Allocation Tool - Email Notification.vbprojResolveAssemblyReference.cache
+C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool - Email Notification\obj\Debug\Allocation Tool - Email Notification.vbproj.ResolveComReference.cache
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool - Email Notification\obj\Debug\Allocation_Tool___Email_Notification.FrmMain.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool - Email Notification\obj\Debug\Allocation_Tool___Email_Notification.Resources.resources
 C:\Users\loria.e\Documents\Visual Studio 2012\Projects\Allocation-Tool\Allocation_Tool\Allocation Tool - Email Notification\obj\Debug\Allocation Tool - Email Notification.vbproj.GenerateResource.Cache
